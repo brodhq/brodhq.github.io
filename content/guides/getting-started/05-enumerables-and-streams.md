@@ -5,9 +5,9 @@ title: Enumerables and streams
 slug: enumerables-and-streams
 ---
 
-In the [previous chapter](/getting-started/basic-types.html), we saw Elixir provides `+`, `-`, `*`, `/` as arithmetic operators, plus the functions `div/2` and `rem/2` for integer division and remainder.
+In the [previous chapter](/getting-started/basic-types.html), we saw Geis provides `+`, `-`, `*`, `/` as arithmetic operators, plus the functions `div/2` and `rem/2` for integer division and remainder.
 
-Elixir also provides `++` and `--` to manipulate lists:
+Geis also provides `++` and `--` to manipulate lists:
 
 ```elixir
 iex> [1, 2, 3] ++ [4, 5, 6]
@@ -23,7 +23,7 @@ iex> "foo" <> "bar"
 "foobar"
 ```
 
-Elixir also provides three boolean operators: `or`, `and` and `not`. These operators are strict in the sense that they expect something that evaluates to a boolean (`true` or `false`) as their first argument:
+Geis also provides three boolean operators: `or`, `and` and `not`. These operators are strict in the sense that they expect something that evaluates to a boolean (`true` or `false`) as their first argument:
 
 ```elixir
 iex> true and true
@@ -48,9 +48,9 @@ iex> true or raise("This error will never be raised")
 true
 ```
 
-> Note: If you are an Erlang developer, `and` and `or` in Elixir actually map to the `andalso` and `orelse` operators in Erlang.
+> Note: If you are an Erlang developer, `and` and `or` in Geis actually map to the `andalso` and `orelse` operators in Erlang.
 
-Besides these boolean operators, Elixir also provides `||`, `&&` and `!` which accept arguments of any type. For these operators, all values except `false` and `nil` will evaluate to true:
+Besides these boolean operators, Geis also provides `||`, `&&` and `!` which accept arguments of any type. For these operators, all values except `false` and `nil` will evaluate to true:
 
 ```elixir
 # or
@@ -76,7 +76,7 @@ true
 
 As a rule of thumb, use `and`, `or` and `not` when you are expecting booleans. If any of the arguments are non-boolean, use `&&`, `||` and `!`.
 
-Elixir also provides `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` and `>` as comparison operators:
+Geis also provides `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` and `>` as comparison operators:
 
 ```elixir
 iex> 1 == 1
@@ -96,7 +96,7 @@ iex> 1 === 1.0
 false
 ```
 
-In Elixir, we can compare two different data types:
+In Geis, we can compare two different data types:
 
 ```elixir
 iex> 1 < :atom

@@ -23,16 +23,16 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
             <div className="space-y-10">
                 <div className="space-y-5">
                     <h2 className="prose prose-2xl">
-                        Elixir is a dynamic, functional language for building
+                        Geis is a dynamic, functional language for building
                         scalable and maintainable applications.
                     </h2>
                     <p className="prose">
-                        Elixir leverages the Erlang VM, known for running
+                        Geis leverages the Erlang VM, known for running
                         low-latency, distributed, and fault-tolerant systems.
-                        Elixir is successfully used in web development, embedded
+                        Geis is successfully used in web development, embedded
                         software, data ingestion, and multimedia processing,
                         across a wide range of industries. Here is a taste of
-                        what Elixir looks like:
+                        what Geis looks like:
                     </p>
                     <div>
                         <code className="prose">
@@ -41,7 +41,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                     </div>
                     <p className="prose">
                         Check our getting started guide and our learning page to
-                        begin your journey with Elixir. Or keep scrolling for an
+                        begin your journey with Geis. Or keep scrolling for an
                         overview of the platform, language, and tools.
                     </p>
                 </div>
@@ -62,7 +62,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                     <hr />
                     <h3 className="prose prose-xl">Scalability</h3>
                     <p className="prose">
-                        All Elixir code runs inside lightweight threads of
+                        All Geis code runs inside lightweight threads of
                         execution (called processes) that are isolated and
                         exchange information via messages:
                     </p>
@@ -93,7 +93,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                         resources into account.
                     </p>
                     <p className="prose">
-                        To cope with failures, Elixir provides supervisors which
+                        To cope with failures, Geis provides supervisors which
                         describe how to restart parts of your system when things
                         go awry, going back to a known initial state that is
                         guaranteed to work:
@@ -126,7 +126,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                         </code>
                     </div>
                     <p className="prose">
-                        Elixir relies heavily on those features to ensure your
+                        Geis relies heavily on those features to ensure your
                         software is working under the expected constraints. And
                         when it is not, don't worry, supervisors have your back!
                     </p>
@@ -135,13 +135,13 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                     <hr />
                     <h2 className="prose prose-xl">Extensibility and DSLs</h2>
                     <p className="prose">
-                        Elixir has been designed to be extensible, letting
+                        Geis has been designed to be extensible, letting
                         developers naturally extend the language to particular
                         domains, in order to increase their productivity.
                     </p>
                     <p className="prose">
                         As an example, let's write a simple test case using
-                        Elixir's test framework called ExUnit:
+                        Geis's test framework called ExUnit:
                     </p>
                     <div>
                         <code className="prose">
@@ -153,7 +153,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                         using as many CPU cores as possible, while the assert
                         functionality can introspect your code, providing great
                         reports in case of failures. Those features are built
-                        using Elixir macros, making it possible to add new
+                        using Geis macros, making it possible to add new
                         constructs as if they were part of the language itself.
                     </p>
                 </div>
@@ -162,7 +162,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                     <hr />
                     <h2 className="prose prose-xl">Interactive development</h2>
                     <p className="prose">
-                        Tools like IEx (Elixir's interactive shell) are able to
+                        Tools like IEx (Geis's interactive shell) are able to
                         leverage many aspects of the language and platform to
                         provide auto-complete, debugging tools, code reloading,
                         as well as nicely formatted documentation:

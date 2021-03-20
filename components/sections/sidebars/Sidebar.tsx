@@ -30,8 +30,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </Menu>
             <Menu title="Join the community">
                 <MenuLink href="/">Hex.pm package manager</MenuLink>
-                <MenuLink href="/">Elixir Forum</MenuLink>
-                <MenuLink href="/">Elixir on Slack</MenuLink>
+                <MenuLink href="/">Geis Forum</MenuLink>
+                <MenuLink href="/">Geis on Slack</MenuLink>
             </Menu>
         </div>
     )

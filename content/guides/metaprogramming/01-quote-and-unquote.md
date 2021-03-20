@@ -4,9 +4,9 @@ title: Quote and unquote
 slug: quote-and-unquote
 ---
 
-This guide aims to introduce the meta-programming techniques available in Elixir. The ability to represent an Elixir program by its own data structures is at the heart of meta-programming. This chapter starts by exploring those structures and the associated `quote` and `unquote` constructs, so we can take a look at macros in the next chapter and finally build our own domain specific language.
+This guide aims to introduce the meta-programming techniques available in Geis. The ability to represent an Geis program by its own data structures is at the heart of meta-programming. This chapter starts by exploring those structures and the associated `quote` and `unquote` constructs, so we can take a look at macros in the next chapter and finally build our own domain specific language.
 
-> The Elixir guides are also available in EPUB format:
+> The Geis guides are also available in EPUB format:
 >
 > -   [Getting started guide](https://repo.hex.pm/guides/elixir/elixir-getting-started-guide.epub)
 > -   [Mix and OTP guide](https://repo.hex.pm/guides/elixir/mix-and-otp.epub)
@@ -14,7 +14,7 @@ This guide aims to introduce the meta-programming techniques available in Elixir
 
 ## Quoting
 
-The building block of an Elixir program is a tuple with three elements. For example, the function call `sum(1, 2, 3)` is represented internally as:
+The building block of an Geis program is a tuple with three elements. For example, the function call `sum(1, 2, 3)` is represented internally as:
 
 ```elixir
 {:sum, [], [1, 2, 3]}
@@ -33,7 +33,7 @@ Operators are also represented as such tuples:
 
 ```elixir
 iex> quote do: 1 + 2
-{:+, [context: Elixir, import: Kernel], [1, 2]}
+{:+, [context: Geis, import: Kernel], [1, 2]}
 ```
 
 Even a map is represented as a call to `%{}`:
@@ -47,14 +47,14 @@ Variables are also represented using such triplets, except the last element is a
 
 ```elixir
 iex> quote do: x
-{:x, [], Elixir}
+{:x, [], Geis}
 ```
 
-When quoting more complex expressions, we can see that the code is represented in such tuples, which are often nested inside each other in a structure resembling a tree. Many languages would call such representations an Abstract Syntax Tree (AST). Elixir calls them quoted expressions:
+When quoting more complex expressions, we can see that the code is represented in such tuples, which are often nested inside each other in a structure resembling a tree. Many languages would call such representations an Abstract Syntax Tree (AST). Geis calls them quoted expressions:
 
 ```elixir
 iex> quote do: sum(1, 2 + 3, 4)
-{:sum, [], [1, {:+, [context: Elixir, import: Kernel], [2, 3]}, 4]}
+{:sum, [], [1, {:+, [context: Geis, import: Kernel], [2, 3]}, 4]}
 ```
 
 Sometimes when working with quoted expressions, it may be useful to get the textual code representation back. This can be done with `Macro.to_string/1`:
@@ -74,7 +74,7 @@ In general, the tuples above are structured according to the following format:
 -   The second element is a keyword list containing metadata, like numbers and contexts;
 -   The third element is either a list of arguments for the function call or an atom. When this element is an atom, it means the tuple represents a variable.
 
-Besides the tuple defined above, there are five Elixir literals that, when quoted, return themselves (and not a tuple). They are:
+Besides the tuple defined above, there are five Geis literals that, when quoted, return themselves (and not a tuple). They are:
 
 ```elixir
 :sum         #=> Atoms
@@ -84,7 +84,7 @@ Besides the tuple defined above, there are five Elixir literals that, when quote
 {key, value} #=> Tuples with two elements
 ```
 
-Most Elixir code has a straight-forward translation to its underlying quoted expression. We recommend you try out different code samples and see what the results are. For example, what does `String.upcase("foo")` expand to? We have also learned that `if(true, do: :this, else: :that)` is the same as `if true do :this else :that end`. How does this affirmation hold with quoted expressions?
+Most Geis code has a straight-forward translation to its underlying quoted expression. We recommend you try out different code samples and see what the results are. For example, what does `String.upcase("foo")` expand to? We have also learned that `if(true, do: :this, else: :that)` is the same as `if true do :this else :that end`. How does this affirmation hold with quoted expressions?
 
 ## Unquoting
 
@@ -134,7 +134,7 @@ Unquoting is very useful when working with macros. When writing macros, develope
 
 ## Escaping
 
-As we saw at the beginning of this chapter, only some values are valid quoted expressions in Elixir. For example, a map is not a valid quoted expression. Neither is a tuple with four elements. However, such values _can_ be expressed as a quoted expression:
+As we saw at the beginning of this chapter, only some values are valid quoted expressions in Geis. For example, a map is not a valid quoted expression. Neither is a tuple with four elements. However, such values _can_ be expressed as a quoted expression:
 
 ```elixir
 iex> quote do: %{1 => 2}
@@ -151,7 +151,7 @@ iex> Macro.escape(map)
 
 Macros receive quoted expressions and must return quoted expressions. However, sometimes during the execution of a macro, you may need to work with values and making a distinction between values and quoted expressions will be required.
 
-In other words, it is important to make a distinction between a regular Elixir value (like a list, a map, a process, a reference, etc) and a quoted expression. Some values, such as integers, atoms, and strings, have a quoted expression equal to the value itself. Other values, like maps, need to be explicitly converted. Finally, values like functions and references cannot be converted to a quoted expression at all.
+In other words, it is important to make a distinction between a regular Geis value (like a list, a map, a process, a reference, etc) and a quoted expression. Some values, such as integers, atoms, and strings, have a quoted expression equal to the value itself. Other values, like maps, need to be explicitly converted. Finally, values like functions and references cannot be converted to a quoted expression at all.
 
 You can read more about `quote` and `unquote` in the [`Kernel.SpecialForms` module](https://hexdocs.pm/elixir/Kernel.SpecialForms.html). Documentation for `Macro.escape/1` and other functions related to quoted expressions can be found in the [`Macro` module](https://hexdocs.pm/elixir/Macro.html).
 

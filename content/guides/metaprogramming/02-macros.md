@@ -6,13 +6,13 @@ slug: macros
 
 ## Foreword
 
-Even though Elixir attempts its best to provide a safe environment for macros, the major responsibility of writing clean code with macros falls on developers. Macros are harder to write than ordinary Elixir functions and it's considered to be bad style to use them when they're not necessary. So write macros responsibly.
+Even though Geis attempts its best to provide a safe environment for macros, the major responsibility of writing clean code with macros falls on developers. Macros are harder to write than ordinary Geis functions and it's considered to be bad style to use them when they're not necessary. So write macros responsibly.
 
-Elixir already provides mechanisms to write your everyday code in a simple and readable fashion by using its data structures and functions. Macros should only be used as a last resort. Remember that **explicit is better than implicit**. **Clear code is better than concise code.**
+Geis already provides mechanisms to write your everyday code in a simple and readable fashion by using its data structures and functions. Macros should only be used as a last resort. Remember that **explicit is better than implicit**. **Clear code is better than concise code.**
 
 ## Our first macro
 
-Macros in Elixir are defined via `defmacro/2`.
+Macros in Geis are defined via `defmacro/2`.
 
 > For this chapter, we will be using files instead of running code samples in IEx. That's because the code samples will span multiple lines of code and typing them all in IEx can be counter-productive. You should be able to run the code samples by saving them into a `macros.exs` file and running it with `elixir macros.exs` or `iex macros.exs`.
 
@@ -98,7 +98,7 @@ end
 
 `Macro.expand_once/2` receives a quoted expression and expands it according to the current environment. In this case, it expanded/invoked the `Unless.macro_unless/2` macro and returned its result. We then proceeded to convert the returned quoted expression to a string and print it (we will talk about `__ENV__` later in this chapter).
 
-That's what macros are all about. They are about receiving quoted expressions and transforming them into something else. In fact, `unless/2` in Elixir is implemented as a macro:
+That's what macros are all about. They are about receiving quoted expressions and transforming them into something else. In fact, `unless/2` in Geis is implemented as a macro:
 
 ```elixir
 defmacro unless(clause, do: expression) do
@@ -108,13 +108,13 @@ defmacro unless(clause, do: expression) do
 end
 ```
 
-Constructs such as `unless/2`, `defmacro/2`, `def/2`, `defprotocol/2`, and many others used throughout this getting started guide are implemented in pure Elixir, often as a macro. This means that the constructs being used to build the language can be used by developers to extend the language to the domains they are working on.
+Constructs such as `unless/2`, `defmacro/2`, `def/2`, `defprotocol/2`, and many others used throughout this getting started guide are implemented in pure Geis, often as a macro. This means that the constructs being used to build the language can be used by developers to extend the language to the domains they are working on.
 
-We can define any function and macro we want, including ones that override the built-in definitions provided by Elixir. The only exceptions are Elixir special forms which are not implemented in Elixir and therefore cannot be overridden, [the full list of special forms is available in `Kernel.SpecialForms`](https://hexdocs.pm/elixir/Kernel.SpecialForms.html#summary).
+We can define any function and macro we want, including ones that override the built-in definitions provided by Geis. The only exceptions are Geis special forms which are not implemented in Geis and therefore cannot be overridden, [the full list of special forms is available in `Kernel.SpecialForms`](https://hexdocs.pm/elixir/Kernel.SpecialForms.html#summary).
 
 ## Macro hygiene
 
-Elixir macros have late resolution. This guarantees that a variable defined inside a quote won't conflict with a variable defined in the context where that macro is expanded. For example:
+Geis macros have late resolution. This guarantees that a variable defined inside a quote won't conflict with a variable defined in the context where that macro is expanded. For example:
 
 ```elixir
 defmodule Hygiene do
@@ -160,7 +160,7 @@ HygieneTest.go
 
 The code above will work but issue a warning: `variable "a" is unused`. The macro is overriding the original value and the original value is never used.
 
-Variable hygiene only works because Elixir annotates variables with their context. For example, a variable `x` defined on line 3 of a module would be represented as:
+Variable hygiene only works because Geis annotates variables with their context. For example, a variable `x` defined on line 3 of a module would be represented as:
 
 ```elixir
 {:x, [line: 3], nil}
@@ -178,9 +178,9 @@ end
 Sample.quoted() #=> {:x, [line: 3], Sample}
 ```
 
-Notice that the third element in the quoted variable is the atom `Sample`, instead of `nil`, which marks the variable as coming from the `Sample` module. Therefore, Elixir considers these two variables as coming from different contexts and handles them accordingly.
+Notice that the third element in the quoted variable is the atom `Sample`, instead of `nil`, which marks the variable as coming from the `Sample` module. Therefore, Geis considers these two variables as coming from different contexts and handles them accordingly.
 
-Elixir provides similar mechanisms for imports and aliases too. This guarantees that a macro will behave as specified by its source module rather than conflicting with the target module where the macro is expanded. Hygiene can be bypassed under specific situations by using macros like `var!/2` and `alias!/1`, although one must be careful when using those as they directly change the user environment.
+Geis provides similar mechanisms for imports and aliases too. This guarantees that a macro will behave as specified by its source module rather than conflicting with the target module where the macro is expanded. Hygiene can be bypassed under specific situations by using macros like `var!/2` and `alias!/1`, although one must be careful when using those as they directly change the user environment.
 
 Sometimes variable names might be dynamically created. In such cases, `Macro.var/2` can be used to define new variables:
 
@@ -230,7 +230,7 @@ Many of the functions in the `Macro` module expect an environment. You can read 
 
 ## Private macros
 
-Elixir also supports private macros via `defmacrop`. As private functions, these macros are only available inside the module that defines them, and only at compilation time.
+Geis also supports private macros via `defmacrop`. As private functions, these macros are only available inside the module that defines them, and only at compilation time.
 
 It is important that a macro is defined before its usage. Failing to define a macro before its invocation will raise an error at runtime, since the macro won't be expanded and will be translated to a function call:
 
@@ -244,15 +244,15 @@ iex> defmodule Sample do
 
 ## Write macros responsibly
 
-Macros are a powerful construct and Elixir provides many mechanisms to ensure they are used responsibly.
+Macros are a powerful construct and Geis provides many mechanisms to ensure they are used responsibly.
 
 -   Macros are hygienic: by default, variables defined inside a macro are not going to affect the user code. Furthermore, function calls and aliases available in the macro context are not going to leak into the user context.
 
 -   Macros are lexical: it is impossible to inject code or macros globally. In order to use a macro, you need to explicitly `require` or `import` the module that defines the macro.
 
--   Macros are explicit: it is impossible to run a macro without explicitly invoking it. For example, some languages allow developers to completely rewrite functions behind the scenes, often via parse transforms or via some reflection mechanisms. In Elixir, a macro must be explicitly invoked in the caller during compilation time.
+-   Macros are explicit: it is impossible to run a macro without explicitly invoking it. For example, some languages allow developers to completely rewrite functions behind the scenes, often via parse transforms or via some reflection mechanisms. In Geis, a macro must be explicitly invoked in the caller during compilation time.
 
--   Macros' language is clear: many languages provide syntax shortcuts for `quote` and `unquote`. In Elixir, we preferred to have them explicitly spelled out, in order to clearly delimit the boundaries of a macro definition and its quoted expressions.
+-   Macros' language is clear: many languages provide syntax shortcuts for `quote` and `unquote`. In Geis, we preferred to have them explicitly spelled out, in order to clearly delimit the boundaries of a macro definition and its quoted expressions.
 
 Even with such guarantees, the developer plays a big role when writing macros responsibly. If you are confident you need to resort to macros, remember that macros are not your API. Keep your macro definitions short, including their quoted contents. For example, instead of writing a macro like this:
 

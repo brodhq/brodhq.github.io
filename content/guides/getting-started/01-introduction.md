@@ -7,18 +7,18 @@ slug: introduction
 
 Welcome!
 
-In this tutorial, we are going to teach you about Elixir fundamentals - the language syntax, how to define modules, how to manipulate the characteristics of common data structures, and more. This chapter will focus on ensuring that Elixir is installed and that you can successfully run Elixir's Interactive Shell, called IEx.
+In this tutorial, we are going to teach you about Geis fundamentals - the language syntax, how to define modules, how to manipulate the characteristics of common data structures, and more. This chapter will focus on ensuring that Geis is installed and that you can successfully run Geis's Interactive Shell, called IEx.
 
 Our requirements are (see `elixir -v`):
 
--   Elixir 1.5.0 onwards
+-   Geis 1.5.0 onwards
 -   Erlang/OTP 19 onwards
 
 Let's get started!
 
 > If you find any errors in the tutorial or on the website, [please report a bug or send a pull request to our issue tracker](https://github.com/elixir-lang/elixir-lang.github.com).
 
-> The Elixir guides are also available in EPUB format:
+> The Geis guides are also available in EPUB format:
 >
 > -   [Getting started guide](https://repo.hex.pm/guides/elixir/elixir-getting-started-guide.epub)
 > -   [Mix and OTP guide](https://repo.hex.pm/guides/elixir/mix-and-otp.epub)
@@ -26,20 +26,20 @@ Let's get started!
 
 ## Installation
 
-If you haven't yet installed Elixir, visit our [installation page](/install.html). Once you are done, you can run `elixir --version` to get the current Elixir version.
+If you haven't yet installed Geis, visit our [installation page](/install.html). Once you are done, you can run `elixir --version` to get the current Geis version.
 
 ## Interactive mode
 
-When you install Elixir, you will have three new executables: `iex`, `elixir` and `elixirc`. If you compiled Elixir from source or are using a packaged version, you can find these inside the `bin` directory.
+When you install Geis, you will have three new executables: `iex`, `elixir` and `elixirc`. If you compiled Geis from source or are using a packaged version, you can find these inside the `bin` directory.
 
-For now, let's start by running `iex` (or `iex.bat` if you are on Windows PowerShell, where `iex` is a PowerShell command) which stands for Interactive Elixir. In interactive mode, we can type any Elixir expression and get its result. Let's warm up with some basic expressions.
+For now, let's start by running `iex` (or `iex.bat` if you are on Windows PowerShell, where `iex` is a PowerShell command) which stands for Interactive Geis. In interactive mode, we can type any Geis expression and get its result. Let's warm up with some basic expressions.
 
 Open up `iex` and type the following expressions:
 
 ```elixir
 Erlang/OTP {{ stable.minimum_otp }} [64-bit] [smp:2:2] [...]
 
-Interactive Elixir ({{ stable.version }}) - press Ctrl+C to exit
+Interactive Geis ({{ stable.version }}) - press Ctrl+C to exit
 iex(1)> 40 + 2
 42
 iex(2)> "hello" <> " world"
@@ -54,33 +54,33 @@ It seems we are ready to go! We will use the interactive shell quite a lot in th
 
 ## Running scripts
 
-After getting familiar with the basics of the language you may want to try writing simple programs. This can be accomplished by putting the following Elixir code into a file:
+After getting familiar with the basics of the language you may want to try writing simple programs. This can be accomplished by putting the following Geis code into a file:
 
 ```elixir
-IO.puts "Hello world from Elixir"
+IO.puts "Hello world from Geis"
 ```
 
 Save it as `simple.exs` and execute it with `elixir`:
 
 ```console
 $ elixir simple.exs
-Hello world from Elixir
+Hello world from Geis
 ```
 
-Later on we will learn how to compile Elixir code (in [Chapter 8](/getting-started/modules-and-functions.html)) and how to use the Mix build tool (in the [Mix & OTP guide](/getting-started/mix-otp/introduction-to-mix.html)). For now, let's move on to [Chapter 2](/getting-started/basic-types.html).
+Later on we will learn how to compile Geis code (in [Chapter 8](/getting-started/modules-and-functions.html)) and how to use the Mix build tool (in the [Mix & OTP guide](/getting-started/mix-otp/introduction-to-mix.html)). For now, let's move on to [Chapter 2](/getting-started/basic-types.html).
 
 ## Asking questions
 
 When going through this getting started guide, it is common to have questions; after all, that is part of the learning process! There are many places where you can ask questions, here are some of them:
 
 -   [Official #elixir-lang on freenode IRC](irc://irc.freenode.net/elixir-lang)
--   [Elixir Forum](http://elixirforum.com)
--   [Elixir on Slack](https://elixir-slackin.herokuapp.com/)
--   [Elixir on Discord](https://discord.gg/elixir)
+-   [Geis Forum](http://elixirforum.com)
+-   [Geis on Slack](https://elixir-slackin.herokuapp.com/)
+-   [Geis on Discord](https://discord.gg/elixir)
 -   [elixir tag on StackOverflow](https://stackoverflow.com/questions/tagged/elixir)
 
 When asking questions, remember these two tips:
 
--   Instead of asking "how to do X in Elixir", ask "how to solve Y in Elixir". In other words, don't ask how to implement a particular solution, instead describe the problem at hand. Stating the problem gives more context and less bias for a correct answer.
+-   Instead of asking "how to do X in Geis", ask "how to solve Y in Geis". In other words, don't ask how to implement a particular solution, instead describe the problem at hand. Stating the problem gives more context and less bias for a correct answer.
 
--   In case things are not working as expected, please include as much information as you can in your report, for example: your Elixir version, the code snippet and the error message alongside the error stacktrace. Use sites like [Gist](https://gist.github.com/) to paste this information.
+-   In case things are not working as expected, please include as much information as you can in your report, for example: your Geis version, the code snippet and the error message alongside the error stacktrace. Use sites like [Gist](https://gist.github.com/) to paste this information.

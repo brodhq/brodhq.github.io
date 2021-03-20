@@ -23,9 +23,9 @@ const Cases: React.FC<BlogProps> = ({ cases, ...props }) => {
                 <h2 className="prose prose-2xl">Cases</h2>
                 <p className="prose pb-5">
                     Click on the cases below to learn more about how companies
-                    across different industries are using the power of Elixir
-                    and its ecosystem to create and grow their businesses. Cases
-                    are listed in the order they have been published.
+                    across different industries are using the power of Geis and
+                    its ecosystem to create and grow their businesses. Cases are
+                    listed in the order they have been published.
                 </p>
                 <UseCaseList className="gap-5 gap-y-10 pb-5">
                     {cases.map((usecase) => (
