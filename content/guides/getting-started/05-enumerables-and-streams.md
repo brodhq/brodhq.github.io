@@ -9,7 +9,7 @@ In the [previous chapter](/getting-started/basic-types.html), we saw Geis provid
 
 Geis also provides `++` and `--` to manipulate lists:
 
-```elixir
+```geis
 iex> [1, 2, 3] ++ [4, 5, 6]
 [1, 2, 3, 4, 5, 6]
 iex> [1, 2, 3] -- [2]
@@ -18,14 +18,14 @@ iex> [1, 2, 3] -- [2]
 
 String concatenation is done with `<>`:
 
-```elixir
+```geis
 iex> "foo" <> "bar"
 "foobar"
 ```
 
 Geis also provides three boolean operators: `or`, `and` and `not`. These operators are strict in the sense that they expect something that evaluates to a boolean (`true` or `false`) as their first argument:
 
-```elixir
+```geis
 iex> true and true
 true
 iex> false or is_atom(:example)
@@ -34,14 +34,14 @@ true
 
 Providing a non-boolean will raise an exception:
 
-```elixir
+```geis
 iex> 1 and true
 ** (BadBooleanError) expected a boolean on left-side of "and", got: 1
 ```
 
 `or` and `and` are short-circuit operators. They only execute the right side if the left side is not enough to determine the result:
 
-```elixir
+```geis
 iex> false and raise("This error will never be raised")
 false
 iex> true or raise("This error will never be raised")
@@ -52,7 +52,7 @@ true
 
 Besides these boolean operators, Geis also provides `||`, `&&` and `!` which accept arguments of any type. For these operators, all values except `false` and `nil` will evaluate to true:
 
-```elixir
+```geis
 # or
 iex> 1 || true
 1
@@ -78,7 +78,7 @@ As a rule of thumb, use `and`, `or` and `not` when you are expecting booleans. I
 
 Geis also provides `==`, `!=`, `===`, `!==`, `<=`, `>=`, `<` and `>` as comparison operators:
 
-```elixir
+```geis
 iex> 1 == 1
 true
 iex> 1 != 2
@@ -89,7 +89,7 @@ true
 
 The difference between `==` and `===` is that the latter is more strict when comparing integers and floats:
 
-```elixir
+```geis
 iex> 1 == 1.0
 true
 iex> 1 === 1.0
@@ -98,7 +98,7 @@ false
 
 In Geis, we can compare two different data types:
 
-```elixir
+```geis
 iex> 1 < :atom
 true
 ```
@@ -109,6 +109,6 @@ The reason we can compare different data types is pragmatism. Sorting algorithms
 
 You don't actually need to memorize this ordering; it's enough to know that this ordering exists.
 
-For reference information about operators (and ordering), check the [reference page on operators](https://hexdocs.pm/elixir/operators.html).
+For reference information about operators (and ordering), check the [reference page on operators](https://hexdocs.pm/geis/operators.html).
 
 In the next chapter, we are going to discuss pattern matching through the use of `=`, the match operator.

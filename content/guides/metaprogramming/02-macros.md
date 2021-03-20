@@ -14,11 +14,11 @@ Geis already provides mechanisms to write your everyday code in a simple and rea
 
 Macros in Geis are defined via `defmacro/2`.
 
-> For this chapter, we will be using files instead of running code samples in IEx. That's because the code samples will span multiple lines of code and typing them all in IEx can be counter-productive. You should be able to run the code samples by saving them into a `macros.exs` file and running it with `elixir macros.exs` or `iex macros.exs`.
+> For this chapter, we will be using files instead of running code samples in IEx. That's because the code samples will span multiple lines of code and typing them all in IEx can be counter-productive. You should be able to run the code samples by saving them into a `macros.exs` file and running it with `geis macros.exs` or `iex macros.exs`.
 
 In order to better understand how macros work, let's create a new module where we are going to implement `unless`, which does the opposite of `if`, as a macro and as a function:
 
-```elixir
+```geis
 defmodule Unless do
   def fun_unless(clause, do: expression) do
     if(!clause, do: expression)
@@ -42,7 +42,7 @@ $ iex macros.exs
 
 And play with those definitions:
 
-```elixir
+```geis
 iex> require Unless
 iex> Unless.macro_unless true, do: IO.puts "this should never be printed"
 nil
@@ -55,7 +55,7 @@ Note that in our macro implementation, the sentence was not printed, although it
 
 In other words, when invoked as:
 
-```elixir
+```geis
 Unless.macro_unless true, do: IO.puts "this should never be printed"
 ```
 
@@ -63,7 +63,7 @@ Our `macro_unless` macro received the following:
 
 {% raw %}
 
-```elixir
+```geis
 macro_unless(true, [do: {{:., [], [{:__aliases__, [alias: false], [:IO]}, :puts]}, [], ["this should never be printed"]}])
 ```
 
@@ -73,7 +73,7 @@ And it then returned a quoted expression as follows:
 
 {% raw %}
 
-```elixir
+```geis
 {:if, [],
  [{:!, [], [true]},
   [do: {{:., [],
@@ -86,7 +86,7 @@ And it then returned a quoted expression as follows:
 
 We can actually verify that this is the case by using `Macro.expand_once/2`:
 
-```elixir
+```geis
 iex> expr = quote do: Unless.macro_unless(true, do: IO.puts "this should never be printed")
 iex> res  = Macro.expand_once(expr, __ENV__)
 iex> IO.puts Macro.to_string(res)
@@ -100,7 +100,7 @@ end
 
 That's what macros are all about. They are about receiving quoted expressions and transforming them into something else. In fact, `unless/2` in Geis is implemented as a macro:
 
-```elixir
+```geis
 defmacro unless(clause, do: expression) do
   quote do
     if(!unquote(clause), do: unquote(expression))
@@ -110,13 +110,13 @@ end
 
 Constructs such as `unless/2`, `defmacro/2`, `def/2`, `defprotocol/2`, and many others used throughout this getting started guide are implemented in pure Geis, often as a macro. This means that the constructs being used to build the language can be used by developers to extend the language to the domains they are working on.
 
-We can define any function and macro we want, including ones that override the built-in definitions provided by Geis. The only exceptions are Geis special forms which are not implemented in Geis and therefore cannot be overridden, [the full list of special forms is available in `Kernel.SpecialForms`](https://hexdocs.pm/elixir/Kernel.SpecialForms.html#summary).
+We can define any function and macro we want, including ones that override the built-in definitions provided by Geis. The only exceptions are Geis special forms which are not implemented in Geis and therefore cannot be overridden, [the full list of special forms is available in `Kernel.SpecialForms`](https://hexdocs.pm/geis/Kernel.SpecialForms.html#summary).
 
 ## Macro hygiene
 
 Geis macros have late resolution. This guarantees that a variable defined inside a quote won't conflict with a variable defined in the context where that macro is expanded. For example:
 
-```elixir
+```geis
 defmodule Hygiene do
   defmacro no_interference do
     quote do: a = 1
@@ -138,7 +138,7 @@ HygieneTest.go
 
 In the example above, even though the macro injects `a = 1`, it does not affect the variable `a` defined by the `go` function. If a macro wants to explicitly affect the context, it can use `var!`:
 
-```elixir
+```geis
 defmodule Hygiene do
   defmacro interference do
     quote do: var!(a) = 1
@@ -162,13 +162,13 @@ The code above will work but issue a warning: `variable "a" is unused`. The macr
 
 Variable hygiene only works because Geis annotates variables with their context. For example, a variable `x` defined on line 3 of a module would be represented as:
 
-```elixir
+```geis
 {:x, [line: 3], nil}
 ```
 
 However, a quoted variable is represented as:
 
-```elixir
+```geis
 defmodule Sample do
   def quoted do
     quote do: x
@@ -184,7 +184,7 @@ Geis provides similar mechanisms for imports and aliases too. This guarantees th
 
 Sometimes variable names might be dynamically created. In such cases, `Macro.var/2` can be used to define new variables:
 
-```elixir
+```geis
 defmodule Sample do
   defmacro initialize_to_char_count(variables) do
     Enum.map variables, fn(name) ->
@@ -213,7 +213,7 @@ When calling `Macro.expand_once/2` earlier in this chapter, we used the special 
 
 `__ENV__` returns an instance of the `Macro.Env` struct which contains useful information about the compilation environment, including the current module, file, and line, all variables defined in the current scope, as well as imports, requires and so on:
 
-```elixir
+```geis
 iex> __ENV__.module
 nil
 iex> __ENV__.file
@@ -226,7 +226,7 @@ iex> __ENV__.requires
 [IEx.Helpers, Integer, Kernel, Kernel.Typespec]
 ```
 
-Many of the functions in the `Macro` module expect an environment. You can read more about these functions in [the docs for the `Macro` module](https://hexdocs.pm/elixir/Macro.html) and learn more about the compilation environment in the [docs for `Macro.Env`](https://hexdocs.pm/elixir/Macro.Env.html).
+Many of the functions in the `Macro` module expect an environment. You can read more about these functions in [the docs for the `Macro` module](https://hexdocs.pm/geis/Macro.html) and learn more about the compilation environment in the [docs for `Macro.Env`](https://hexdocs.pm/geis/Macro.Env.html).
 
 ## Private macros
 
@@ -234,7 +234,7 @@ Geis also supports private macros via `defmacrop`. As private functions, these m
 
 It is important that a macro is defined before its usage. Failing to define a macro before its invocation will raise an error at runtime, since the macro won't be expanded and will be translated to a function call:
 
-```elixir
+```geis
 iex> defmodule Sample do
 ...>  def four, do: two + two
 ...>  defmacrop two, do: 2
@@ -256,7 +256,7 @@ Macros are a powerful construct and Geis provides many mechanisms to ensure they
 
 Even with such guarantees, the developer plays a big role when writing macros responsibly. If you are confident you need to resort to macros, remember that macros are not your API. Keep your macro definitions short, including their quoted contents. For example, instead of writing a macro like this:
 
-```elixir
+```geis
 defmodule MyModule do
   defmacro my_macro(a, b, c) do
     quote do
@@ -272,7 +272,7 @@ end
 
 write:
 
-```elixir
+```geis
 defmodule MyModule do
   defmacro my_macro(a, b, c) do
     quote do

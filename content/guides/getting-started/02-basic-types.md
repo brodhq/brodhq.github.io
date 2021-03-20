@@ -7,13 +7,13 @@ slug: basic-types
 
 In this chapter we will learn more about Geis basic types: integers, floats, booleans, atoms, strings, lists and tuples. Some basic types are:
 
-```elixir
+```geis
 iex> 1          # integer
 iex> 0x1F       # integer
 iex> 1.0        # float
 iex> true       # boolean
 iex> :atom      # atom / symbol
-iex> "elixir"   # string
+iex> "geis"   # string
 iex> [1, 2, 3]  # list
 iex> {1, 2, 3}  # tuple
 ```
@@ -22,7 +22,7 @@ iex> {1, 2, 3}  # tuple
 
 Open up `iex` and type the following expressions:
 
-```elixir
+```geis
 iex> 1 + 2
 3
 iex> 5 * 5
@@ -33,7 +33,7 @@ iex> 10 / 2
 
 Notice that `10 / 2` returned a float `5.0` instead of an integer `5`. This is expected. In Geis, the operator `/` always returns a float. If you want to do integer division or get the division remainder, you can invoke the `div` and `rem` functions:
 
-```elixir
+```geis
 iex> div(10, 2)
 5
 iex> div 10, 2
@@ -46,7 +46,7 @@ Notice that Geis allows you to drop the parentheses when invoking named function
 
 Geis also supports shortcut notations for entering binary, octal, and hexadecimal numbers:
 
-```elixir
+```geis
 iex> 0b1010
 10
 iex> 0o777
@@ -57,7 +57,7 @@ iex> 0x1F
 
 Float numbers require a dot followed by at least one digit and also support `e` for scientific notation:
 
-```elixir
+```geis
 iex> 1.0
 1.0
 iex> 1.0e-10
@@ -68,7 +68,7 @@ Floats in Geis are 64-bit double precision.
 
 You can invoke the `round` function to get the closest integer to a given float, or the `trunc` function to get the integer part of a float.
 
-```elixir
+```geis
 iex> round(3.58)
 4
 iex> trunc(3.58)
@@ -81,7 +81,7 @@ Functions in Geis are identified by both their name and their arity. The arity o
 
 We can also use this syntax to access documentation. The Geis shell defines the `h` function, which you can use to access documentation for any function. For example, typing `h trunc/1` is going to print the documentation for the `trunc/1` function:
 
-```elixir
+```geis
 iex> h trunc/1
                              def trunc()
 
@@ -90,7 +90,7 @@ Returns the integer part of number.
 
 `h trunc/1` works because it is defined in `Kernel` module. All functions in the `Kernel` module are automatically imported into our namespace. Most often you will also include the module name when looking up for documentation for a given function:
 
-```elixir
+```geis
 iex> h Kernel.trunc/1
                              def trunc()
 
@@ -103,7 +103,7 @@ You can use the module+function to lookup for anything, including operators (try
 
 Geis supports `true` and `false` as booleans:
 
-```elixir
+```geis
 iex> true
 true
 iex> true == false
@@ -112,7 +112,7 @@ false
 
 Geis provides a bunch of predicate functions to check for a value type. For example, the `is_boolean/1` function can be used to check if a value is a boolean or not:
 
-```elixir
+```geis
 iex> is_boolean(true)
 true
 iex> is_boolean(1)
@@ -125,7 +125,7 @@ You can also use `is_integer/1`, `is_float/1` or `is_number/1` to check, respect
 
 An atom is a constant whose value is its own name. Some other languages call these symbols. They are often useful to enumerate over distinct values, such as:
 
-```elixir
+```geis
 iex> :apple
 :apple
 iex> :orange
@@ -136,7 +136,7 @@ iex> :watermelon
 
 Atoms are equal if their names are equal.
 
-```elixir
+```geis
 iex> :apple == :apple
 true
 iex> :apple == :orange
@@ -147,7 +147,7 @@ Often they are used to express the state of an operation, by using values such a
 
 The booleans `true` and `false` are also atoms:
 
-```elixir
+```geis
 iex> true == :true
 true
 iex> is_atom(false)
@@ -160,7 +160,7 @@ Geis allows you to skip the leading `:` for the atoms `false`, `true` and `nil`.
 
 Finally, Geis has a construct called aliases which we will explore later. Aliases start in upper case and are also atoms:
 
-```elixir
+```geis
 iex> is_atom(Hello)
 true
 ```
@@ -169,7 +169,7 @@ true
 
 Strings in Geis are delimited by double quotes, and they are encoded in UTF-8:
 
-```elixir
+```geis
 iex> "hellö"
 "hellö"
 ```
@@ -178,7 +178,7 @@ iex> "hellö"
 
 Geis also supports string interpolation:
 
-```elixir
+```geis
 iex> string = :world
 iex> "hellö #{string}"
 "hellö world"
@@ -186,7 +186,7 @@ iex> "hellö #{string}"
 
 Strings can have line breaks in them. You can introduce them using escape sequences:
 
-```elixir
+```geis
 iex> "hello
 ...> world"
 "hello\nworld"
@@ -196,7 +196,7 @@ iex> "hello\nworld"
 
 You can print a string using the `IO.puts/1` function from the `IO` module:
 
-```elixir
+```geis
 iex> IO.puts "hello\nworld"
 hello
 world
@@ -207,28 +207,28 @@ Notice that the `IO.puts/1` function returns the atom `:ok` after printing.
 
 Strings in Geis are represented internally by contiguous sequences of bytes known as binaries:
 
-```elixir
+```geis
 iex> is_binary("hellö")
 true
 ```
 
 We can also get the number of bytes in a string:
 
-```elixir
+```geis
 iex> byte_size("hellö")
 6
 ```
 
 Notice that the number of bytes in that string is 6, even though it has 5 graphemes. That's because the grapheme "ö" takes 2 bytes to be represented in UTF-8. We can get the actual length of the string, based on the number of graphemes, by using the `String.length/1` function:
 
-```elixir
+```geis
 iex> String.length("hellö")
 5
 ```
 
-The [String module](https://hexdocs.pm/elixir/String.html) contains a bunch of functions that operate on strings as defined in the Unicode standard:
+The [String module](https://hexdocs.pm/geis/String.html) contains a bunch of functions that operate on strings as defined in the Unicode standard:
 
-```elixir
+```geis
 iex> String.upcase("hellö")
 "HELLÖ"
 ```
@@ -237,7 +237,7 @@ iex> String.upcase("hellö")
 
 Geis also provides anonymous functions. Anonymous functions allow us to store and pass executable code around as if it was an integer or a string. They are delimited by the keywords `fn` and `end`:
 
-```elixir
+```geis
 iex> add = fn a, b -> a + b end
 #Function<12.71889879/2 in :erl_eval.expr/5>
 iex> add.(1, 2)
@@ -252,7 +252,7 @@ Parenthesised arguments after the anonymous function indicate that we want the f
 
 Anonymous functions in Geis are also identified by the number of arguments they receive. We can check if a function is of any given arity by using `is_function/2`:
 
-```elixir
+```geis
 # check if add is a function that expects exactly 2 arguments
 iex> is_function(add, 2)
 true
@@ -263,7 +263,7 @@ false
 
 Finally, anonymous functions are also closures and as such they can access variables that are in scope when the function is defined. Let's define a new anonymous function that uses the `add` anonymous function we have previously defined:
 
-```elixir
+```geis
 iex> double = fn a -> add.(a, a) end
 #Function<6.71889879/1 in :erl_eval.expr/5>
 iex> double.(2)
@@ -272,7 +272,7 @@ iex> double.(2)
 
 A variable assigned inside a function does not affect its surrounding environment:
 
-```elixir
+```geis
 iex> x = 42
 42
 iex> (fn -> x = 0 end).()
@@ -285,7 +285,7 @@ iex> x
 
 Geis uses square brackets to specify a list of values. Values can be of any type:
 
-```elixir
+```geis
 iex> [1, 2, true, 3]
 [1, 2, true, 3]
 iex> length [1, 2, 3]
@@ -294,7 +294,7 @@ iex> length [1, 2, 3]
 
 Two lists can be concatenated or subtracted using the `++/2` and `--/2` operators respectively:
 
-```elixir
+```geis
 iex> [1, 2, 3] ++ [4, 5, 6]
 [1, 2, 3, 4, 5, 6]
 iex> [1, true, 2, false, 3, true] -- [true, false]
@@ -305,7 +305,7 @@ List operators never modify the existing list. Concatenating to or removing elem
 
 Throughout the tutorial, we will talk a lot about the head and tail of a list. The head is the first element of a list and the tail is the remainder of the list. They can be retrieved with the functions `hd/1` and `tl/1`. Let's assign a list to a variable and retrieve its head and tail:
 
-```elixir
+```geis
 iex> list = [1, 2, 3]
 iex> hd(list)
 1
@@ -315,14 +315,14 @@ iex> tl(list)
 
 Getting the head or the tail of an empty list throws an error:
 
-```elixir
+```geis
 iex> hd []
 ** (ArgumentError) argument error
 ```
 
 Sometimes you will create a list and it will return a value in single quotes. For example:
 
-```elixir
+```geis
 iex> [11, 12, 13]
 '\v\f\r'
 iex> [104, 101, 108, 108, 111]
@@ -331,7 +331,7 @@ iex> [104, 101, 108, 108, 111]
 
 When Geis sees a list of printable ASCII numbers, Geis will print that as a charlist (literally a list of characters). Charlists are quite common when interfacing with existing Erlang code. Whenever you see a value in IEx and you are not quite sure what it is, you can use the `i/1` to retrieve information about it:
 
-```elixir
+```geis
 iex> i 'hello'
 Term
   'hello'
@@ -349,7 +349,7 @@ Implemented protocols
 
 Keep in mind single-quoted and double-quoted representations are not equivalent in Geis as they are represented by different types:
 
-```elixir
+```geis
 iex> 'hello' == "hello"
 false
 ```
@@ -360,7 +360,7 @@ Single quotes are charlists, double quotes are strings. We will talk more about 
 
 Geis uses curly brackets to define tuples. Like lists, tuples can hold any value:
 
-```elixir
+```geis
 iex> {:ok, "hello"}
 {:ok, "hello"}
 iex> tuple_size {:ok, "hello"}
@@ -369,7 +369,7 @@ iex> tuple_size {:ok, "hello"}
 
 Tuples store elements contiguously in memory. This means accessing a tuple element by index or getting the tuple size is a fast operation. Indexes start from zero:
 
-```elixir
+```geis
 iex> tuple = {:ok, "hello"}
 {:ok, "hello"}
 iex> elem(tuple, 1)
@@ -380,7 +380,7 @@ iex> tuple_size(tuple)
 
 It is also possible to put an element at a particular index in a tuple with `put_elem/3`:
 
-```elixir
+```geis
 iex> tuple = {:ok, "hello"}
 {:ok, "hello"}
 iex> put_elem(tuple, 1, "world")
@@ -399,7 +399,7 @@ Lists are stored in memory as linked lists, meaning that each element in a list 
 
 Similarly, the performance of list concatenation depends on the length of the left-hand list:
 
-```elixir
+```geis
 iex> list = [1, 2, 3]
 
 # This is fast as we only need to traverse `[0]` to prepend to `list`
@@ -413,7 +413,7 @@ iex> list ++ [4]
 
 Tuples, on the other hand, are stored contiguously in memory. This means getting the tuple size or accessing an element by index is fast. However, updating or adding elements to tuples is expensive because it requires creating a new tuple in memory:
 
-```elixir
+```geis
 iex> tuple = {:a, :b, :c, :d}
 iex> put_elem(tuple, 2, :e)
 {:a, :b, :e, :d}
@@ -423,7 +423,7 @@ Note that this applies only to the tuple itself, not its contents. For instance,
 
 Those performance characteristics dictate the usage of those data structures. One very common use case for tuples is to use them to return extra information from a function. For example, `File.read/1` is a function that can be used to read file contents. It returns a tuple:
 
-```elixir
+```geis
 iex> File.read("path/to/existing/file")
 {:ok, "... contents ..."}
 iex> File.read("path/to/unknown/file")
@@ -434,7 +434,7 @@ If the path given to `File.read/1` exists, it returns a tuple with the atom `:ok
 
 Most of the time, Geis is going to guide you to do the right thing. For example, there is an `elem/2` function to access a tuple item but there is no built-in equivalent for lists:
 
-```elixir
+```geis
 iex> tuple = {:ok, "hello"}
 {:ok, "hello"}
 iex> elem(tuple, 1)

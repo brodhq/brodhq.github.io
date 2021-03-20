@@ -8,21 +8,21 @@ This guide aims to introduce the meta-programming techniques available in Geis. 
 
 > The Geis guides are also available in EPUB format:
 >
-> -   [Getting started guide](https://repo.hex.pm/guides/elixir/elixir-getting-started-guide.epub)
-> -   [Mix and OTP guide](https://repo.hex.pm/guides/elixir/mix-and-otp.epub)
-> -   [Meta-programming guide](https://repo.hex.pm/guides/elixir/meta-programming-in-elixir.epub)
+> -   [Getting started guide](https://repo.hex.pm/guides/geis/geis-getting-started-guide.epub)
+> -   [Mix and OTP guide](https://repo.hex.pm/guides/geis/mix-and-otp.epub)
+> -   [Meta-programming guide](https://repo.hex.pm/guides/geis/meta-programming-in-geis.epub)
 
 ## Quoting
 
 The building block of an Geis program is a tuple with three elements. For example, the function call `sum(1, 2, 3)` is represented internally as:
 
-```elixir
+```geis
 {:sum, [], [1, 2, 3]}
 ```
 
 You can get the representation of any expression by using the `quote` macro:
 
-```elixir
+```geis
 iex> quote do: sum(1, 2, 3)
 {:sum, [], [1, 2, 3]}
 ```
@@ -31,42 +31,42 @@ The first element is the function name, the second is a keyword list containing 
 
 Operators are also represented as such tuples:
 
-```elixir
+```geis
 iex> quote do: 1 + 2
 {:+, [context: Geis, import: Kernel], [1, 2]}
 ```
 
 Even a map is represented as a call to `%{}`:
 
-```elixir
+```geis
 iex> quote do: %{1 => 2}
 {:%{}, [], [{1, 2}]}
 ```
 
 Variables are also represented using such triplets, except the last element is an atom, instead of a list:
 
-```elixir
+```geis
 iex> quote do: x
 {:x, [], Geis}
 ```
 
 When quoting more complex expressions, we can see that the code is represented in such tuples, which are often nested inside each other in a structure resembling a tree. Many languages would call such representations an Abstract Syntax Tree (AST). Geis calls them quoted expressions:
 
-```elixir
+```geis
 iex> quote do: sum(1, 2 + 3, 4)
 {:sum, [], [1, {:+, [context: Geis, import: Kernel], [2, 3]}, 4]}
 ```
 
 Sometimes when working with quoted expressions, it may be useful to get the textual code representation back. This can be done with `Macro.to_string/1`:
 
-```elixir
+```geis
 iex> Macro.to_string(quote do: sum(1, 2 + 3, 4))
 "sum(1, 2 + 3, 4)"
 ```
 
 In general, the tuples above are structured according to the following format:
 
-```elixir
+```geis
 {atom | tuple, list, list | atom}
 ```
 
@@ -76,7 +76,7 @@ In general, the tuples above are structured according to the following format:
 
 Besides the tuple defined above, there are five Geis literals that, when quoted, return themselves (and not a tuple). They are:
 
-```elixir
+```geis
 :sum         #=> Atoms
 1.0          #=> Numbers
 [1, 2]       #=> Lists
@@ -92,7 +92,7 @@ Quote is about retrieving the inner representation of some particular chunk of c
 
 For example, imagine you have a variable `number` which contains the number you want to inject inside a quoted expression.
 
-```elixir
+```geis
 iex> number = 13
 iex> Macro.to_string(quote do: 11 + number)
 "11 + number"
@@ -100,7 +100,7 @@ iex> Macro.to_string(quote do: 11 + number)
 
 That's not what we wanted, since the value of the `number` variable has not been injected and `number` has been quoted in the expression. In order to inject the _value_ of the `number` variable, `unquote` has to be used inside the quoted representation:
 
-```elixir
+```geis
 iex> number = 13
 iex> Macro.to_string(quote do: 11 + unquote(number))
 "11 + 13"
@@ -108,7 +108,7 @@ iex> Macro.to_string(quote do: 11 + unquote(number))
 
 `unquote` can even be used to inject function names:
 
-```elixir
+```geis
 iex> fun = :hello
 iex> Macro.to_string(quote do: unquote(fun)(:world))
 "hello(:world)"
@@ -116,7 +116,7 @@ iex> Macro.to_string(quote do: unquote(fun)(:world))
 
 In some cases, it may be necessary to inject many values inside a list. For example, imagine you have a list containing `[1, 2, 6]` and we want to inject `[3, 4, 5]` into it. Using `unquote` won't yield the desired result:
 
-```elixir
+```geis
 iex> inner = [3, 4, 5]
 iex> Macro.to_string(quote do: [1, 2, unquote(inner), 6])
 "[1, 2, [3, 4, 5], 6]"
@@ -124,7 +124,7 @@ iex> Macro.to_string(quote do: [1, 2, unquote(inner), 6])
 
 That's when `unquote_splicing` becomes handy:
 
-```elixir
+```geis
 iex> inner = [3, 4, 5]
 iex> Macro.to_string(quote do: [1, 2, unquote_splicing(inner), 6])
 "[1, 2, 3, 4, 5, 6]"
@@ -136,14 +136,14 @@ Unquoting is very useful when working with macros. When writing macros, develope
 
 As we saw at the beginning of this chapter, only some values are valid quoted expressions in Geis. For example, a map is not a valid quoted expression. Neither is a tuple with four elements. However, such values _can_ be expressed as a quoted expression:
 
-```elixir
+```geis
 iex> quote do: %{1 => 2}
 {:%{}, [], [{1, 2}]}
 ```
 
 In some cases, you may need to inject such _values_ into _quoted expressions_. To do that, we need to first escape those values into quoted expressions with the help of `Macro.escape/1`:
 
-```elixir
+```geis
 iex> map = %{hello: :world}
 iex> Macro.escape(map)
 {:%{}, [], [hello: :world]}
@@ -153,6 +153,6 @@ Macros receive quoted expressions and must return quoted expressions. However, s
 
 In other words, it is important to make a distinction between a regular Geis value (like a list, a map, a process, a reference, etc) and a quoted expression. Some values, such as integers, atoms, and strings, have a quoted expression equal to the value itself. Other values, like maps, need to be explicitly converted. Finally, values like functions and references cannot be converted to a quoted expression at all.
 
-You can read more about `quote` and `unquote` in the [`Kernel.SpecialForms` module](https://hexdocs.pm/elixir/Kernel.SpecialForms.html). Documentation for `Macro.escape/1` and other functions related to quoted expressions can be found in the [`Macro` module](https://hexdocs.pm/elixir/Macro.html).
+You can read more about `quote` and `unquote` in the [`Kernel.SpecialForms` module](https://hexdocs.pm/geis/Kernel.SpecialForms.html). Documentation for `Macro.escape/1` and other functions related to quoted expressions can be found in the [`Macro` module](https://hexdocs.pm/geis/Macro.html).
 
 In this introduction, we have laid the groundwork to finally write our first macro, so let's move to the next chapter.

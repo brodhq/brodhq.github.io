@@ -25,8 +25,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             )}
             <Menu title="Official channels">
                 <MenuLink href="/">Source code & Issues tracker</MenuLink>
-                <MenuLink href="/">#elixir-lang on freenode IRC</MenuLink>
-                <MenuLink href="/">@elixirlang on Twitter</MenuLink>
+                <MenuLink href="/">#geis-lang on freenode IRC</MenuLink>
+                <MenuLink href="/">@geislang on Twitter</MenuLink>
             </Menu>
             <Menu title="Join the community">
                 <MenuLink href="/">Hex.pm package manager</MenuLink>

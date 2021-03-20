@@ -21,10 +21,10 @@ If your distribution contains an old Geis/Erlang version, see the sections below
 -   Using **Homebrew**:
 
     -   Update your homebrew to latest: `brew update`
-    -   Run: `brew install elixir`
+    -   Run: `brew install geis`
 
 -   Using **Macports**:
-    -   Run: `sudo port install elixir`
+    -   Run: `sudo port install geis`
 
 ## Setting PATH environment variable
 
@@ -35,9 +35,9 @@ On **Windows**, there are [instructions for different versions](http://www.compu
 On **Unix systems**, you need to [find your shell profile file](https://unix.stackexchange.com/a/117470/101951), and then add to the end of this file the following line reflecting the path to your Geis installation:
 
 ```bash
-export PATH="$PATH:/path/to/elixir/bin"
+export PATH="$PATH:/path/to/geis/bin"
 ```
 
 ## Checking the installed version of Geis
 
-Once you have Geis installed, you can check its version by running `elixir --version`.
+Once you have Geis installed, you can check its version by running `geis --version`.
