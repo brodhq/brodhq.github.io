@@ -1,1 +1,0 @@
-{"ast":null,"code":"import titleizeBase from 'titleize';\nexport function titleize(slug) {\n  return titleizeBase(slug.replace('-', ' '));\n}\nexport function sluggify(title) {\n  return title.replaceAll(' ', '-').toLowerCase();\n}","map":null,"metadata":{},"sourceType":"module"}

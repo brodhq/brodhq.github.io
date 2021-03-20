@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from './headers';\nexport * from './footers';\nexport * from './sidebars';","map":null,"metadata":{},"sourceType":"module"}

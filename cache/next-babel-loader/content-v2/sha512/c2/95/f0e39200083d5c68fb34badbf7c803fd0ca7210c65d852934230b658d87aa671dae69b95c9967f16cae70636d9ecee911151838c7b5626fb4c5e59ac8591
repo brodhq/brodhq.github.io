@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport React from 'react';\nexport const Footer = ({\n  className = ''\n}) => {\n  return /*#__PURE__*/_jsx(\"footer\", {\n    className: className,\n    children: /*#__PURE__*/_jsx(\"p\", {\n      children: \"\\xA92021 | Footer\"\n    })\n  });\n};","map":null,"metadata":{},"sourceType":"module"}
