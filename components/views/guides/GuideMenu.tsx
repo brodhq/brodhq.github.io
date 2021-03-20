@@ -23,7 +23,6 @@ export const GuideMenu: React.FC<GuideMenuProps> = ({
                     News: {release.title}
                 </a>
             )}
-            {/** @ts-expect-error */}
             {props.sections.map((section) => (
                 <Menu key={section.name} title={section.name}>
                     {section.guides.sort(sorter).map((guide, index) => (
