@@ -1,2 +1,2 @@
-export * from './Usecase'
+export * from './UseCase'
 export * from './UseCaseList'
