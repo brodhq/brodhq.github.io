@@ -3,7 +3,7 @@
         "jsx": "preserve",
         "baseUrl": "./",
         "paths": {
-            "@posts/*": ["_posts/*"],
+            "@posts/*": ["content/*"],
             "@api": ["api/index"],
             "@styles": ["styles/*"],
             "@layouts": ["components/layouts/index"],

@@ -15,12 +15,12 @@ import { sluggify } from '@utils'
 
 export async function getAllPosts(): Promise<BlogPost[]> {
     // @ts-expect-error
-    const context = require.context('../_posts/blog', false, /\.md$/)
+    const context = require.context('../content/blog', false, /\.md$/)
     const posts = []
     for (const key of context.keys()) {
         const post = key.slice(2)
         const dateString = post.slice(0, 10)
-        const content = await import(`../_posts/blog/${post}`)
+        const content = await import(`../content/blog/${post}`)
         const meta = matter(content.default)
         posts.push({
             ...meta.data,
@@ -33,11 +33,11 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 
 export async function getAllCases(): Promise<Usecase[]> {
     // @ts-expect-error
-    const context = require.context('../_posts/blog', false, /\.md$/)
+    const context = require.context('../content/blog', false, /\.md$/)
     const posts = []
     for (const key of context.keys()) {
         const post = key.slice(2)
-        const content = await import(`../_posts/blog/${post}`)
+        const content = await import(`../content/blog/${post}`)
         const meta = matter(content.default)
         if (sluggify(meta.data.category) === 'geis-in-production') {
             posts.push({
@@ -61,12 +61,20 @@ export async function getAllSections(): Promise<Array<Section>> {
         [
             'getting-started',
             // @ts-expect-error
-            require.context(`../_posts/guides/getting-started`, false, /\.md$/),
+            require.context(
+                `../content/guides/getting-started`,
+                false,
+                /\.md$/
+            ),
         ],
         [
             'metaprogramming',
             // @ts-expect-error
-            require.context(`../_posts/guides/metaprogramming`, false, /\.md$/),
+            require.context(
+                `../content/guides/metaprogramming`,
+                false,
+                /\.md$/
+            ),
         ],
     ]
     for (let [sectionName, context] of contexts) {
@@ -75,7 +83,7 @@ export async function getAllSections(): Promise<Array<Section>> {
             const post = key.slice(2)
             const number = Number(post.slice(0, 2))
             const content = await import(
-                `../_posts/guides/${sectionName}/${post}`
+                `../content/guides/${sectionName}/${post}`
             )
             const meta = matter(content.default)
             guides.push({
@@ -94,7 +102,7 @@ export async function getAllSections(): Promise<Array<Section>> {
 export async function getPostBySlug(slug: string) {
     const posts = await getAllPosts()
     const reference = posts.find((guide) => guide.slug === slug)
-    const fileContent = await import(`../_posts/blog/${slug}.md`)
+    const fileContent = await import(`../content/blog/${slug}.md`)
     const meta = matter(fileContent.default)
 
     const renderer = new CustomRenderer()
@@ -113,7 +121,7 @@ export async function getByGuideSlug(slugs: string[]): Promise<Guide> {
     const all = sections.flatMap((section) => section.guides)
     const reference = all.find((guide) => guide.slug === slug)
     const fileContent = await import(
-        `../_posts/guides/${reference.section}/${reference.filename}`
+        `../content/guides/${reference.section}/${reference.filename}`
     )
     const meta = matter(fileContent.default)
     const renderer = new CustomRenderer()
@@ -129,7 +137,7 @@ export async function getByGuideSlug(slugs: string[]): Promise<Guide> {
 export async function getContentBySlug(slug: string) {
     const posts = await getAllPosts()
     const reference = posts.find((guide) => guide.slug === slug)
-    const fileContent = await import(`../_posts/${slug}.md`)
+    const fileContent = await import(`../content/${slug}.md`)
     const meta = matter(fileContent.default)
 
     const renderer = new CustomRenderer()
