@@ -1,0 +1,12 @@
+{
+  "/blog": "pages/blog.js",
+  "/blog/[slug]": "pages/blog/[slug].js",
+  "/cases": "pages/cases.js",
+  "/development": "pages/development.js",
+  "/guides/[...slug]": "pages/guides/[...slug].js",
+  "/": "pages/index.js",
+  "/install": "pages/install.js",
+  "/learning": "pages/learning.js",
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.html"
+}

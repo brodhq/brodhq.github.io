@@ -1,0 +1,1 @@
+{"ast":null,"code":"export function formatDate(slug) {\n  var date = typeof slug === 'string' ? new Date(slug) : slug;\n  var formatter = new Intl.DateTimeFormat(undefined, {\n    dateStyle: 'long'\n  });\n  return formatter.format(date);\n}","map":null,"metadata":{},"sourceType":"module"}

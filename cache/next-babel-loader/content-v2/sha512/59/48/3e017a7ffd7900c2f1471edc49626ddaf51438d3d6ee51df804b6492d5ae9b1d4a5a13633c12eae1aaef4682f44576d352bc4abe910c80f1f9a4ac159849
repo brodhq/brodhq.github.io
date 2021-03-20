@@ -1,0 +1,1 @@
+{"ast":null,"code":"export function sortBy(array, key, direction) {\n  const compareDesc = (a, b) => a[key] > b[key] ? -1 : 1;\n\n  const compareAsc = (a, b) => a[key] < b[key] ? -1 : 1;\n\n  const sorter = direction === 'asc' ? compareAsc : compareDesc;\n  return [...array.sort(sorter)];\n}","map":null,"metadata":{},"sourceType":"module"}
