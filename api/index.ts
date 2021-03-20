@@ -39,7 +39,10 @@ export async function getAllCases(): Promise<Usecase[]> {
         const post = key.slice(2)
         const content = await import(`../content/blog/${post}`)
         const meta = matter(content.default)
-        if (sluggify(meta.data.category) === 'geis-in-production') {
+        if (
+            meta.data.category &&
+            sluggify(meta.data.category) === 'geis-in-production'
+        ) {
             posts.push({
                 ...meta.data,
                 slug: post.replace('.md', ''),
@@ -52,7 +55,9 @@ export async function getAllCases(): Promise<Usecase[]> {
 
 export async function getAllReleases(): Promise<Release[]> {
     const posts = await getAllPosts()
-    return posts.filter((post) => sluggify(post.category) === 'releases')
+    return posts.filter(
+        (post) => post.category && sluggify(post.category) === 'releases'
+    )
 }
 
 export async function getAllSections(): Promise<Array<Section>> {
