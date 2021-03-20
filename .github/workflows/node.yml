@@ -28,4 +28,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: build # The folder the action should deploy.
+          folder: build/serverless/pages # The folder the action should deploy.
+          target-folder: '/docs' # If you'd like to push the contents of the deployment folder into a specific directory on the deployment branch you can specify it here.
