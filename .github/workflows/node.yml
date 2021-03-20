@@ -29,4 +29,4 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: build/serverless/pages # The folder the action should deploy.
-          target-folder: '/docs' # If you'd like to push the contents of the deployment folder into a specific directory on the deployment branch you can specify it here.
+          target-folder: '/' # If you'd like to push the contents of the deployment folder into a specific directory on the deployment branch you can specify it here.
