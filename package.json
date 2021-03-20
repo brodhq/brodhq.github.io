@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "dev": "next",
-        "build": "next build && next export",
+        "build": "next build && next export && npm run nojekyll",
+        "nojekyll": "cp .nojekyll out/.nojekyll",
         "start": "next start"
     },
     "keywords": [],
