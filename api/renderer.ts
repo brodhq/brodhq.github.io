@@ -18,10 +18,10 @@ export class CustomRenderer extends Renderer {
         return `<p class="prose">${text}</p>`
     }
     codespan(text) {
-        return `<code class="prose px-1 bg-purple-50 text-purple-900">${text}</code>`
+        return `<code class="prose px-1 bg-primary-50 text-primary-900">${text}</code>`
     }
     // blockquote(text) {
-    //     return `<blockquote class="px-1 bg-purple-50 text-purple-900">${text}</blockquote>`
+    //     return `<blockquote class="px-1 bg-primary-50 text-primary-900">${text}</blockquote>`
     // }
     list(body) {
         return `<ul>${body}</ul>`

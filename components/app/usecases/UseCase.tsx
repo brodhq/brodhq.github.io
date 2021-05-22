@@ -27,7 +27,7 @@ export const UseCaseListItem: React.FC<UseCaseProps> = ({
                     className={classNames(
                         'h-36 w-1/1 border-2 bg-gray-50 border-gray-500 flex justify-center items-center cursor-pointer',
                         {
-                            'border-purple-900': active,
+                            'border-primary-900': active,
                         }
                     )}
                 >
@@ -41,7 +41,7 @@ export const UseCaseListItem: React.FC<UseCaseProps> = ({
                             <li
                                 key={tag}
                                 className={classNames(
-                                    'bg-purple-100 text-purple-900 rounded p-1'
+                                    'bg-primary-100 text-primary-900 rounded p-1'
                                 )}
                             >
                                 #{tag}
