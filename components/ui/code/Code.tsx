@@ -9,9 +9,13 @@ export interface CodeProps {
 
 export const Code: React.FC<CodeProps> = ({ children, className }) => {
     return (
-        <code className={classNames('block', className)}>
+        <code className={classNames('block bg-gray-700', className)}>
             <SyntaxHighlighter
-                customStyle={{ padding: '1rem' }}
+                customStyle={{
+                    backgroundColor: 'transparent',
+                    background: 'none',
+                    padding: '1rem',
+                }}
                 language="typescript"
                 style={vs2015}
             >
