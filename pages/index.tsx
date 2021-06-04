@@ -1,8 +1,10 @@
 import { getAllCases, getConfig, getAllReleases, Release, Usecase } from '@api'
 import { UseCaseListItem, UseCaseList } from '@app'
 import { ColumnLayout } from '@layouts'
+import { outdent } from 'outdent'
 import { Sidebar } from 'components/sections'
 import React from 'react'
+import { Code } from 'components/ui/code'
 
 export interface HomeProps {
     title: string
@@ -35,9 +37,21 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                         what Geis looks like:
                     </p>
                     <div>
-                        <code className="prose">
-                            <pre>SELECT * FROM [1, 2, 3] index</pre>
-                        </code>
+                        <Code className="prose">
+                            {outdent`
+                                import { fetch } from 'geis'
+
+                                // Fetch google and parse as JSON
+                                const data = fetch('json://google.com', ({ data }) => ({
+                                    title: data['title'].toString(),
+                                    description: data['description'].toString(),
+                                    summary: data['summary'].toString(),
+                                    createdAt: data['created_at'].toDate()
+                                }))
+
+                                assert data === [{ title: 'jack' }, ...]
+                            `}
+                        </Code>
                     </div>
                     <p className="prose">
                         Check our getting started guide and our learning page to

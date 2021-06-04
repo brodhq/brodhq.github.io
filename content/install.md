@@ -4,40 +4,38 @@ section: install
 layout: default
 ---
 
-# Install
+# Overview
 
-The quickest way to install Geis is through a distribution or using one of the available installers. If not available, then we recommend the precompiled packages or compiling it.
+This tutorial will show how to set up a basic Geis app that displays "Hello World!" in your browser.
 
-Note that Geis {{ stable.name }} requires Erlang {{ stable.minimum_otp }} or later. Many of the instructions below will automatically install Erlang for you. In case they do not, read the "Installing Erlang" section below.
+## Installing Geis
 
-## Distributions
+Create a new directory myproject, and from there:
+
+* Run: `cd myproject`, this goes into the created project folder.
+* Run: `cd myproject`, this goes into the created project folder.
+* Run: `cd myproject`, this goes into the created project folder.
+
+
+## Calling a JSON API
 
 The preferred option for installing Geis. Choose your operating system and tool.
 
-If your distribution contains an old Geis/Erlang version, see the sections below for installing Geis/Erlang from version managers or from source.
 
-### macOS
+```typescript
+import { fetch } from 'geis'
 
--   Using **Homebrew**:
+// Fetch google and parse as JSON
+const data = fetch('json://google.com', ({ data }) => ({
+    title: data['title'].toString(),
+    description: data['description'].toString(),
+    summary: data['summary'].toString(),
+    createdAt: data['created_at'].toDate()
+}))
 
-    -   Update your homebrew to latest: `brew update`
-    -   Run: `brew install geis`
-
--   Using **Macports**:
-    -   Run: `sudo port install geis`
-
-## Setting PATH environment variable
-
-It is highly recommended to add Geis's bin path to your PATH environment variable to ease development.
-
-On **Windows**, there are [instructions for different versions](http://www.computerhope.com/issues/ch000549.htm) explaining the process.
-
-On **Unix systems**, you need to [find your shell profile file](https://unix.stackexchange.com/a/117470/101951), and then add to the end of this file the following line reflecting the path to your Geis installation:
-
-```bash
-export PATH="$PATH:/path/to/geis/bin"
+assert(data === [{ title: 'jack' }])
 ```
 
-## Checking the installed version of Geis
+## More stuff
 
-Once you have Geis installed, you can check its version by running `geis --version`.
+The preferred option for installing Geis. Choose your operating system and tool.

@@ -13,8 +13,9 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
     return (
         <header className={classNames('flex', { [className]: className })}>
-            <div className={brandClassName}>
+            <div className={classNames('flex-1', brandClassName)}>
                 <img
+                    className="h-12"
                     src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo4.jpg"
                     alt=""
                 />
@@ -23,15 +24,15 @@ export const Header: React.FC<HeaderProps> = ({
                 <NavList>
                     <NavItem href="/">Home</NavItem>
                     <NavItem href="/install">Install</NavItem>
-                    <NavItem href="/learning">Learning</NavItem>
-                    <NavItem href="/cases">Cases</NavItem>
-                    <NavItem href="/development">Development</NavItem>
                     <NavItem
                         match="/guides"
                         href="/guides/getting-started/introduction"
                     >
                         Guides
                     </NavItem>
+                    {/* <NavItem href="/learning">Learning</NavItem> */}
+                    <NavItem href="/cases">Use-cases</NavItem>
+                    {/* <NavItem href="/development">Development</NavItem> */}
                     <NavItem match="/blog" href="/blog">
                         Blog
                     </NavItem>

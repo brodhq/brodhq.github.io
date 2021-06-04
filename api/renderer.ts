@@ -17,14 +17,17 @@ export class CustomRenderer extends Renderer {
     paragraph(text) {
         return `<p class="prose">${text}</p>`
     }
-    codespan(text) {
-        return `<code class="prose px-1 bg-primary-50 text-primary-900">${text}</code>`
-    }
+    // codespan(text) {
+    //     return `<code class="prose px-1 bg-primary-50 text-primary-900">${text}</code>`
+    // }
+    // codespan(text) {
+    //     return `<code class="prose font-xs px-2 text-gray-400 bg-gray-800 py-0.5 rounded-sm">${text}</code>`
+    // }
     // blockquote(text) {
     //     return `<blockquote class="px-1 bg-primary-50 text-primary-900">${text}</blockquote>`
     // }
     list(body) {
-        return `<ul>${body}</ul>`
+        return `<ul class="prose">${body}</ul>`
     }
     listitem(text) {
         return `<li class="p-1 ml-10">${text}</li>`

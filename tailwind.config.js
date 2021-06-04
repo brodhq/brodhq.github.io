@@ -13,6 +13,12 @@ module.exports = {
                 // primary: colors.purple
             },
         },
+        // typography: (theme) => ({
+        //     pre: {
+        //         color: theme('colors.grey.1000'),
+        //         backgroundColor: theme('colors.grey.100'),
+        //     },
+        // }),
     },
     variants: {
         extend: {},

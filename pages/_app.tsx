@@ -1,5 +1,6 @@
 import React from 'react'
 import 'tailwindcss/tailwind.css'
+import 'highlight.js/styles/github.css'
 import '../styles/global.css'
 
 interface AppProps {

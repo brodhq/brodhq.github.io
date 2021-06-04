@@ -2,6 +2,7 @@ import matter from 'gray-matter'
 import marked from 'marked'
 import yaml from 'js-yaml'
 import path from 'path'
+import hljs from 'highlight.js'
 import { CustomRenderer } from './renderer'
 import {
     Guide,
@@ -111,7 +112,13 @@ export async function getPostBySlug(slug: string) {
     const meta = matter(fileContent.default)
 
     const renderer = new CustomRenderer()
-    const content = marked(meta.content, { renderer })
+    const content = marked(meta.content, {
+        renderer,
+        highlight: function (code, lang) {
+            const language = hljs.getLanguage(lang) ? lang : 'plaintext'
+            return hljs.highlight(code, { language }).value
+        },
+    })
 
     return {
         post: reference,
@@ -130,7 +137,14 @@ export async function getByGuideSlug(slugs: string[]): Promise<Guide> {
     )
     const meta = matter(fileContent.default)
     const renderer = new CustomRenderer()
-    const content = marked(meta.content, { renderer, headerIds: true })
+    const content = marked(meta.content, {
+        renderer,
+        highlight: function (code, lang) {
+            const language = hljs.getLanguage(lang) ? lang : 'plaintext'
+            return hljs.highlight(code, { language }).value
+        },
+        headerIds: true,
+    })
 
     return {
         ...reference,
@@ -146,7 +160,12 @@ export async function getContentBySlug(slug: string) {
     const meta = matter(fileContent.default)
 
     const renderer = new CustomRenderer()
-    const content = marked(meta.content, { renderer })
+    const content = marked(meta.content, {
+        renderer,
+        highlight: function (code, language) {
+            return hljs.highlight(code, { language }).value
+        },
+    })
 
     return {
         ...reference,
