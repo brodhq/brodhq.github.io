@@ -45,7 +45,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                             <Carousel.List className="bg-gray-700 rounded-md overflow-hidden">
                                 <Carousel.Item>
                                     <Browser title="api">
-                                        <Code className="prose">
+                                        <Code className="prose" darkmode={true}>
                                             {outdent`
                                     import { fetch } from 'geis'
 
@@ -64,7 +64,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                                 </Carousel.Item>
                                 <Carousel.Item>
                                     <Browser title="watch">
-                                        <Code className="prose">
+                                        <Code className="prose" darkmode={true}>
                                             {outdent`
                                     import { fetch, watch, key, interval } from 'geis'
 
@@ -86,7 +86,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                                 </Carousel.Item>
                                 <Carousel.Item>
                                     <Browser title="browse">
-                                        <Code className="prose">
+                                        <Code className="prose" darkmode={true}>
                                             {outdent`
                                     import { browse, wait, click } from 'geis'
                                     

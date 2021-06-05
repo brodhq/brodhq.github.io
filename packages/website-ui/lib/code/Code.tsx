@@ -1,15 +1,20 @@
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { vs2015 } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import { vs, vs2015 } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import React from 'react'
 import classNames from 'classnames'
 
 export interface CodeProps {
     className?: string
+    darkmode?: boolean
 }
 
-export const Code: React.FC<CodeProps> = ({ children, className }) => {
+export const Code: React.FC<CodeProps> = ({
+    children,
+    className,
+    darkmode = false,
+}) => {
     return (
-        <code className={classNames('block bg-gray-700', className)}>
+        <code className={classNames('block', className)}>
             <SyntaxHighlighter
                 customStyle={{
                     textAlign: 'left',
@@ -18,7 +23,7 @@ export const Code: React.FC<CodeProps> = ({ children, className }) => {
                     padding: '1rem',
                 }}
                 language="typescript"
-                style={vs2015}
+                style={darkmode ? vs2015 : vs}
             >
                 {children}
             </SyntaxHighlighter>

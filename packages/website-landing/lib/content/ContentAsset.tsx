@@ -1,5 +1,7 @@
 import React from 'react'
+import outdent from 'outdent'
 import { CheckIcon } from '@heroicons/react/outline'
+import { Code } from '@geislabs/website-ui'
 import classNames from 'classnames'
 
 export interface ContentAssetProps {
@@ -8,15 +10,34 @@ export interface ContentAssetProps {
 
 export const ContentAsset: React.FC<ContentAssetProps> = (props) => {
     return (
-        <div className="relative pt-64 pb-10 rounded-2xl shadow-xl overflow-hidden">
-            <img
+        <div className="relative rounded-2xl shadow-xl overflow-hidden">
+            <div className="inset-0 min-h-72 w-full">
+                <Code className="h-full bg-white filter grayscale">
+                    {outdent`
+                        import { browse } from 'geis'
+
+                        // Fetch all data
+                        const data = browse(
+                            Json, 
+                            'https://google.com', 
+                            ({ data }) => ({
+                                title: data['h1.title'].toString(),
+                                title: data['h1.title'].toString(),
+                                title: data['h1.title'].toString(),
+                                title: data['h1.title'].toString()
+                            })
+                        )
+                    `}
+                </Code>
+            </div>
+            {/* <img
                 className="absolute inset-0 h-full w-full object-cover"
                 src="https://images.unsplash.com/photo-1521510895919-46920266ddb3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&fp-x=0.5&fp-y=0.6&fp-z=3&width=1440&height=1440&sat=-100"
                 alt=""
-            />
-            <div className="absolute inset-0 bg-primary-200 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary-400 via-primary-400 opacity-90" />
-            <div className="relative px-8">
+            /> */}
+            {/* <div className="absolute inset-0 bg-primary-200 mix-blend-multiply" /> */}
+            {/* <div className="absolute inset-0 bg-gradient-to-t from-primary-400 via-primary-400 opacity-90" /> */}
+            {/* <div className="relative px-8">
                 <div>
                     <img
                         className="h-12"
@@ -48,7 +69,7 @@ export const ContentAsset: React.FC<ContentAssetProps> = (props) => {
                         </p>
                     </footer>
                 </blockquote>
-            </div>
+            </div> */}
         </div>
     )
 }
