@@ -1,6 +1,6 @@
 {
     "name": "@geislabs/website",
-    "version": "0.0.82",
+    "version": "0.0.83",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -15,19 +15,19 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@geislabs/website-content": "^0.0.82",
-        "@geislabs/website-landing": "^0.0.82",
-        "@geislabs/website-layout": "^0.0.82",
-        "@geislabs/website-track": "^0.0.82",
-        "@geislabs/website-ui": "^0.0.82",
+        "@geislabs/website-content": "^0.0.83",
+        "@geislabs/website-landing": "^0.0.83",
+        "@geislabs/website-layout": "^0.0.83",
+        "@geislabs/website-track": "^0.0.83",
+        "@geislabs/website-ui": "^0.0.83",
         "@headlessui/react": "^1.2.0",
         "@heroicons/react": "^1.0.1",
         "@tailwindcss/typography": "^0.4.1",
         "classnames": "^2.3.1",
-        "react-syntax-highlighter": "^15.4.3",
         "next": "^10.2.3",
         "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "react-dom": "^17.0.2",
+        "react-syntax-highlighter": "^15.4.3"
     },
     "devDependencies": {
         "autoprefixer": "^10.2.6",
@@ -38,6 +38,5 @@
         "tailwindcss": "^2.1.4",
         "titleize": "^2.1.0",
         "typescript": "^4.3.2"
-    },
-    "peerDependencies": {}
+    }
 }
