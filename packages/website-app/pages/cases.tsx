@@ -6,9 +6,8 @@ import {
     Release,
     Usecase,
 } from '@geislabs/website-content'
-import { Sidebar } from '@geislabs/website-layout'
+import { Content, Sidebar } from '@geislabs/website-layout'
 import { UseCaseListItem, UseCaseList } from '@app'
-import { ColumnLayout } from '@layouts'
 import React from 'react'
 
 export interface BlogProps {
@@ -20,7 +19,7 @@ export interface BlogProps {
 
 const Cases: React.FC<BlogProps> = ({ cases, ...props }) => {
     return (
-        <ColumnLayout
+        <Content.Layout
             title={props.title}
             description={props.description}
             right={<Sidebar releases={props.releases} />}
@@ -47,7 +46,7 @@ const Cases: React.FC<BlogProps> = ({ cases, ...props }) => {
                     maintained by the community.
                 </p>
             </div>
-        </ColumnLayout>
+        </Content.Layout>
     )
 }
 

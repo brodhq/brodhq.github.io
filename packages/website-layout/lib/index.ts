@@ -1,3 +1,5 @@
 export * from './header'
 export * from './footer'
 export * from './sidebar'
+export * as Landing from './landing'
+export * as Content from './content'

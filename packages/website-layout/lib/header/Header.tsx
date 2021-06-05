@@ -5,25 +5,32 @@ import React from 'react'
 export interface HeaderProps {
     className?: string
     brandClassName?: string
+    itemClassName?: string
+    activeItemClassName?: string
 }
 
 export const Header: React.FC<HeaderProps> = ({
     className = '',
     brandClassName = '',
+    itemClassName = '',
+    activeItemClassName = '',
 }) => {
     return (
         <nav
             className={classNames(
                 className,
-                'relative mx-auto flex items-center justify-between px-4 sm:px-6'
+                'h-20 relative mx-auto flex items-center justify-between'
             )}
             aria-label="Global"
         >
             <div className="flex items-center flex-1">
-                <div className="hidden space-x-10 md:flex md:ml-32">
-                    <NavList>
+                <div className="hidden space-x-10 md:flex">
+                    <NavList
+                        itemClassName={itemClassName}
+                        activeItemClassName={activeItemClassName}
+                    >
                         <NavItem href="/">Home</NavItem>
-                        <NavItem href="/install">Install</NavItem>
+                        {/* <NavItem href="/install">Install</NavItem> */}
                         <NavItem
                             match="/guides"
                             href="/guides/getting-started/introduction"
@@ -43,18 +50,43 @@ export const Header: React.FC<HeaderProps> = ({
     )
 }
 
-const NavList: React.FC = ({ children }) => (
-    <div className="flex justify-end space-x-10">{children}</div>
-)
+const NavList: React.FC<{
+    itemClassName?: string
+    activeItemClassName?: string
+    children: React.ReactElement[]
+}> = ({ itemClassName, activeItemClassName, children }) => {
+    console.log('itemClassName', itemClassName)
+    return (
+        <div className="flex justify-end space-x-10">
+            {React.Children.map(children, (child) =>
+                React.cloneElement(child, {
+                    ...child.props,
+                    className: classNames(child.props.className, itemClassName),
+                    activeClassName: classNames(
+                        child.props.activeClassName,
+                        activeItemClassName
+                    ),
+                })
+            )}
+        </div>
+    )
+}
 
 interface NavItemProps extends NavLinkProps {}
 
-const NavItem: React.FC<NavItemProps> = ({ children, href, ...props }) => {
+const NavItem: React.FC<NavItemProps> = ({
+    className,
+    activeClassName,
+    children,
+    href,
+    ...props
+}) => {
     return (
         <NavLink
             href={href}
             {...props}
-            className="font-medium text-white hover:text-gray-300"
+            className={classNames('font-medium', className)}
+            activeClassName={activeClassName}
         >
             {children}
         </NavLink>

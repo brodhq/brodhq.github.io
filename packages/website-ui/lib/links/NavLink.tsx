@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 
 export interface NavLinkProps extends NextLinkProps {
     className?: string
+    activeClassName?: string
     exact?: boolean
     match?: string
     reverse?: boolean
@@ -16,6 +17,7 @@ export const NavLink: React.FC<NavLinkProps> = ({
     exact = true,
     reverse = false,
     className = '',
+    activeClassName = 'text-primary-700',
     ...props
 }) => {
     const router = useRouter()
@@ -28,7 +30,7 @@ export const NavLink: React.FC<NavLinkProps> = ({
         <span
             className={classNames('select-none', {
                 // 'text-gray-500': (!match && !reverse) || (reverse && match),
-                'text-primary-800': (match && !reverse) || (!match && reverse),
+                [activeClassName]: (match && !reverse) || (!match && reverse),
                 [className]: className,
             })}
         >

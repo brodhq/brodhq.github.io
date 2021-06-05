@@ -1,6 +1,5 @@
 import { getContentBySlug, Release } from '@geislabs/website-content'
-import { Sidebar } from '@geislabs/website-layout'
-import { ColumnLayout } from '@layouts'
+import { Content, Sidebar } from '@geislabs/website-layout'
 import React from 'react'
 
 export interface LearningProps {
@@ -12,7 +11,7 @@ export interface LearningProps {
 
 const Learning: React.FC<LearningProps> = (props) => {
     return (
-        <ColumnLayout
+        <Content.Layout
             className="space-y-3"
             title={props.title}
             description={props.description}
@@ -22,7 +21,7 @@ const Learning: React.FC<LearningProps> = (props) => {
                 className="space-y-5"
                 dangerouslySetInnerHTML={{ __html: props.content }}
             />
-        </ColumnLayout>
+        </Content.Layout>
     )
 }
 

@@ -4,9 +4,8 @@ import {
     BlogPost,
     Release,
 } from '@geislabs/website-content'
-import { Sidebar } from '@geislabs/website-layout'
+import { Content, Sidebar } from '@geislabs/website-layout'
 import React from 'react'
-import { ColumnLayout, PostLayout } from '@layouts'
 import { BlogPostMetadata } from '@views'
 
 export interface BlogPostPageProps {
@@ -21,7 +20,11 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
     content,
 }) => {
     return (
-        <ColumnLayout right={<Sidebar releases={releases} />}>
+        <Content.Layout
+            title=""
+            description=""
+            right={<Sidebar releases={releases} />}
+        >
             <div className="space-y-3">
                 <div className="space-y-3">
                     <h1 className="prose prose-2xl text-5xl">{post.title}</h1>
@@ -32,7 +35,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
                     dangerouslySetInnerHTML={{ __html: content }}
                 />
             </div>
-        </ColumnLayout>
+        </Content.Layout>
     )
 }
 

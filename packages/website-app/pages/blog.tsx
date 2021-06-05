@@ -5,8 +5,7 @@ import {
     BlogPost,
     Release,
 } from '@geislabs/website-content'
-import { Sidebar } from '@geislabs/website-layout'
-import { ColumnLayout } from '@layouts'
+import { Content, Sidebar } from '@geislabs/website-layout'
 import { sortBy } from '@utils'
 import { BlogPostListItem } from '@views'
 import classNames from 'classnames'
@@ -22,7 +21,7 @@ export interface BlogProps {
 const Blog: React.FC<BlogProps> = (props) => {
     const sorted = sortBy(props.posts, 'date', 'desc')
     return (
-        <ColumnLayout
+        <Content.Layout
             title={props.title}
             description={props.description}
             right={<Sidebar releases={props.releases} />}
@@ -41,7 +40,7 @@ const Blog: React.FC<BlogProps> = (props) => {
                     )
                 })}
             </ul>
-        </ColumnLayout>
+        </Content.Layout>
     )
 }
 

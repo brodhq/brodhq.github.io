@@ -6,8 +6,9 @@ import {
     Release,
     Section,
 } from '@geislabs/website-content'
+import { Content } from '@geislabs/website-layout'
 import { titleize } from '@utils'
-import { GuideLayout } from '@views'
+import { GuideMenu } from '@views'
 import React from 'react'
 
 export interface GuideProps {
@@ -18,10 +19,16 @@ export interface GuideProps {
 
 const GuidePage: React.FC<GuideProps> = (props) => {
     return (
-        <GuideLayout
+        <Content.Layout
             className="space-y-3"
-            sections={props.sections}
-            releases={props.releases}
+            title=""
+            description=""
+            right={
+                <GuideMenu
+                    sections={props.sections}
+                    releases={props.releases}
+                />
+            }
         >
             <h2 className="text-gray-400">{titleize(props.guide.section)}</h2>
             <h1 className="prose text-4xl">{props.guide.title}</h1>
@@ -42,7 +49,7 @@ const GuidePage: React.FC<GuideProps> = (props) => {
                 className="mt-10 space-y-5"
                 dangerouslySetInnerHTML={{ __html: props.guide.content }}
             />
-        </GuideLayout>
+        </Content.Layout>
     )
 }
 
