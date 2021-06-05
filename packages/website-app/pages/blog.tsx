@@ -22,7 +22,7 @@ const Blog: React.FC<BlogProps> = (props) => {
     const sorted = sortBy(props.posts, 'date', 'desc')
     return (
         <Content.Layout
-            title={props.title}
+            title="Krans | Blog"
             description={props.description}
             right={<Sidebar releases={props.releases} />}
         >

@@ -186,8 +186,8 @@ export async function getConfig() {
     // const config = await import(`../config/yml`)
     // return yaml.load(config.default)
     return {
-        title: 'Next.js blog',
-        description: 'This blog is powered by Next.js',
+        title: 'Krans',
+        description: 'Krans',
     }
 }
 

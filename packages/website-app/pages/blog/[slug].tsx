@@ -21,7 +21,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
 }) => {
     return (
         <Content.Layout
-            title=""
+            title={`Krans | Blog | ${post.title}`}
             description=""
             right={<Sidebar releases={releases} />}
         >

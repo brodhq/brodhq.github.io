@@ -20,7 +20,7 @@ export interface BlogProps {
 const Cases: React.FC<BlogProps> = ({ cases, ...props }) => {
     return (
         <Content.Layout
-            title={props.title}
+            title="Krans | Use-cases"
             description={props.description}
             right={<Sidebar releases={props.releases} />}
         >

@@ -21,7 +21,7 @@ const GuidePage: React.FC<GuideProps> = (props) => {
     return (
         <Content.Layout
             className="space-y-3"
-            title=""
+            title={`Krans | Guides | ${props.guide.title}`}
             description=""
             right={
                 <GuideMenu
