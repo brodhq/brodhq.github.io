@@ -5,5 +5,5 @@ export function titleize(slug: string) {
 }
 
 export function sluggify(title: string) {
-    return title.replaceAll(' ', '-').toLowerCase()
+    return title.replace(/ /g, '-').toLowerCase()
 }
