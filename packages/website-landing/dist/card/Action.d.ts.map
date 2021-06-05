@@ -1,0 +1,1 @@
+{"version":3,"file":"Action.d.ts","sourceRoot":"","sources":["../../lib/card/Action.tsx"],"names":[],"mappings":"AACA,OAAO,KAAK,MAAM,OAAO,CAAA;AAEzB,MAAM,WAAW,iBAAiB;IAC9B,SAAS,CAAC,EAAE,MAAM,CAAA;IAClB,KAAK,EAAE,KAAK,CAAC,SAAS,CAAA;CACzB;AAED,eAAO,MAAM,YAAY,EAAE,KAAK,CAAC,EAAE,CAAC,iBAAiB,CAWpD,CAAA"}

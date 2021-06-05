@@ -1,0 +1,1 @@
+{"version":3,"file":"FeatureItem.d.ts","sourceRoot":"","sources":["../../lib/content/FeatureItem.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAA;AAIzB,MAAM,WAAW,gBAAgB;IAC7B,SAAS,CAAC,EAAE,MAAM,CAAA;IAClB,IAAI,EAAE,MAAM,CAAA;IACZ,WAAW,EAAE,MAAM,CAAA;CACtB;AAED,eAAO,MAAM,WAAW,EAAE,KAAK,CAAC,EAAE,CAAC,gBAAgB,CAiBlD,CAAA"}

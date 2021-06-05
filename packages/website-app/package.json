@@ -1,0 +1,42 @@
+{
+    "name": "@geislabs/website",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "bump": "ncu -u && npm update && npm instal",
+        "dev": "next",
+        "watch": "npm run dev",
+        "build": "next build && next export && npm run nojekyll",
+        "nojekyll": "cp .nojekyll out/.nojekyll",
+        "start": "next start"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@geislabs/website-ui": "1.0.0",
+        "@geislabs/website-landing": "1.0.0",
+        "@geislabs/website-content": "1.0.0",
+        "@geislabs/website-layout": "1.0.0",
+        "@headlessui/react": "^1.2.0",
+        "@heroicons/react": "^1.0.1",
+        "@tailwindcss/typography": "^0.4.1",
+        "classnames": "^2.3.1",
+        "next": "^10.2.3",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-markdown": "^6.0.2",
+        "react-syntax-highlighter": "^15.4.3",
+        "titleize": "^2.1.0"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.2.6",
+        "npm-check-updates": "^11.6.0",
+        "outdent": "^0.8.0",
+        "postcss": "^8.3.0",
+        "raw-loader": "^4.0.2",
+        "tailwindcss": "^2.1.4",
+        "typescript": "^4.3.2"
+    }
+}
