@@ -1,11 +1,9 @@
 import { getAllCases, getConfig, getAllReleases, Release, Usecase } from '@api'
-import { UseCaseListItem, UseCaseList } from '@app'
-import { ColumnLayout } from '@layouts'
 import { outdent } from 'outdent'
-import { Sidebar, Hero, Header, Feature, Footer } from 'components/sections'
+import { Hero, Header, Feature, Footer } from 'components/sections'
 import React from 'react'
 import { Code } from 'components/ui/code'
-import { Browser } from 'components/ui/browser'
+import { Browser } from '@geislabs/website-ui'
 
 export interface HomeProps {
     title: string
