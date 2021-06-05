@@ -14,7 +14,7 @@ export const ContentAsset: React.FC<ContentAssetProps> = (props) => {
             <div className="inset-0 min-h-72 w-full">
                 <Code className="h-full bg-white filter grayscale">
                     {outdent`
-                        import { browse } from 'geis'
+                        import { browse } from 'krans'
 
                         // Fetch all data
                         const data = browse(
