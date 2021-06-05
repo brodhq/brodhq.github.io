@@ -12,7 +12,12 @@ import {
     Section,
     Usecase,
 } from './types'
-import { sluggify } from './utils'
+import { sortBy, sluggify } from './utils'
+
+export async function getMostRecentPosts(limit = 10): Promise<BlogPost[]> {
+    const posts = await getAllPosts()
+    return sortBy(posts, 'date', 'desc').slice(0, limit)
+}
 
 export async function getAllPosts(): Promise<BlogPost[]> {
     // @ts-expect-error

@@ -33,7 +33,7 @@ export interface BlogPost {
     author: string
     summary: string
     category: string
-    date: Date
+    date: string
 }
 
 // Releases
