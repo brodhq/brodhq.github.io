@@ -1,4 +1,4 @@
-export * from './hero'
+export * as Hero from './hero'
 export * as Feature from './features'
 export * as Blog from './blog'
 export * as CTA from './action'

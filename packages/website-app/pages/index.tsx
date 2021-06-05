@@ -66,25 +66,45 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
         <div>
             <div className="bg-gray-800 h-screen">
                 <Header className="bg-gray-800 h-20" />
-                <Hero className="">
-                    <Browser>
-                        <Code className="prose">
-                            {outdent`
-                        import { fetch } from 'geis'
+                <Hero.Container
+                    className=""
+                    asset={
+                        <Browser>
+                            <Code className="prose">
+                                {outdent`
+                                    import { fetch } from 'geis'
 
-                        // Fetch google and parse as JSON
-                        const data = fetch('json://google.com', ({ data }) => ({
-                            title: data['title'].toString(),
-                            description: data['description'].toString(),
-                            summary: data['summary'].toString(),
-                            createdAt: data['created_at'].toDate()
-                        }))
+                                    // Fetch google and parse as JSON
+                                    const data = fetch('json://google.com', ({ data }) => ({
+                                        title: data['title'].toString(),
+                                        description: data['description'].toString(),
+                                        summary: data['summary'].toString(),
+                                        createdAt: data['created_at'].toDate()
+                                    }))
 
-                        assert data === [{ title: 'jack' }, ...]
-                    `}
-                        </Code>
-                    </Browser>
-                </Hero>
+                                    assert data === [{ title: 'jack' }, ...]
+                                `}
+                            </Code>
+                        </Browser>
+                    }
+                >
+                    <Hero.Content
+                        title={
+                            <>
+                                <span className="md:block">
+                                    Data to enrich your
+                                </span>{' '}
+                                <span className="text-primary-400 md:block">
+                                    online business
+                                </span>
+                            </>
+                        }
+                    >
+                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui
+                        irure qui lorem cupidatat commodo. Elit sunt amet fugiat
+                        veniam occaecat fugiat aliqua ad ad non deserunt sunt.
+                    </Hero.Content>
+                </Hero.Container>
             </div>
             <div>
                 <div className="bg-gray-50">
