@@ -1,7 +1,7 @@
 {
     "private": true,
     "name": "@geislabs/website-landing",
-    "version": "0.0.72",
+    "version": "0.0.73",
     "description": "> TODO: description",
     "author": "mads hargreave <mads.hargreave@gmail.com>",
     "homepage": "",
@@ -25,9 +25,9 @@
         "watch": "npm run clean && tsc -w"
     },
     "devDependencies": {
-        "@geislabs/website-content": "^0.0.72",
-        "@geislabs/website-track": "^0.0.72",
-        "@geislabs/website-ui": "^0.0.72",
+        "@geislabs/website-content": "^0.0.73",
+        "@geislabs/website-track": "^0.0.73",
+        "@geislabs/website-ui": "^0.0.73",
         "@headlessui/react": "^1.2.0",
         "@heroicons/react": "^1.0.1"
     },
