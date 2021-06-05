@@ -26,10 +26,10 @@ export const NavLink: React.FC<NavLinkProps> = ({
     )
     return (
         <span
-            className={classNames('py-1 px-2 select-none', {
-                [className]: className,
-                'text-gray-500': (!match && !reverse) || (reverse && match),
+            className={classNames('select-none', {
+                // 'text-gray-500': (!match && !reverse) || (reverse && match),
                 'text-primary-800': (match && !reverse) || (!match && reverse),
+                [className]: className,
             })}
         >
             <NextLink href={href}>{children}</NextLink>

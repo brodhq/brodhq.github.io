@@ -1,3 +1,14 @@
+import { Fragment } from 'react'
+import { Popover, Transition } from '@headlessui/react'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import { ChevronRightIcon } from '@heroicons/react/solid'
+
+const navigation = [
+    { name: 'Product', href: '#' },
+    { name: 'Features', href: '#' },
+    { name: 'Marketplace', href: '#' },
+    { name: 'Company', href: '#' },
+]
 import { NavLink, NavLinkProps } from '@ui'
 import classNames from 'classnames'
 import React from 'react'
@@ -12,48 +23,51 @@ export const Header: React.FC<HeaderProps> = ({
     brandClassName = '',
 }) => {
     return (
-        <header className={classNames('flex', { [className]: className })}>
-            <div className={classNames('flex-1', brandClassName)}>
-                <img
-                    className="h-12"
-                    src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo4.jpg"
-                    alt=""
-                />
+        <nav
+            className={classNames(
+                className,
+                'relative mx-auto flex items-center justify-between px-4 sm:px-6'
+            )}
+            aria-label="Global"
+        >
+            <div className="flex items-center flex-1">
+                <div className="hidden space-x-10 md:flex md:ml-32">
+                    <NavList>
+                        <NavItem href="/">Home</NavItem>
+                        <NavItem href="/install">Install</NavItem>
+                        <NavItem
+                            match="/guides"
+                            href="/guides/getting-started/introduction"
+                        >
+                            Guides
+                        </NavItem>
+                        {/* <NavItem href="/learning">Learning</NavItem> */}
+                        <NavItem href="/cases">Use-cases</NavItem>
+                        {/* <NavItem href="/development">Development</NavItem> */}
+                        <NavItem match="/blog" href="/blog">
+                            Blog
+                        </NavItem>
+                    </NavList>
+                </div>
             </div>
-            <div>
-                <NavList>
-                    <NavItem href="/">Home</NavItem>
-                    <NavItem href="/install">Install</NavItem>
-                    <NavItem
-                        match="/guides"
-                        href="/guides/getting-started/introduction"
-                    >
-                        Guides
-                    </NavItem>
-                    {/* <NavItem href="/learning">Learning</NavItem> */}
-                    <NavItem href="/cases">Use-cases</NavItem>
-                    {/* <NavItem href="/development">Development</NavItem> */}
-                    <NavItem match="/blog" href="/blog">
-                        Blog
-                    </NavItem>
-                </NavList>
-            </div>
-        </header>
+        </nav>
     )
 }
 
 const NavList: React.FC = ({ children }) => (
-    <ul className="flex justify-end space-x-4">{children}</ul>
+    <div className="flex justify-end space-x-10">{children}</div>
 )
 
 interface NavItemProps extends NavLinkProps {}
 
 const NavItem: React.FC<NavItemProps> = ({ children, href, ...props }) => {
     return (
-        <li>
-            <NavLink href={href} {...props}>
-                {children}
-            </NavLink>
-        </li>
+        <NavLink
+            href={href}
+            {...props}
+            className="font-medium text-white hover:text-gray-300"
+        >
+            {children}
+        </NavLink>
     )
 }
