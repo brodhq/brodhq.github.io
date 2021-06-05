@@ -1,6 +1,6 @@
+import { useTrack } from '@geislabs/website-track'
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import * as ga from '../ga'
 import 'tailwindcss/tailwind.css'
 import 'highlight.js/styles/github.css'
 import '../styles/global.css'
@@ -12,9 +12,10 @@ interface AppProps {
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     const router = useRouter()
+    const track = useTrack()
 
     const handleRouteChange = (url: string) => {
-        ga.pageview(url)
+        track.pageview(url)
     }
 
     useEffect(() => {
