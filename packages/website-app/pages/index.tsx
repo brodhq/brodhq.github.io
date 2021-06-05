@@ -60,17 +60,20 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                                 <Browser title="watch">
                                     <Code className="prose">
                                         {outdent`
-                                            import { watch } from 'geis'
-                                            
-                                            // Fetch google and parse as JSON
-                                            const data = watch('json://google.com', ({ data }) => ({
-                                                title: data['title'].toString(),
-                                                description: data['description'].toString(),
-                                                summary: data['summary'].toString(),
-                                                createdAt: data['created_at'].toDate()
-                                            }))
-                                            
-                                            assert data === [{ title: 'jack' }, ...]
+                                            import { fetch, watch, key, interval } from 'geis'
+
+                                            // Watch changes to API call
+                                            const changes = watch(
+                                                fetch(Json, 'https://google.com', ({ data }) => ({
+                                                    title: data['title'].toString(),
+                                                    description: data['description'].toString(),
+                                                    summary: data['summary'].toString(),
+                                                    createdAt: data['created_at'].toDate()
+                                                })), 
+                                                key('title'), 
+                                                interval(5000),
+                                                ({ data }) => console.log('I changed!', data)
+                                            )
                                             `}
                                     </Code>
                                 </Browser>
@@ -79,15 +82,21 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                                 <Browser title="browse">
                                     <Code className="prose">
                                         {outdent`
-                                            import { browse } from 'geis'
+                                            import { browse, wait, click } from 'geis'
                                             
-                                            // Fetch google and parse as JSON
-                                            const data = browse('json://google.com', ({ data }) => ({
-                                                title: data['title'].toString(),
-                                                description: data['description'].toString(),
-                                                summary: data['summary'].toString(),
-                                                createdAt: data['created_at'].toDate()
-                                            }))
+                                            // Visit website with browser
+                                            const data = browse(
+                                                'json://google.com', 
+                                                wait('network'),
+                                                click('#details'),
+                                                ({ data }) => ({
+                                                    title: data['table > tr.title'].toString(),
+                                                    description: data['p.description'].toString(),
+                                                    summary: data[
+                                                        'table > p:first-child.summary'
+                                                    ].toString(),
+                                                })
+                                            )
                                             
                                             assert data === [{ title: 'jack' }, ...]
                                             `}
