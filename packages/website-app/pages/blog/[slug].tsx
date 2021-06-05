@@ -1,12 +1,12 @@
-import React from 'react'
-import { ColumnLayout, PostLayout } from '@layouts'
 import {
     getPostBySlug,
     getAllPosts,
     BlogPost,
     Release,
 } from '@geislabs/website-content'
-import { Sidebar } from 'components/sections'
+import { Sidebar } from '@geislabs/website-layout'
+import React from 'react'
+import { ColumnLayout, PostLayout } from '@layouts'
 import { BlogPostMetadata } from '@views'
 
 export interface BlogPostPageProps {

@@ -5,11 +5,11 @@ import {
     BlogPost,
     Release,
 } from '@geislabs/website-content'
+import { Sidebar } from '@geislabs/website-layout'
 import { ColumnLayout } from '@layouts'
 import { sortBy } from '@utils'
 import { BlogPostListItem } from '@views'
 import classNames from 'classnames'
-import { Sidebar } from 'components/sections'
 import React from 'react'
 
 export interface BlogProps {
@@ -52,9 +52,7 @@ export async function getStaticProps() {
     return {
         props: {
             posts: allPosts,
-            // @ts-expect-error
             title: config.title,
-            // @ts-expect-error
             description: config.description,
             releases,
         },

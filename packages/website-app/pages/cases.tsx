@@ -6,9 +6,9 @@ import {
     Release,
     Usecase,
 } from '@geislabs/website-content'
+import { Sidebar } from '@geislabs/website-layout'
 import { UseCaseListItem, UseCaseList } from '@app'
 import { ColumnLayout } from '@layouts'
-import { Sidebar } from 'components/sections'
 import React from 'react'
 
 export interface BlogProps {
@@ -60,9 +60,7 @@ export async function getStaticProps() {
     return {
         props: {
             cases: cases,
-            // @ts-expect-error
             title: config.title,
-            // @ts-expect-error
             description: config.description,
             releases,
         },

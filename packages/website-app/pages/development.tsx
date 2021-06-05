@@ -1,6 +1,6 @@
 import { getContentBySlug, Release } from '@geislabs/website-content'
+import { Sidebar } from '@geislabs/website-layout'
 import { ColumnLayout } from '@layouts'
-import { Sidebar } from 'components/sections'
 import React from 'react'
 
 export interface DevelopmentProps {
