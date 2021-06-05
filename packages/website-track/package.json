@@ -1,7 +1,7 @@
 {
     "private": true,
     "name": "@geislabs/website-track",
-    "version": "0.0.69",
+    "version": "0.0.70",
     "description": "> TODO: description",
     "author": "mads hargreave <mads.hargreave@gmail.com>",
     "homepage": "",
@@ -24,7 +24,6 @@
         "build": "npm run clean && tsc",
         "watch": "npm run clean && tsc -w"
     },
-    "devDependencies": {},
     "peerDependencies": {
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
