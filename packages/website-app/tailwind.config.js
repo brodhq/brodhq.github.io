@@ -7,10 +7,12 @@ module.exports = {
     //     './components/**/*.{js,ts,jsx,tsx}',
     // ],
     darkMode: false, // or 'media' or 'class'
+    // mode: 'jit',
     theme: {
         extend: {
             colors: {
                 primary: colors.orange,
+                secondary: colors.green,
                 // primary: colors.purple
             },
         },

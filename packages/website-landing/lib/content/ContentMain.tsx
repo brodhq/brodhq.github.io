@@ -14,7 +14,7 @@ export const ContentMain: React.FC<ContentMainProps> = (props) => {
         <div className="pt-12 sm:pt-16 lg:pt-20">
             <div className="text-base max-w-prose mx-auto lg:max-w-none">
                 {props.subtitle && (
-                    <h2 className="text-base text-primary-600 font-semibold tracking-wide uppercase">
+                    <h2 className="text-base text-blue-400 font-semibold tracking-wide uppercase">
                         {props.subtitle.toUpperCase()}
                     </h2>
                 )}

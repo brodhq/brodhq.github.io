@@ -55,7 +55,6 @@ const NavList: React.FC<{
     activeItemClassName?: string
     children: React.ReactElement[]
 }> = ({ itemClassName, activeItemClassName, children }) => {
-    console.log('itemClassName', itemClassName)
     return (
         <div className="flex justify-end space-x-10">
             {React.Children.map(children, (child) =>

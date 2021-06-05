@@ -35,7 +35,7 @@ export const BlogListItem: React.FC<BlogListItemProps> = ({
                 <a
                     href={'#'}
                     className={classNames(
-                        'text-base font-semibold text-primary-600 hover:text-primary-500',
+                        'text-base font-semibold text-blue-400 hover:text-blue-500',
                         props.linkClassName
                     )}
                 >
