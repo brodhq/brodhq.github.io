@@ -1,6 +1,6 @@
 {
     "name": "@geislabs/website",
-    "version": "0.0.70",
+    "version": "0.0.71",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -15,11 +15,11 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@geislabs/website-content": "^0.0.70",
-        "@geislabs/website-landing": "^0.0.70",
-        "@geislabs/website-layout": "^0.0.70",
-        "@geislabs/website-ui": "^0.0.70",
-        "@geislabs/website-track": "^0.0.70",
+        "@geislabs/website-content": "^0.0.71",
+        "@geislabs/website-landing": "^0.0.71",
+        "@geislabs/website-layout": "^0.0.71",
+        "@geislabs/website-track": "^0.0.71",
+        "@geislabs/website-ui": "^0.0.71",
         "@headlessui/react": "^1.2.0",
         "@heroicons/react": "^1.0.1",
         "@tailwindcss/typography": "^0.4.1",
@@ -33,8 +33,8 @@
         "postcss": "^8.3.0",
         "raw-loader": "^4.0.2",
         "tailwindcss": "^2.1.4",
-        "typescript": "^4.3.2",
-        "titleize": "^2.1.0"
+        "titleize": "^2.1.0",
+        "typescript": "^4.3.2"
     },
     "peerDependencies": {
         "next": "^10.2.3",
