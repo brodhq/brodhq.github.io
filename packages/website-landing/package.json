@@ -1,7 +1,7 @@
 {
     "private": true,
     "name": "@geislabs/website-landing",
-    "version": "0.0.64",
+    "version": "0.0.65",
     "description": "> TODO: description",
     "author": "mads hargreave <mads.hargreave@gmail.com>",
     "homepage": "",
@@ -25,7 +25,7 @@
         "watch": "npm run clean && tsc -w"
     },
     "devDependencies": {
-        "@geislabs/website-ui": "^0.0.64",
+        "@geislabs/website-ui": "^0.0.65",
         "@headlessui/react": "^1.2.0",
         "@heroicons/react": "^1.0.1",
         "react": "^17.0.2",
