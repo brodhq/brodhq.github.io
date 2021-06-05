@@ -1,7 +1,7 @@
 {
     "private": true,
     "name": "@geislabs/website-layout",
-    "version": "0.0.73",
+    "version": "0.0.74",
     "description": "> TODO: description",
     "author": "mads hargreave <mads.hargreave@gmail.com>",
     "homepage": "",
@@ -25,8 +25,8 @@
         "watch": "npm run clean && tsc -w"
     },
     "devDependencies": {
-        "@geislabs/website-content": "^0.0.73",
-        "@geislabs/website-ui": "^0.0.73"
+        "@geislabs/website-content": "^0.0.74",
+        "@geislabs/website-ui": "^0.0.74"
     },
     "peerDependencies": {
         "next": "^10.2.3",
