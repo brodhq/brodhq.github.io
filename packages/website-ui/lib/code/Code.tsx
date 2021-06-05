@@ -1,7 +1,8 @@
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { vs, vs2015 } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import { atomOneLight } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import React from 'react'
 import classNames from 'classnames'
+import { darkTheme } from './themes'
 
 export interface CodeProps {
     className?: string
@@ -23,7 +24,9 @@ export const Code: React.FC<CodeProps> = ({
                     padding: '1rem',
                 }}
                 language="typescript"
-                style={darkmode ? vs2015 : vs}
+                showLineNumbers={true}
+                lineNumberStyle={{ marginRight: '0.5rem', opacity: 0.3 }}
+                style={darkmode ? darkTheme : atomOneLight}
             >
                 {children}
             </SyntaxHighlighter>
