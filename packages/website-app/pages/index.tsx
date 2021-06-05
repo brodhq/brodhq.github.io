@@ -1,5 +1,5 @@
 import { Browser, Code } from '@geislabs/website-ui'
-import { Hero } from '@geislabs/website-landing'
+import { Hero, Feature } from '@geislabs/website-landing'
 import {
     getAllCases,
     getConfig,
@@ -8,7 +8,7 @@ import {
     Usecase,
 } from '@geislabs/website-content'
 import { outdent } from 'outdent'
-import { Header, Feature, Footer } from 'components/sections'
+import { Header, Footer } from 'components/sections'
 import React from 'react'
 
 export interface HomeProps {
@@ -363,9 +363,7 @@ export async function getStaticProps() {
         props: {
             cases: cases.slice(0, 3),
             releases: releases,
-            // @ts-expect-error
             title: config.title,
-            // @ts-expect-error
             description: config.description,
         },
     }
