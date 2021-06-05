@@ -6,6 +6,7 @@ import {
     CTA,
     Content,
     LogoCloud,
+    Card,
 } from '@geislabs/website-landing'
 import { Header, Footer } from '@geislabs/website-layout'
 import {
