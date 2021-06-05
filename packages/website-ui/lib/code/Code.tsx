@@ -12,6 +12,7 @@ export const Code: React.FC<CodeProps> = ({ children, className }) => {
         <code className={classNames('block bg-gray-700', className)}>
             <SyntaxHighlighter
                 customStyle={{
+                    textAlign: 'left',
                     backgroundColor: 'transparent',
                     background: 'none',
                     padding: '1rem',

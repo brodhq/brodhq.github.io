@@ -62,7 +62,7 @@ export const HeroContainer: React.FC<HeroContainerProps> = ({
                                 {children}
                             </div>
                             <div className="mt-16 sm:mt-24 lg:mt-0 lg:col-span-6">
-                                <div className="shadow-xl sm:max-w-md sm:w-full sm:mx-auto sm:rounded-lg sm:overflow-hidden">
+                                <div className="shadow-xl sm:max-w-md sm:w-full sm:mx-auto rounded-lg">
                                     {props.asset}
                                 </div>
                             </div>

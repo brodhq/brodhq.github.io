@@ -1,4 +1,4 @@
-import { Browser, Code } from '@geislabs/website-ui'
+import { Browser, Carousel, Code } from '@geislabs/website-ui'
 import {
     Hero,
     Feature,
@@ -36,23 +36,65 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                 <Hero.Container
                     className=""
                     asset={
-                        <Browser>
-                            <Code className="prose">
-                                {outdent`
-                                    import { fetch } from 'geis'
+                        <Carousel.List className="bg-gray-700 rounded-md overflow-hidden">
+                            <Carousel.Item>
+                                <Browser title="api">
+                                    <Code className="prose">
+                                        {outdent`
+                                            import { fetch } from 'geis'
 
-                                    // Fetch google and parse as JSON
-                                    const data = fetch('json://google.com', ({ data }) => ({
-                                        title: data['title'].toString(),
-                                        description: data['description'].toString(),
-                                        summary: data['summary'].toString(),
-                                        createdAt: data['created_at'].toDate()
-                                    }))
+                                            // Fetch google and parse as JSON
+                                            const data = fetch('json://google.com', ({ data }) => ({
+                                                title: data['title'].toString(),
+                                                description: data['description'].toString(),
+                                                summary: data['summary'].toString(),
+                                                createdAt: data['created_at'].toDate()
+                                            }))
 
-                                    assert data === [{ title: 'jack' }, ...]
-                                `}
-                            </Code>
-                        </Browser>
+                                            assert data === [{ title: 'jack' }, ...]
+                                        `}
+                                    </Code>
+                                </Browser>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <Browser title="watch">
+                                    <Code className="prose">
+                                        {outdent`
+                                            import { watch } from 'geis'
+                                            
+                                            // Fetch google and parse as JSON
+                                            const data = watch('json://google.com', ({ data }) => ({
+                                                title: data['title'].toString(),
+                                                description: data['description'].toString(),
+                                                summary: data['summary'].toString(),
+                                                createdAt: data['created_at'].toDate()
+                                            }))
+                                            
+                                            assert data === [{ title: 'jack' }, ...]
+                                            `}
+                                    </Code>
+                                </Browser>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <Browser title="browse">
+                                    <Code className="prose">
+                                        {outdent`
+                                            import { browse } from 'geis'
+                                            
+                                            // Fetch google and parse as JSON
+                                            const data = browse('json://google.com', ({ data }) => ({
+                                                title: data['title'].toString(),
+                                                description: data['description'].toString(),
+                                                summary: data['summary'].toString(),
+                                                createdAt: data['created_at'].toDate()
+                                            }))
+                                            
+                                            assert data === [{ title: 'jack' }, ...]
+                                            `}
+                                    </Code>
+                                </Browser>
+                            </Carousel.Item>
+                        </Carousel.List>
                     }
                 >
                     <Hero.Content

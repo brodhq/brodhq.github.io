@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import 'tailwindcss/tailwind.css'
 import 'highlight.js/styles/github.css'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import '../styles/global.css'
 
 interface AppProps {
