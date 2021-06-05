@@ -1,0 +1,1 @@
+{"version":3,"file":"MenuNavLink.d.ts","sourceRoot":"","sources":["../../lib/menus/MenuNavLink.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAA;AACzB,OAAO,EAAE,YAAY,EAAW,MAAM,UAAU,CAAA;AAEhD,MAAM,WAAW,gBAAiB,SAAQ,YAAY;IAClD,SAAS,CAAC,EAAE,MAAM,CAAA;CACrB;AAED,eAAO,MAAM,WAAW,EAAE,KAAK,CAAC,EAAE,CAAC,gBAAgB,CASlD,CAAA"}

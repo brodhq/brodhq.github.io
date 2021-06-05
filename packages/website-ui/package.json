@@ -21,12 +21,14 @@
     },
     "scripts": {
         "clean": "rimraf dist",
-        "build": "tsc",
-        "watch": "tsc -w"
+        "build": "npm run clean && tsc",
+        "watch": "npm run clean && tsc -w"
     },
     "dependencies": {},
     "devDependencies": {
+        "next": "^10.2.3",
         "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "react-dom": "^17.0.2",
+        "react-syntax-highlighter": "^15.4.3"
     }
 }
