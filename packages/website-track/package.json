@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "@geislabs/website-landing",
+    "name": "@geislabs/website-track",
     "version": "0.0.69",
     "description": "> TODO: description",
     "author": "mads hargreave <mads.hargreave@gmail.com>",
@@ -24,17 +24,9 @@
         "build": "npm run clean && tsc",
         "watch": "npm run clean && tsc -w"
     },
-    "devDependencies": {
-        "@geislabs/website-ui": "^0.0.69",
-        "@geislabs/website-track": "^0.0.69",
-        "@headlessui/react": "^1.2.0",
-        "@heroicons/react": "^1.0.1"
-    },
+    "devDependencies": {},
     "peerDependencies": {
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
-    },
-    "dependencies": {
-        "react-use-clipboard": "^1.0.7"
     }
 }
