@@ -1,7 +1,6 @@
-import { Menu } from '@geislabs/website-ui'
+import { Menu, NavLink } from '@geislabs/website-ui'
 import { GuideReference, Release, Section } from '@geislabs/website-content'
 import { sortBy } from '@utils'
-import { MenuNavLink } from 'components/ui/menus/MenuNavLink'
 import React from 'react'
 
 export interface GuideMenuProps {
@@ -28,9 +27,11 @@ export const GuideMenu: React.FC<GuideMenuProps> = ({
                     {section.guides.sort(sorter).map((guide, index) => (
                         <div key={guide.slug} className="flex text-gray-500">
                             <span className="w-2.5">{index + 1}.</span>
-                            <MenuNavLink href={getLink(guide)} reverse={true}>
-                                {guide.title}
-                            </MenuNavLink>
+                            <li>
+                                <NavLink href={getLink(guide)} reverse={true}>
+                                    {guide.title}
+                                </NavLink>
+                            </li>
                         </div>
                     ))}
                 </Menu>

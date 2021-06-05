@@ -6,6 +6,7 @@
         "pack": "npm run bump && git add -A && git commit -am \"packed\" --allow-empty && lerna version patch --yes --force-publish",
         "dev": "lerna run watch --stream --parallel",
         "build": "lerna run build --stream",
+        "build:app": "lerna run build --stream --scope @geislabs/website",
         "start": "lerna run start --stream",
         "release:patch": "git add -A && git commit -am \"released\" --allow-empty && lerna version patch --yes --force-publish",
         "test:coverage": "jest --collect-coverage",

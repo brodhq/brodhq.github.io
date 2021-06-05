@@ -1,7 +1,6 @@
 import React from 'react'
 import { ChevronRightIcon } from '@heroicons/react/solid'
 import classNames from 'classnames'
-import { Card } from '..'
 
 const navigation = [
     { name: 'Product', href: '#' },

@@ -1,5 +1,5 @@
+import { Header } from '@geislabs/website-layout'
 import Head from 'next/head'
-import { Header, Footer } from 'components/sections'
 import React from 'react'
 
 export interface DefaultLayoutProps {
