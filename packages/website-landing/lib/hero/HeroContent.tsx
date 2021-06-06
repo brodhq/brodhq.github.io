@@ -1,21 +1,20 @@
 import React from 'react'
-import { ClipboardCopyIcon } from '@heroicons/react/solid'
-import classNames from 'classnames'
-import { HeroInstall } from './HeroInstall'
 
 export interface HeroContentProps {
     className?: string
     title: React.ReactNode
+    header?: React.ReactNode
 }
 
 export const HeroContent: React.FC<HeroContentProps> = ({
     className,
     children,
+    header,
     ...props
 }) => {
     return (
         <div>
-            <HeroInstall />
+            {header}
             <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:leading-none lg:mt-6 lg:text-5xl xl:text-6xl">
                 {props.title}
             </h1>

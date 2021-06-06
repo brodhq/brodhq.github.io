@@ -1,5 +1,4 @@
 import React from 'react'
-import { useTrack } from '@geislabs/website-track'
 import { ClipboardCopyIcon } from '@heroicons/react/solid'
 import { CheckIcon } from '@heroicons/react/outline'
 import useClipboard from 'react-use-clipboard'
@@ -8,6 +7,7 @@ const VALUE = 'npm install geis --save'
 
 export interface HeroInstallProps {
     className?: string
+    onCopy: () => void
 }
 
 export const HeroInstall: React.FC<HeroInstallProps> = ({
@@ -15,14 +15,13 @@ export const HeroInstall: React.FC<HeroInstallProps> = ({
     children,
     ...props
 }) => {
-    const track = useTrack()
     const [copied, setCopied] = useClipboard(VALUE, {
         successDuration: 1000,
     })
 
     const handleClick = () => {
         if (!copied) {
-            track.installCopied()
+            props.onCopy()
             setCopied()
         }
     }

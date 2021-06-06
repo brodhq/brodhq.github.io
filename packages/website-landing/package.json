@@ -26,7 +26,6 @@
     },
     "devDependencies": {
         "@geislabs/website-content": "^0.0.84",
-        "@geislabs/website-track": "^0.0.84",
         "@geislabs/website-ui": "^0.0.84",
         "@headlessui/react": "^1.2.0",
         "@heroicons/react": "^1.0.1"
