@@ -25,7 +25,7 @@ const DocsPage: React.FC<DocsPageProps> = (props) => {
             description=""
             right={
                 <GuideMenu
-                    namespace="reference"
+                    namespace="docs"
                     sections={props.sections}
                     releases={props.releases}
                 />
