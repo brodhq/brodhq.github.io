@@ -25,10 +25,10 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
                 <title>{props.title}</title>
                 <meta name="description" content={props.description} />
             </Head>
-            <div className="w-full mx-auto max-w-5xl flex-shrink-0">
+            <div className="w-full mx-auto flex-shrink-0">
                 <Header
-                    className="h-45 py-5"
-                    brandClassName="pt-20 pb-10"
+                    className="h-45 py-5 mx-auto max-w-7xl"
+                    brandClassName="pt-20 pb-10 text-primary-400"
                     itemClassName="text-gray-500 hover:text-gray-600"
                     activeItemClassName="text-primary-600 hover:text-primary-600"
                 />

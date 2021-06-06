@@ -42,7 +42,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
             header={
                 <div className="bg-gray-800 h-screen">
                     <Header
-                        className="bg-gray-800 max-w-5xl mx-auto"
+                        className="bg-gray-800 mx-auto"
                         itemClassName="text-white hover:text-gray-300"
                         activeItemClassName="text-gray-300"
                     />
