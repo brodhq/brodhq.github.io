@@ -1,6 +1,6 @@
 {
     "name": "@geislabs/website",
-    "version": "0.0.104",
+    "version": "0.0.105",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -15,10 +15,10 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@geislabs/website-content": "^0.0.104",
-        "@geislabs/website-landing": "^0.0.104",
-        "@geislabs/website-layout": "^0.0.104",
-        "@geislabs/website-ui": "^0.0.104",
+        "@geislabs/website-content": "^0.0.105",
+        "@geislabs/website-landing": "^0.0.105",
+        "@geislabs/website-layout": "^0.0.105",
+        "@geislabs/website-ui": "^0.0.105",
         "@headlessui/react": "^1.2.0",
         "@heroicons/react": "^1.0.1",
         "@tailwindcss/typography": "^0.4.1",
