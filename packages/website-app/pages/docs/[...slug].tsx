@@ -21,7 +21,7 @@ const DocsPage: React.FC<DocsPageProps> = (props) => {
     return (
         <Content.Layout
             className="space-y-3"
-            title={`Krans | API | ${props.api.title}`}
+            title={`Krans | Docs | ${props.api.title}`}
             description=""
             right={
                 <GuideMenu
