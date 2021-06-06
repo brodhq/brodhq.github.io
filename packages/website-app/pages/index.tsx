@@ -19,8 +19,7 @@ import {
 } from '@geislabs/website-content'
 import { outdent } from 'outdent'
 import React from 'react'
-import { HeroInstall } from '@geislabs/website-landing/dist/hero/HeroInstall'
-import { useTracking } from 'providers/tracking'
+import * as ga from '../providers/tracking'
 
 export interface HomeProps {
     title: string
@@ -31,14 +30,9 @@ export interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
-    const { logEvent, ...rest } = useTracking()
-
     const handleCopy = () => {
-        logEvent({
-            action: 'install_copied',
-        })
+        ga.installCopied()
     }
-
     return (
         <Landing.Layout
             {...props}
@@ -123,7 +117,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                         }
                     >
                         <Hero.Content
-                            header={<HeroInstall onCopy={handleCopy} />}
+                            header={<Hero.Install onCopy={handleCopy} />}
                             title={
                                 <>
                                     <span className="md:block">

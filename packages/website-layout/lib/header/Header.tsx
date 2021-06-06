@@ -38,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({
                             Guides
                         </NavItem>
                         {/* <NavItem href="/learning">Learning</NavItem> */}
-                        <NavItem href="/cases">Use-cases</NavItem>
+                        {/* <NavItem href="/cases">Use-cases</NavItem> */}
                         {/* <NavItem href="/development">Development</NavItem> */}
                         <NavItem match="/blog" href="/blog">
                             Blog
