@@ -38,6 +38,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
             action: 'install_copied',
         })
     }
+
     return (
         <Landing.Layout
             {...props}
@@ -159,6 +160,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
             <div>
                 <Content.Container asset={<Content.Asset />}>
                     <Content.Main
+                        emphasizeClassName="text-blue-500"
                         subtitle="Transactions"
                         title="What makes us different"
                         action={<Content.Action>Learn More</Content.Action>}
@@ -172,7 +174,12 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                 </Content.Container>
             </div>
             <div className="bg-white">
-                <Feature.List>
+                <Feature.List
+                    emphasizeClassName="text-indigo-500"
+                    title="All-in-one platform"
+                    subtitle="Everything you need"
+                    description=" Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla nec."
+                >
                     <Feature.Item
                         name="Invite team members"
                         description="You can manage phone, email and chat conversations all from a single mailbox."

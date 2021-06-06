@@ -1,20 +1,28 @@
 import React from 'react'
-import { CheckIcon } from '@heroicons/react/outline'
 import classNames from 'classnames'
 
 export interface ContentMainProps {
     className?: string
+    emphasizeClassName?: string
     subtitle: string
     title: string
     action?: React.ReactNode
 }
 
-export const ContentMain: React.FC<ContentMainProps> = (props) => {
+export const ContentMain: React.FC<ContentMainProps> = ({
+    emphasizeClassName = 'text-primary-600',
+    ...props
+}) => {
     return (
         <div className="pt-12 sm:pt-16 lg:pt-20">
             <div className="text-base max-w-prose mx-auto lg:max-w-none">
                 {props.subtitle && (
-                    <h2 className="text-base text-blue-400 font-semibold tracking-wide uppercase">
+                    <h2
+                        className={classNames(
+                            'text-base font-semibold tracking-wide uppercase',
+                            emphasizeClassName
+                        )}
+                    >
                         {props.subtitle.toUpperCase()}
                     </h2>
                 )}
