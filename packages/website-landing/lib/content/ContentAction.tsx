@@ -4,14 +4,21 @@ import classNames from 'classnames'
 
 export interface ContentActionProps {
     className?: string
+    buttonClassName?: string
 }
 
-export const ContentAction: React.FC<ContentActionProps> = (props) => {
+export const ContentAction: React.FC<ContentActionProps> = ({
+    buttonClassName = 'bg-primary-600 hover:bg-primary-700',
+    ...props
+}) => {
     return (
-        <div className="mt-8 inline-flex rounded-md shadow">
+        <div className="mt-8 inline-flex rounded-md">
             <a
                 href="#"
-                className="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700"
+                className={classNames(
+                    'flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white',
+                    buttonClassName
+                )}
             >
                 {props.children}
             </a>

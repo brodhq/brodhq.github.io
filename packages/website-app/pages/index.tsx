@@ -163,7 +163,11 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                         emphasizeClassName="text-blue-500"
                         subtitle="Transactions"
                         title="What makes us different"
-                        action={<Content.Action>Learn More</Content.Action>}
+                        action={
+                            <Content.Action buttonClassName="text-primary-700 bg-primary-200 hover:bg-primary-300">
+                                Learn More
+                            </Content.Action>
+                        }
                     >
                         Sagittis scelerisque nulla cursus in enim consectetur
                         quam. Dictum urna sed consectetur neque tristique
@@ -226,15 +230,19 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                             </>
                         }
                     >
-                        <CTA.Button>Get started</CTA.Button>
-                        <CTA.Button variant="secondary">Learn more</CTA.Button>
+                        <CTA.Button variant="secondary">Get started</CTA.Button>
+                        {/* <CTA.Button variant="secondary">Learn more</CTA.Button> */}
                     </CTA.Action>
                 </CTA.Container>
             </div>
-            <div className="bg-white pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+            <div className="bg-white mx-auto max-w-7xl pt-16 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
                 <Blog.List header={<Blog.Subscribe />}>
                     {props.posts.map((post) => (
-                        <Blog.Item key={post.title} post={post} />
+                        <Blog.Item
+                            linkClassName="text-blue-500 hover:text-blue-600"
+                            key={post.title}
+                            post={post}
+                        />
                     ))}
                 </Blog.List>
             </div>

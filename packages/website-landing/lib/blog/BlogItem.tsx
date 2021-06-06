@@ -16,6 +16,7 @@ export interface BlogListItemProps {
 
 export const BlogListItem: React.FC<BlogListItemProps> = ({
     post,
+    linkClassName = 'text-blue-400 hover:text-blue-500',
     ...props
 }) => {
     return (
@@ -35,8 +36,8 @@ export const BlogListItem: React.FC<BlogListItemProps> = ({
                 <a
                     href={'#'}
                     className={classNames(
-                        'text-base font-semibold text-blue-400 hover:text-blue-500',
-                        props.linkClassName
+                        'text-base font-semibold',
+                        linkClassName
                     )}
                 >
                     Read full story
