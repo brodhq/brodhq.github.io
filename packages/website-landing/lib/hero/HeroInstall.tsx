@@ -3,7 +3,7 @@ import { ClipboardCopyIcon } from '@heroicons/react/solid'
 import { CheckIcon } from '@heroicons/react/outline'
 import useClipboard from 'react-use-clipboard'
 
-const VALUE = 'npm install geis --save'
+const VALUE = 'npm install krans --save'
 
 export interface HeroInstallProps {
     className?: string
