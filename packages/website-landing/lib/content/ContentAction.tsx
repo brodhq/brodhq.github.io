@@ -8,7 +8,7 @@ export interface ContentActionProps {
 }
 
 export const ContentAction: React.FC<ContentActionProps> = ({
-    buttonClassName = 'bg-primary-600 hover:bg-primary-700',
+    buttonClassName = 'text-white bg-primary-600 hover:bg-primary-700',
     ...props
 }) => {
     return (
@@ -16,7 +16,7 @@ export const ContentAction: React.FC<ContentActionProps> = ({
             <a
                 href="#"
                 className={classNames(
-                    'flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white',
+                    'flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md ',
                     buttonClassName
                 )}
             >

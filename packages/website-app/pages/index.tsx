@@ -164,7 +164,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                         subtitle="Transactions"
                         title="What makes us different"
                         action={
-                            <Content.Action buttonClassName="text-primary-700 bg-primary-200 hover:bg-primary-300">
+                            <Content.Action buttonClassName="btn-primary-minimal">
                                 Learn More
                             </Content.Action>
                         }
