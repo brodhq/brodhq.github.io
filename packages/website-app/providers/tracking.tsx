@@ -24,10 +24,16 @@ export const event = ({ action, params }) => {
     window.gtag('event', action, params)
 }
 
-// log specific events happening.
 export const installCopied = () => {
     // @ts-expect-error
     event({
         action: 'install_copied',
+    })
+}
+
+export const emailSubscribed = () => {
+    // @ts-expect-error
+    event({
+        action: 'email_subscribed',
     })
 }

@@ -19,7 +19,7 @@ import {
 } from '@geislabs/website-content'
 import { outdent } from 'outdent'
 import React from 'react'
-import * as ga from '../providers/tracking'
+import * as track from '../providers/tracking'
 
 export interface HomeProps {
     title: string
@@ -31,7 +31,10 @@ export interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
     const handleCopy = () => {
-        ga.installCopied()
+        track.installCopied()
+    }
+    const handleEmailSubscribe = () => {
+        track.emailSubscribed()
     }
     return (
         <Landing.Layout
@@ -234,7 +237,11 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                 </CTA.Container>
             </div>
             <div className="bg-white mx-auto max-w-7xl pt-16 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-                <Blog.List header={<Blog.Subscribe />}>
+                <Blog.List
+                    header={
+                        <Blog.Subscribe onSubscribe={handleEmailSubscribe} />
+                    }
+                >
                     {props.posts.map((post) => (
                         <Blog.Item
                             linkClassName="text-blue-500 hover:text-blue-600"
