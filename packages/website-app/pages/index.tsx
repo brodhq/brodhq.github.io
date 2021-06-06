@@ -230,8 +230,12 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                             </>
                         }
                     >
-                        <CTA.Button variant="secondary">Get started</CTA.Button>
-                        {/* <CTA.Button variant="secondary">Learn more</CTA.Button> */}
+                        <CTA.Button
+                            variant="primary"
+                            primaryClassName="btn-primary-minimal"
+                        >
+                            Get started
+                        </CTA.Button>
                     </CTA.Action>
                 </CTA.Container>
             </div>
