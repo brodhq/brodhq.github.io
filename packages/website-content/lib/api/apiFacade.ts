@@ -12,12 +12,12 @@ export async function getAPIs(): Promise<Array<Section>> {
         [
             'protocols',
             // @ts-expect-error
-            require.context(`../../content/api/protocols`, false, /\.md$/),
+            require.context(`../../content/docs/protocols`, false, /\.md$/),
         ],
         [
             'data-types',
             // @ts-expect-error
-            require.context(`../../content/api/data-types`, false, /\.md$/),
+            require.context(`../../content/docs/data-types`, false, /\.md$/),
         ],
     ]
     for (let [sectionName, context] of contexts) {

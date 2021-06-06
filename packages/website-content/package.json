@@ -23,12 +23,17 @@
     "scripts": {
         "clean": "rimraf dist",
         "build": "npm run clean && tsc",
-        "watch": "npm run clean && tsc -w"
+        "watch": "npm run clean && tsc -w",
+        "sync": "npm run sync:docs",
+        "sync:docs": "node ./scripts/sync-docs.js"
     },
     "dependencies": {
         "gray-matter": "^4.0.3",
         "js-yaml": "^4.1.0",
         "marked": "^2.0.7",
         "titleize": "^2.1.0"
+    },
+    "devDependencies": {
+        "@octokit/rest": "^18.5.6"
     }
 }
