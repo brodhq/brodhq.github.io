@@ -101,4 +101,6 @@ module.exports = new Downloader()
 module.exports.Downloader = Downloader
 
 const downloader = new Downloader()
+
 downloader.download('kransio', 'krans', 'docs')
+downloader.download('kransio', 'krans', 'guides')

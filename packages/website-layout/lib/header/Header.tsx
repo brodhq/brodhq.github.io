@@ -31,8 +31,8 @@ export const Header: React.FC<HeaderProps> = ({
                     >
                         <NavItem href="/">Home</NavItem>
                         <NavItem
-                            match="/reference"
-                            href="/reference/protocols/introduction"
+                            match="/docs"
+                            href="/docs/protocols/introduction"
                         >
                             API
                         </NavItem>

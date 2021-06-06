@@ -26,7 +26,7 @@ export async function getAPIs(): Promise<Array<Section>> {
             const post = key.slice(2)
             const number = Number(post.slice(0, 2))
             const content = await import(
-                `../../content/api/${sectionName}/${post}`
+                `../../content/docs/${sectionName}/${post}`
             )
             const meta = matter(content.default)
             guides.push({
@@ -48,7 +48,7 @@ export async function getAPI(slugs: string[]): Promise<Guide> {
     const all = sections.flatMap((section) => section.guides)
     const reference = all.find((guide) => guide.slug === slug)
     const fileContent = await import(
-        `../../content/api/${reference?.section}/${reference?.filename}`
+        `../../content/docs/${reference?.section}/${reference?.filename}`
     )
     const meta = matter(fileContent.default)
     const renderer = new CustomRenderer()

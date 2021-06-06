@@ -11,13 +11,13 @@ import { titleize } from '@utils'
 import { GuideMenu } from '@views'
 import React from 'react'
 
-export interface APIProps {
+export interface DocsPageProps {
     api: Guide
     sections: Section[]
     releases: Release[]
 }
 
-const APIPage: React.FC<APIProps> = (props) => {
+const DocsPage: React.FC<DocsPageProps> = (props) => {
     return (
         <Content.Layout
             className="space-y-3"
@@ -54,9 +54,11 @@ const APIPage: React.FC<APIProps> = (props) => {
     )
 }
 
-export default APIPage
+export default DocsPage
 
-export async function getStaticProps(context): Promise<{ props: APIProps }> {
+export async function getStaticProps(
+    context
+): Promise<{ props: DocsPageProps }> {
     return {
         props: {
             api: await getAPI(context.params.slug),
