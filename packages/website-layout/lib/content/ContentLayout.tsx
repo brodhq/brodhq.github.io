@@ -20,12 +20,12 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
     ...props
 }) => {
     return (
-        <main>
+        <main className="flex flex-col min-h-screen items-start">
             <Head>
                 <title>{props.title}</title>
                 <meta name="description" content={props.description} />
             </Head>
-            <div className="max-w-5xl mx-auto">
+            <div className="w-full mx-auto max-w-5xl flex-shrink-0">
                 <Header
                     className="h-45 py-5"
                     brandClassName="pt-20 pb-10"
@@ -36,13 +36,13 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
             <div
                 className={classNames(
                     'pt-6 pb-12',
-                    'mx-auto grid grid-cols-3 gap-20 max-w-5xl'
+                    'mx-auto grid grid-cols-3 gap-20 max-w-5xl flex-grow'
                 )}
             >
                 <div className="col-span-2">{props.children}</div>
                 <div className="col-span-1">{props.right}</div>
             </div>
-            <div>
+            <div className="w-full">
                 <Footer />
             </div>
         </main>

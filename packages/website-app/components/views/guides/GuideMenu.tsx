@@ -5,6 +5,7 @@ import React from 'react'
 
 export interface GuideMenuProps {
     className?: string
+    namespace?: string
     sections: Section[]
     releases: Release[]
 }
@@ -12,6 +13,7 @@ export interface GuideMenuProps {
 export const GuideMenu: React.FC<GuideMenuProps> = ({
     className = '',
     releases = [],
+    namespace = 'guides',
     ...props
 }) => {
     const [release] = sortBy(releases, 'date', 'desc')
@@ -27,8 +29,11 @@ export const GuideMenu: React.FC<GuideMenuProps> = ({
                     {section.guides.sort(sorter).map((guide, index) => (
                         <div key={guide.slug} className="flex text-gray-500">
                             <span className="w-2.5">{index + 1}.</span>
-                            <li>
-                                <NavLink href={getLink(guide)} reverse={true}>
+                            <li className="ml-2">
+                                <NavLink
+                                    href={getLink(namespace, guide)}
+                                    reverse={true}
+                                >
                                     {guide.title}
                                 </NavLink>
                             </li>
@@ -40,6 +45,7 @@ export const GuideMenu: React.FC<GuideMenuProps> = ({
     )
 }
 
-const getLink = (guide: GuideReference) => `/guides/${guide.slug}`
+const getLink = (namespace: string, guide: GuideReference) =>
+    `/${namespace}/${guide.slug}`
 const sorter = (a: GuideReference, b: GuideReference) =>
     a.number > b.number ? 1 : 0

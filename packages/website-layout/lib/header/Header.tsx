@@ -30,7 +30,12 @@ export const Header: React.FC<HeaderProps> = ({
                         activeItemClassName={activeItemClassName}
                     >
                         <NavItem href="/">Home</NavItem>
-                        {/* <NavItem href="/install">Install</NavItem> */}
+                        <NavItem
+                            match="/reference"
+                            href="/reference/protocols/introduction"
+                        >
+                            API
+                        </NavItem>
                         <NavItem
                             match="/guides"
                             href="/guides/getting-started/introduction"

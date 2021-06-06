@@ -1,7 +1,7 @@
 import {
     getAllReleases,
-    getGuides,
-    getGuide,
+    getAPIs,
+    getAPI,
     Guide,
     Release,
     Section,
@@ -11,29 +11,31 @@ import { titleize } from '@utils'
 import { GuideMenu } from '@views'
 import React from 'react'
 
-export interface GuideProps {
-    guide: Guide
+export interface APIProps {
+    api: Guide
     sections: Section[]
     releases: Release[]
 }
 
-const GuidePage: React.FC<GuideProps> = (props) => {
+const APIPage: React.FC<APIProps> = (props) => {
+    console.log(props.sections, props.releases)
     return (
         <Content.Layout
             className="space-y-3"
-            title={`Krans | Guides | ${props.guide.title}`}
+            title={`Krans | API | ${props.api.title}`}
             description=""
             right={
                 <GuideMenu
+                    namespace="reference"
                     sections={props.sections}
                     releases={props.releases}
                 />
             }
         >
-            <h2 className="text-gray-400">{titleize(props.guide.section)}</h2>
-            <h1 className="prose text-4xl">{props.guide.title}</h1>
+            <h2 className="text-gray-400">{titleize(props.api.section)}</h2>
+            <h1 className="prose text-4xl">{props.api.title}</h1>
             <ul className="space-y-2 mt-10">
-                {props.guide.subsections.map((section, index) => (
+                {props.api.subsections.map((section, index) => (
                     <li key={index} className="flex">
                         <div className="w-5 text-gray-500">{index + 1}.</div>
                         <a
@@ -47,26 +49,28 @@ const GuidePage: React.FC<GuideProps> = (props) => {
             </ul>
             <div
                 className="mt-10 space-y-5"
-                dangerouslySetInnerHTML={{ __html: props.guide.content }}
+                dangerouslySetInnerHTML={{ __html: props.api.content }}
             />
         </Content.Layout>
     )
 }
 
-export default GuidePage
+export default APIPage
 
-export async function getStaticProps(context): Promise<{ props: GuideProps }> {
+export async function getStaticProps(context): Promise<{ props: APIProps }> {
+    console.log('context', context)
     return {
         props: {
-            guide: await getGuide(context.params.slug),
-            sections: await getGuides(),
+            api: await getAPI(context.params.slug),
+            sections: await getAPIs(),
             releases: await getAllReleases(),
         },
     }
 }
 
 export async function getStaticPaths() {
-    const sections = await getGuides()
+    const sections = await getAPIs()
+    console.log('sections', sections)
     const paths = sections.flatMap((section) =>
         section.guides.map((guide) => ({
             params: { slug: guide.slug.split('/') },
