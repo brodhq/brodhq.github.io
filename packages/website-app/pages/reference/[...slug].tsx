@@ -18,7 +18,6 @@ export interface APIProps {
 }
 
 const APIPage: React.FC<APIProps> = (props) => {
-    console.log(props.sections, props.releases)
     return (
         <Content.Layout
             className="space-y-3"
@@ -58,7 +57,6 @@ const APIPage: React.FC<APIProps> = (props) => {
 export default APIPage
 
 export async function getStaticProps(context): Promise<{ props: APIProps }> {
-    console.log('context', context)
     return {
         props: {
             api: await getAPI(context.params.slug),
@@ -70,7 +68,6 @@ export async function getStaticProps(context): Promise<{ props: APIProps }> {
 
 export async function getStaticPaths() {
     const sections = await getAPIs()
-    console.log('sections', sections)
     const paths = sections.flatMap((section) =>
         section.guides.map((guide) => ({
             params: { slug: guide.slug.split('/') },
