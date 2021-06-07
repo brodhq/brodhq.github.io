@@ -45,10 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
                         activeItemClassName={activeItemClassName}
                     >
                         <NavItem href="/">Home</NavItem>
-                        <NavItem
-                            match="/docs"
-                            href="/docs/protocols/introduction"
-                        >
+                        <NavItem match="/docs" href="/docs">
                             API
                         </NavItem>
                         <NavItem
