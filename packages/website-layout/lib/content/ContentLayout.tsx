@@ -36,7 +36,7 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
             <div
                 className={classNames(
                     'pt-6 pb-12',
-                    'mx-auto grid grid-cols-3 gap-20 max-w-5xl flex-grow'
+                    'mx-auto grid grid-cols-3 gap-20 max-w-5xl w-full flex-grow'
                 )}
             >
                 <div className="col-span-2">{props.children}</div>

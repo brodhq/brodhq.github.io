@@ -18,6 +18,8 @@ export interface ExamplePageProps {
 }
 
 const ExamplePage: React.FC<ExamplePageProps> = ({ examples, ...props }) => {
+    const [first] = examples[0].guides ?? []
+    const firstHref = `/examples/${first.slug}`
     return (
         <Content.Layout
             title="Krans | Examples"
@@ -32,7 +34,7 @@ const ExamplePage: React.FC<ExamplePageProps> = ({ examples, ...props }) => {
         >
             <div className="space-y-5">
                 <h2 className="prose prose-2xl">Examples</h2>
-                <p className="prose pb-5">
+                <p className="prose">
                     Click on the cases below to learn more about how companies
                     across different industries are using the power of Geis and
                     its ecosystem to create and grow their businesses. Examples
@@ -43,6 +45,13 @@ const ExamplePage: React.FC<ExamplePageProps> = ({ examples, ...props }) => {
                     <Link href="/">Geis Companies website</Link>, which is
                     maintained by the community.
                 </p>
+                <Link href={firstHref}>
+                    <div className="flex">
+                        <div className="cursor-pointer px-4 py-2 rounded-md btn-primary-minimal">
+                            First example
+                        </div>
+                    </div>
+                </Link>
             </div>
         </Content.Layout>
     )
