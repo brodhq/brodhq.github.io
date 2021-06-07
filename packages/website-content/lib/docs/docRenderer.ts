@@ -39,6 +39,45 @@ export class DocRenderer extends Renderer {
     //     return `<code class="prose px-1 bg-primary-50 text-primary-900">${text}</code>`
     // }
 
+    table(header: string, body: string) {
+        return outdent`
+            <div class="flex flex-col">
+                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="overflow-hidden border-gray-200 pb-6">
+                        <table class="min-w-full divide-y divide-primary-100">
+                            <thead class="bg-primary-50 ">
+                                ${header}
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                ${body}
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        `
+    }
+
+    tablerow(content: string) {
+        return `<tr">${content}</tr>`
+    }
+
+    tablecell(
+        content: string,
+        flags: {
+            header: boolean
+            align: 'center' | 'left' | 'right' | null
+        }
+    ) {
+        if (flags.header) {
+            return `<td class="px-6 py-3 text-left text-xs font-medium text-primary-800 uppercase tracking-wider">${content}</td>`
+        } else {
+            return `<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${content}</td>`
+        }
+    }
+
     code(text: string) {
         const highlighed = hljs
             .highlight(text.trim(), {

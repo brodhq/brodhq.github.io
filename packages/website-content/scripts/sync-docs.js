@@ -19,21 +19,54 @@ const targets = [
 ]
 Promise.all(
     targets.map(async (target, index) => {
-        const response = await fetch(target.url)
-        const markdown = await response.text()
-        const regex = /\n## Functions/
-        const [, content] = markdown.split(regex)
-        const cleaned = content.trim()
         const absolute = path.resolve(DOCS_DIR, target.path)
-        const annotated = [
+        const response = await fetch(target.url)
+        let markdown = await response.text()
+
+        // Remove title
+        const titleregex = /# README/
+        markdown = markdown.replace(titleregex, '')
+
+        // Remove interfaces
+        const interfaceregex = /## Interfaces(\s*.*)\n+/g
+        markdown = markdown.replace(interfaceregex, '')
+
+        // Replace examples
+        const exampleregex = /\*\*`example`\*\*/g
+        markdown = markdown.replace(exampleregex, '#### Example\n')
+
+        // Remove return sections
+        const returnsregex = /#### Returns(\s*.*)\n*/g
+        markdown = markdown.replace(returnsregex, '')
+
+        // Remove hierarchy sections
+        const hierachy = /## Hierarchy(\s*.*)\n*/g
+        markdown = markdown.replace(hierachy, '')
+
+        // Remove iterator sections
+        const hierachyregex = /### \[Symbol\.iterator\](\s*.*)\n*/g
+        markdown = markdown.replace(hierachyregex, '')
+
+        // Remove inherit sections
+        const inheritregex = /#### Inherited from(\s*.*)\n*/g
+        markdown = markdown.replace(inheritregex, '')
+
+        // Remove enter symbols
+        const enterregex = /↳ (\s*.*)\n*/g
+        markdown = markdown.replace(enterregex, '')
+
+        // Add frontmattter
+        markdown = [
             outdent`
             ---
             section: ${target.section}
             title: ${target.title}
             slug: ${target.slug}
             ---`,
-            cleaned,
+            markdown,
         ].join('\n\n')
-        fs.writeFileSync(absolute, annotated)
+
+        console.log(`writing ${target.path}`)
+        fs.writeFileSync(absolute, markdown)
     })
 )

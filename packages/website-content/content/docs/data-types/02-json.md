@@ -4,6 +4,10 @@ title: Json
 slug: json
 ---
 
+
+
+## Functions
+
 ### Json
 
 ▸ **Json**(`content?`, `path?`, `config?`): [JsonPath](#jsonpath)
@@ -11,7 +15,8 @@ slug: json
 Constructs a new json path from either a raw string
 or an object
 
-**`example`**
+#### Example
+
 ```typescript
 const value = Json(`{"value": 5}`).get('value').toInteger()
 // => 5
@@ -25,10 +30,6 @@ const value = Json(`{"value": 5}`).get('value').toInteger()
 | `path?` | `string` |
 | `config?` | `Partial`<JsonConfig\> |
 
-#### Returns
-
-[JsonPath](#jsonpath)
-
 # Interfaces
 
 ## Jsonpath
@@ -36,25 +37,7 @@ const value = Json(`{"value": 5}`).get('value').toInteger()
 A JsonPath represents a nested selection of
 properties inside a JSON document
 
-## Hierarchy
-
-- `Iterable`<[JsonPath](#jsonpath)\>
-
-  ↳ **JsonPath**
-
-## Methods
-
-### [Symbol.iterator]
-
-▸ **[Symbol.iterator]**(): `Iterator`<[JsonPath](#jsonpath), any, undefined\>
-
-#### Returns
-
-`Iterator`<[JsonPath](#jsonpath), any, undefined\>
-
-#### Inherited from
-
-Iterable.\_\_@iterator
+  ## Methods
 
 ___
 
@@ -64,7 +47,8 @@ ___
 
 Extract a nested json value
 
-**`example`**
+#### Example
+
 ```typescript
 const json = Json(`{"value": 5}`).get('value').toInteger()
 // => 5
@@ -76,10 +60,6 @@ const json = Json(`{"value": 5}`).get('value').toInteger()
 | :------ | :------ | :------ |
 | `selector` | `string` | A valid jsonpath selector string |
 
-#### Returns
-
-[JsonPath](#jsonpath)
-
 ___
 
 ### toArray
@@ -89,15 +69,12 @@ ___
 Returns the current element selection as
 an array of elements
 
-**`example`**
+#### Example
+
 ```typescript
 const values = json.toArray()
 // => [1, 2, 3]
 ```
-
-#### Returns
-
-`JsonValue`[]
 
 ___
 
@@ -107,10 +84,6 @@ ___
 
 Return current json value as a boolean
 
-#### Returns
-
-``null`` \| `boolean` \| `Error`
-
 ___
 
 ### toInteger
@@ -119,7 +92,8 @@ ___
 
 Return current json value as an integer
 
-**`example`**
+#### Example
+
 ```typescript
 const json = Json(`{"value": 5}`, 'value').toInteger()
 // => 5
@@ -129,10 +103,6 @@ const json = Json(`{"value": 5}`, 'unknown').toInteger()
 // => null
 ```
 
-#### Returns
-
-``null`` \| `number` \| `Error`
-
 ___
 
 ### toString
@@ -140,10 +110,6 @@ ___
 ▸ **toString**(): ``null`` \| `string`
 
 Return string value
-
-#### Returns
-
-``null`` \| `string`
 
 ___
 
@@ -153,6 +119,3 @@ ___
 
 Unwraps the inner json value
 
-#### Returns
-
-`object` \| `object`[]
