@@ -1,18 +1,29 @@
 import { Renderer, Slugger } from 'marked'
-import { GuideSection } from './types'
+import { GuideSection } from '../types'
 
-export interface CustomRendererSubSection {
+export interface DocRendererSubSection {
     title: string
     id: string
 }
 
-export class CustomRenderer extends Renderer {
+interface DocRendererConfig {
+    blacklist: string[]
+}
+
+export class DocRenderer extends Renderer {
     public subsections: GuideSection[] = []
+
+    constructor(public config: DocRendererConfig) {
+        super()
+    }
 
     // @ts-expect-error
     heading(text, level, raw, slugger: Slugger) {
         const slug = slugger.slug(text)
-        if (level === 3) {
+        if (
+            level === 3 &&
+            !this.config.blacklist.includes(text.toLowerCase())
+        ) {
             this.subsections.push({ name: text, slug })
         }
         return `<h${level} id=${slug} class="prose prose-2xl">${text}</h${level}>`

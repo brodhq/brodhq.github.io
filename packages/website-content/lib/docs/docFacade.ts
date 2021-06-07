@@ -2,9 +2,9 @@ import matter from 'gray-matter'
 import marked from 'marked'
 import path from 'path'
 import hljs from 'highlight.js'
-import { CustomRenderer } from '../renderer'
 import { Guide } from '../types'
 import { GuideReference, Section } from '../types'
+import { DocRenderer } from './docRenderer'
 
 export async function getAPIs(): Promise<Array<Section>> {
     const sections: Section[] = []
@@ -51,7 +51,9 @@ export async function getAPI(slugs: string[]): Promise<Guide> {
         `../../content/docs/${reference?.section}/${reference?.filename}`
     )
     const meta = matter(fileContent.default)
-    const renderer = new CustomRenderer()
+    const renderer = new DocRenderer({
+        blacklist: ['interfaces', 'functions', 'methods'],
+    })
     const content = marked(meta.content, {
         renderer,
         highlight: function (code, lang) {

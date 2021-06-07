@@ -1,106 +1,39 @@
 'use strict'
 
+var fetch = require('node-fetch')
 var fs = require('fs')
 var path = require('path')
-var { dirname } = require('path')
-var { promisify } = require('util')
+const { outdent } = require('outdent')
 
-var Keyv = require('keyv')
-var { Octokit } = require('@octokit/rest')
-
-var mkdir = promisify(fs.mkdir)
-var writeFile = promisify(fs.writeFile)
-
-var ONE_HOUR_IN_MS = 1000 * 3600
 const OUTPUT_DIR = path.resolve(__dirname, '../content')
+const DOCS_DIR = path.resolve(OUTPUT_DIR, 'docs')
 
-var defaultCacheOpts = {
-    ttl: ONE_HOUR_IN_MS,
-    namespace: 'github-download-directory',
-}
-
-async function createDirectories(filepath) {
-    const absolute = path.resolve(OUTPUT_DIR, filepath)
-    var dir = dirname(absolute)
-    return mkdir(dir, { recursive: true })
-}
-
-async function output(file) {
-    await createDirectories(file.path)
-    const absolute = path.resolve(OUTPUT_DIR, file.path)
-    console.info('Writing file', file.path)
-    await writeFile(absolute, file.contents)
-}
-
-class Downloader {
-    constructor(options = {}) {
-        var cacheOpts = Object.assign({}, defaultCacheOpts, options.cache)
-
-        this.cache = new Keyv(cacheOpts)
-
-        this._octokit = new Octokit(options.github)
-    }
-
-    async getTree(owner, repo, options = {}) {
-        var sha = options.sha || 'master'
-        var cacheKey = `${owner}/${repo}#${sha}`
-
-        var cachedTree = await this.cache.get(cacheKey)
-        if (cachedTree) {
-            return cachedTree
-        }
-
-        var {
-            data: { tree },
-        } = await this._octokit.git.getTree({
-            owner,
-            repo,
-            tree_sha: sha,
-            recursive: true,
-        })
-
-        await this.cache.set(cacheKey, tree)
-
-        if (typeof this.cache.save === 'function') {
-            await this.cache.save()
-        }
-
-        return tree
-    }
-
-    async fetchFiles(owner, repo, directory, options = {}) {
-        var tree = await this.getTree(owner, repo, options)
-
-        var files = tree
-            .filter(
-                (node) =>
-                    node.path.startsWith(directory) && node.type === 'blob'
-            )
-            .map(async (node) => {
-                var { data } = await this._octokit.git.getBlob({
-                    owner,
-                    repo,
-                    file_sha: node.sha,
-                })
-                return {
-                    path: node.path,
-                    contents: Buffer.from(data.content, data.encoding),
-                }
-            })
-
-        return Promise.all(files)
-    }
-
-    async download(owner, repo, directory, options = {}) {
-        var files = await this.fetchFiles(owner, repo, directory, options)
-        return Promise.all(files.map(output))
-    }
-}
-
-module.exports = new Downloader()
-module.exports.Downloader = Downloader
-
-const downloader = new Downloader()
-
-downloader.download('kransio', 'krans', 'docs')
-downloader.download('kransio', 'krans', 'guides')
+const targets = [
+    {
+        section: 'data-types',
+        title: 'Json',
+        slug: 'json',
+        path: 'data-types/02-json.md',
+        url: `https://raw.githubusercontent.com/kransio/json/master/docs/README.md`,
+    },
+]
+Promise.all(
+    targets.map(async (target, index) => {
+        const response = await fetch(target.url)
+        const markdown = await response.text()
+        const regex = /\n## Functions/
+        const [, content] = markdown.split(regex)
+        const cleaned = content.trim()
+        const absolute = path.resolve(DOCS_DIR, target.path)
+        const annotated = [
+            outdent`
+            ---
+            section: ${target.section}
+            title: ${target.title}
+            slug: ${target.slug}
+            ---`,
+            cleaned,
+        ].join('\n\n')
+        fs.writeFileSync(absolute, annotated)
+    })
+)
