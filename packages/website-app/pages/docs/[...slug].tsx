@@ -31,9 +31,7 @@ const DocsPage: React.FC<DocsPageProps> = (props) => {
                 />
             }
         >
-            <h2 className="text-gray-400 uppercase">
-                {titleize(props.api.section)}
-            </h2>
+            <h2 className="text-gray-400">{titleize(props.api.section)}</h2>
             <h1 className="prose text-4xl">{props.api.title}</h1>
             <ul className="space-y-2 mt-10">
                 {props.api.subsections.map((section, index) => (

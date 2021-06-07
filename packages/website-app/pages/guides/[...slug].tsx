@@ -30,9 +30,7 @@ const GuidePage: React.FC<GuideProps> = (props) => {
                 />
             }
         >
-            <h2 className="text-gray-400 uppercase">
-                {titleize(props.guide.section)}
-            </h2>
+            <h2 className="text-gray-400">{titleize(props.guide.section)}</h2>
             <h1 className="prose text-4xl">{props.guide.title}</h1>
             <ul className="space-y-2 mt-10">
                 {props.guide.subsections.map((section, index) => (

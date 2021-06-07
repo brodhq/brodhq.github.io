@@ -33,9 +33,7 @@ const ExamplePage: React.FC<ExampleProps> = (props) => {
                 />
             }
         >
-            <h2 className="text-gray-400 uppercase">
-                {titleize(props.guide.section)}
-            </h2>
+            <h2 className="text-gray-400">{titleize(props.guide.section)}</h2>
             <h1 className="prose text-4xl">{props.guide.title}</h1>
             <div
                 className="mt-10 space-y-5"
