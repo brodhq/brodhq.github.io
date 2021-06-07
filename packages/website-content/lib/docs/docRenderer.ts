@@ -1,5 +1,7 @@
 import { Renderer, Slugger } from 'marked'
+import { outdent } from 'outdent'
 import { GuideSection } from '../types'
+import hljs from 'highlight.js'
 
 export interface DocRendererSubSection {
     title: string
@@ -36,9 +38,19 @@ export class DocRenderer extends Renderer {
     // codespan(text) {
     //     return `<code class="prose px-1 bg-primary-50 text-primary-900">${text}</code>`
     // }
-    // codespan(text) {
-    //     return `<code class="prose font-xs px-2 text-gray-400 bg-gray-800 py-0.5 rounded-sm">${text}</code>`
-    // }
+
+    code(text: string) {
+        const highlighed = hljs
+            .highlight(text.trim(), {
+                language: 'typescript',
+            })
+            .value.trim()
+        return outdent`
+            <pre class="text-sm font-small p-4 bg-gray-700 text-gray-400 rounded-lg shadow-md">
+                <code>${highlighed}</code>
+            </pre>
+        `
+    }
     // blockquote(text) {
     //     return `<blockquote class="px-1 bg-primary-50 text-primary-900">${text}</blockquote>`
     // }

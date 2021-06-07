@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import * as ga from '../providers/tracking'
 import 'tailwindcss/tailwind.css'
-import 'highlight.js/styles/github.css'
+import 'highlight.js/styles/atom-one-dark.css'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import '../styles/global.css'
 
