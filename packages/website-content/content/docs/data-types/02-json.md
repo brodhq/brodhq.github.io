@@ -84,6 +84,13 @@ ___
 
 Return current json value as a boolean
 
+#### Example
+
+```typescript
+const json = Json('{"value": true}').get('value').toBoolean()
+// => true
+```
+
 ___
 
 ### toInteger
@@ -111,6 +118,13 @@ ___
 
 Return string value
 
+#### Example
+
+```typescript
+const json = Json('{"value": 5}').get('value').toString()
+// => '5'
+```
+
 ___
 
 ### valueOf
@@ -118,4 +132,11 @@ ___
 ▸ **valueOf**(): `object` \| `object`[]
 
 Unwraps the inner json value
+
+#### Example
+
+```typescript
+const json = Json('{"value": 5}').valueOf()
+// => {value: 5}
+```
 

@@ -28,7 +28,19 @@ export class DocRenderer extends Renderer {
         ) {
             this.subsections.push({ name: text, slug })
         }
-        return `<h${level} id=${slug} class="prose prose-2xl">${text}</h${level}>`
+        if (level === 1) {
+            return `<h2 id=${slug} class="prose prose-2xl">${text}</h2>`
+        }
+        if (level === 2) {
+            return `<h2 id=${slug} class="prose prose-2xl">${text}</h2>`
+        }
+        if (level === 3) {
+            return `<h3 id=${slug} class="prose prose-xl">${text}</h3>`
+        }
+        if (level === 4) {
+            return `<h4 id=${slug} class="prose prose-lg">${text}</h4>`
+        }
+        return `<h${level} id=${slug} class="prose">${text}</h${level}>`
     }
 
     // @ts-expect-error
