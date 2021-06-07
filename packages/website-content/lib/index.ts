@@ -7,6 +7,7 @@ import { sortBy, sluggify } from './utils'
 
 export * from './guides'
 export * from './docs'
+export * from './examples'
 
 export async function getMostRecentPosts(limit = 10): Promise<BlogPost[]> {
     const posts = await getAllPosts()
