@@ -19,11 +19,12 @@ export async function getExamples(): Promise<Array<Section>> {
             const number = Number(post.slice(0, 2))
             const content = await import(`../../content/examples/${post}`)
             const meta = matter(content.default)
+            const title = meta.data.title.replace(/^\d+-/, '').replace('-', ' ')
             guides.push({
                 number,
                 section: sectionName,
                 filename: post,
-                title: meta.data.title,
+                title,
                 slug: `${sectionName}/${post.replace(/\.md$/, '')}`,
             })
         }
