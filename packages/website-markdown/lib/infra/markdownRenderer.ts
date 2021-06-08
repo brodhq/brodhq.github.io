@@ -1,10 +1,9 @@
+import { Code, Table } from '@geislabs/website-ui'
+import parse, { domToReact } from 'html-react-parser'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { Code } from '@geislabs/website-ui'
 import { Renderer, Slugger } from 'marked'
-import { outdent } from 'outdent'
 import { GuideSection } from '../markdownTypes'
-import hljs from 'highlight.js'
 
 export interface DocRendererSubSection {
     title: string
@@ -50,47 +49,38 @@ export class DocRenderer extends Renderer {
     paragraph(text) {
         return `<p class="prose">${text}</p>`
     }
-    // codespan(text) {
-    //     return `<code class="prose px-1 bg-primary-50 text-primary-900">${text}</code>`
-    // }
 
     table(header: string, body: string) {
-        return outdent`
-            <div class="flex flex-col">
-                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="overflow-hidden border-gray-200 pb-6">
-                        <table class="min-w-full divide-y divide-primary-100">
-                            <thead class="bg-primary-50 ">
-                                ${header}
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                ${body}
-                            </tbody>
-                        </table>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        `
-    }
-
-    tablerow(content: string) {
-        return `<tr">${content}</tr>`
-    }
-
-    tablecell(
-        content: string,
-        flags: {
-            header: boolean
-            align: 'center' | 'left' | 'right' | null
-        }
-    ) {
-        if (flags.header) {
-            return `<td class="px-6 py-3 text-left text-xs font-medium text-primary-800 uppercase tracking-wider">${content}</td>`
-        } else {
-            return `<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${content}</td>`
-        }
+        const element = React.createElement(Table.Table, {
+            // @ts-expect-error
+            headers: parse(header, {
+                replace: (node) => {
+                    // @ts-expect-error
+                    switch (node.name) {
+                        case 'th': {
+                            return React.createElement(Table.HeadCell, {
+                                // @ts-expect-error
+                                children: domToReact(node.children),
+                            })
+                        }
+                    }
+                },
+            }),
+            children: parse(body, {
+                replace: (node) => {
+                    // @ts-expect-error
+                    switch (node.name) {
+                        case 'td': {
+                            return React.createElement(Table.BodyCell, {
+                                // @ts-expect-error
+                                children: domToReact(node.children),
+                            })
+                        }
+                    }
+                },
+            }),
+        })
+        return renderToString(element)
     }
 
     code(text: string) {
@@ -100,10 +90,6 @@ export class DocRenderer extends Renderer {
         })
         return renderToString(element)
     }
-
-    // blockquote(text) {
-    //     return `<blockquote class="px-1 bg-primary-50 text-primary-900">${text}</blockquote>`
-    // }
 
     // @ts-expect-error
     list(body) {
