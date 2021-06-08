@@ -13,7 +13,7 @@ export const TableHeadCell: React.FC<TableHeadCellProps> = ({
     return (
         <th
             className={classNames(
-                'px-6 py-3 text-left text-xs font-medium text-primary-800 uppercase tracking-wider',
+                'px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider',
                 className
             )}
         >
