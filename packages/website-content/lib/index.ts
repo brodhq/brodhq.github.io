@@ -1,9 +1,7 @@
 import matter from 'gray-matter'
-import marked from 'marked'
-import hljs from 'highlight.js'
-import { CustomRenderer } from './renderer'
 import { BlogPost, Release, Usecase } from './types'
 import { sortBy, sluggify } from './utils'
+import { generate } from '@geislabs/website-markdown'
 
 export * from './guides'
 export * from './docs'
@@ -67,20 +65,10 @@ export async function getPostBySlug(slug: string) {
     const posts = await getAllPosts()
     const reference = posts.find((guide) => guide.slug === slug)
     const fileContent = await import(`../content/blog/${slug}.md`)
-    const meta = matter(fileContent.default)
-
-    const renderer = new CustomRenderer()
-    const content = marked(meta.content, {
-        renderer,
-        highlight: function (code, lang) {
-            const language = hljs.getLanguage(lang) ? lang : 'plaintext'
-            return hljs.highlight(code, { language }).value
-        },
-    })
-
+    const result = generate(fileContent.default)
     return {
         post: reference,
-        content: content,
+        content: result.content,
         releases: await getAllReleases(),
     }
 }
@@ -89,26 +77,15 @@ export async function getContentBySlug(slug: string) {
     const posts = await getAllPosts()
     const reference = posts.find((guide) => guide.slug === slug)
     const fileContent = await import(`../content/${slug}.md`)
-    const meta = matter(fileContent.default)
-
-    const renderer = new CustomRenderer()
-    const content = marked(meta.content, {
-        renderer,
-        highlight: function (code, language) {
-            return hljs.highlight(code, { language }).value
-        },
-    })
-
+    const result = generate(fileContent.default)
     return {
         ...reference,
-        content: content,
+        content: result.content,
         releases: await getAllReleases(),
     }
 }
 
 export async function getConfig() {
-    // const config = await import(`../config/yml`)
-    // return yaml.load(config.default)
     return {
         title: 'Krans',
         description: 'Krans',

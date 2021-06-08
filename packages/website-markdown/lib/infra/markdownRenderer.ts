@@ -4,20 +4,22 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { Renderer, Slugger } from 'marked'
 import { GuideSection } from '../markdownTypes'
+import { HeaderLevel } from '../markdownConfig'
 
 export interface DocRendererSubSection {
     title: string
     id: string
 }
 
-interface DocRendererConfig {
+interface CustomRendererProps {
+    levels: HeaderLevel[]
     blacklist: string[]
 }
 
-export class DocRenderer extends Renderer {
+export class CustomRenderer extends Renderer {
     public subsections: GuideSection[] = []
 
-    constructor(public config: DocRendererConfig) {
+    constructor(public config: CustomRendererProps) {
         super()
     }
 
@@ -25,7 +27,7 @@ export class DocRenderer extends Renderer {
     heading(text, level, raw, slugger: Slugger) {
         const slug = slugger.slug(text)
         if (
-            level === 3 &&
+            this.config.levels.includes(level) &&
             !this.config.blacklist.includes(text.toLowerCase())
         ) {
             this.subsections.push({ name: text, slug })

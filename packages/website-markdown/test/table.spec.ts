@@ -11,7 +11,7 @@ describe('table', () => {
                 fs
                     .readFileSync(path.resolve(fixtures, 'table.md'))
                     .toString('utf-8')
-            )
+            ).content
         ).toContain(`Name`)
     })
     test('body cell', () => {
@@ -20,7 +20,7 @@ describe('table', () => {
                 fs
                     .readFileSync(path.resolve(fixtures, 'table.md'))
                     .toString('utf-8')
-            )
+            ).content
         ).toContain(`<code>selector</code>`)
     })
 })

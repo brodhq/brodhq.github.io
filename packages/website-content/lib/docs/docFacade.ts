@@ -47,13 +47,10 @@ export async function getAPI(slugs: string[]): Promise<Guide> {
     const fileContent = await import(
         `../../content/docs/${reference?.section}/${reference?.filename}`
     )
-    const content = generate(fileContent.default)
-
+    const result = generate(fileContent.default)
     // @ts-expect-error
     return {
         ...reference,
-        // subsections: renderer.subsections,
-        subsections: [],
-        content: content,
+        ...result,
     }
 }

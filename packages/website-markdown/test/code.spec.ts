@@ -11,7 +11,7 @@ describe('code', () => {
                 fs
                     .readFileSync(path.resolve(fixtures, 'simple.md'))
                     .toString('utf-8')
-            )
+            ).content
         ).toContain(`<code class=\"language-typescript\"`)
     })
 })
