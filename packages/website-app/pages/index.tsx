@@ -7,7 +7,7 @@ import {
     Content,
     LogoCloud,
 } from '@geislabs/website-landing'
-import { Header, Landing } from '@geislabs/website-layout'
+import { Header } from '@geislabs/website-layout'
 import {
     getAllCases,
     getConfig,
@@ -20,6 +20,8 @@ import {
 import { outdent } from 'outdent'
 import React from 'react'
 import * as track from '../providers/tracking'
+import { getBlogLink } from 'navigation'
+import { Landing } from 'layouts'
 
 export interface HomeProps {
     title: string
@@ -39,106 +41,98 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
     return (
         <Landing.Layout
             {...props}
-            header={
-                <div className="bg-gray-800 h-screen">
-                    <Header
-                        className="bg-gray-800 mx-auto"
-                        itemClassName="text-white hover:text-gray-300"
-                        activeItemClassName="text-gray-300"
-                    />
-                    <Hero.Container
-                        className=""
-                        asset={
-                            <Carousel.List className="bg-gray-700 rounded-md overflow-hidden">
-                                <Carousel.Item>
-                                    <Browser title="api">
-                                        <Code className="prose" darkmode={true}>
-                                            {outdent`
-                                    import { fetch } from 'krans'
+            hero={
+                <Hero.Container
+                    className=""
+                    asset={
+                        <Carousel.List className="bg-gray-700 rounded-md overflow-hidden">
+                            <Carousel.Item>
+                                <Browser title="api">
+                                    <Code className="prose" darkmode={true}>
+                                        {outdent`
+                            import { fetch } from 'krans'
 
-                                    // Fetch google and parse as JSON
-                                    const data = fetch('json://google.com', ({ data }) => ({
-                                        title: data['title'].toString(),
-                                        description: data['description'].toString(),
-                                        summary: data['summary'].toString(),
-                                        createdAt: data['created_at'].toDate()
-                                    }))
+                            // Fetch google and parse as JSON
+                            const data = fetch('json://google.com', ({ data }) => ({
+                                title: data['title'].toString(),
+                                description: data['description'].toString(),
+                                summary: data['summary'].toString(),
+                                createdAt: data['created_at'].toDate()
+                            }))
 
-                                    assert data === [{ title: 'jack' }, ...]
-                                `}
-                                        </Code>
-                                    </Browser>
-                                </Carousel.Item>
-                                <Carousel.Item>
-                                    <Browser title="watch">
-                                        <Code className="prose" darkmode={true}>
-                                            {outdent`
-                                    import { fetch, watch, key, interval } from 'krans'
+                            assert data === [{ title: 'jack' }, ...]
+                        `}
+                                    </Code>
+                                </Browser>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <Browser title="watch">
+                                    <Code className="prose" darkmode={true}>
+                                        {outdent`
+                            import { fetch, watch, key, interval } from 'krans'
 
-                                    // Watch changes to API call
-                                    const changes = watch(
-                                        fetch(Json, 'https://google.com', ({ data }) => ({
-                                            title: data['title'].toString(),
-                                            description: data['description'].toString(),
-                                            summary: data['summary'].toString(),
-                                            createdAt: data['created_at'].toDate()
-                                        })), 
-                                        key('title'), 
-                                        interval(5000),
-                                        ({ data }) => console.log('I changed!', data)
-                                    )
-                                    `}
-                                        </Code>
-                                    </Browser>
-                                </Carousel.Item>
-                                <Carousel.Item>
-                                    <Browser title="browse">
-                                        <Code className="prose" darkmode={true}>
-                                            {outdent`
-                                    import { browse, wait, click } from 'krans'
-                                    
-                                    // Visit website with browser
-                                    const data = browse(
-                                        'json://google.com', 
-                                        wait('network'),
-                                        click('#details'),
-                                        ({ data }) => ({
-                                            title: data['table > tr.title'].toString(),
-                                            description: data['p.description'].toString(),
-                                            summary: data[
-                                                'table > p:first-child.summary'
-                                            ].toString(),
-                                        })
-                                    )
-                                    
-                                    assert data === [{ title: 'jack' }, ...]
-                                    `}
-                                        </Code>
-                                    </Browser>
-                                </Carousel.Item>
-                            </Carousel.List>
+                            // Watch changes to API call
+                            const changes = watch(
+                                fetch(Json, 'https://google.com', ({ data }) => ({
+                                    title: data['title'].toString(),
+                                    description: data['description'].toString(),
+                                    summary: data['summary'].toString(),
+                                    createdAt: data['created_at'].toDate()
+                                })), 
+                                key('title'), 
+                                interval(5000),
+                                ({ data }) => console.log('I changed!', data)
+                            )
+                            `}
+                                    </Code>
+                                </Browser>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <Browser title="browse">
+                                    <Code className="prose" darkmode={true}>
+                                        {outdent`
+                            import { browse, wait, click } from 'krans'
+                            
+                            // Visit website with browser
+                            const data = browse(
+                                'json://google.com', 
+                                wait('network'),
+                                click('#details'),
+                                ({ data }) => ({
+                                    title: data['table > tr.title'].toString(),
+                                    description: data['p.description'].toString(),
+                                    summary: data[
+                                        'table > p:first-child.summary'
+                                    ].toString(),
+                                })
+                            )
+                            
+                            assert data === [{ title: 'jack' }, ...]
+                            `}
+                                    </Code>
+                                </Browser>
+                            </Carousel.Item>
+                        </Carousel.List>
+                    }
+                >
+                    <Hero.Content
+                        header={<Hero.Install onCopy={handleCopy} />}
+                        title={
+                            <>
+                                <span className="md:block">
+                                    Data to enrich your
+                                </span>{' '}
+                                <span className="text-primary-400 md:block">
+                                    online business
+                                </span>
+                            </>
                         }
                     >
-                        <Hero.Content
-                            header={<Hero.Install onCopy={handleCopy} />}
-                            title={
-                                <>
-                                    <span className="md:block">
-                                        Data to enrich your
-                                    </span>{' '}
-                                    <span className="text-primary-400 md:block">
-                                        online business
-                                    </span>
-                                </>
-                            }
-                        >
-                            Anim aute id magna aliqua ad ad non deserunt sunt.
-                            Qui irure qui lorem cupidatat commodo. Elit sunt
-                            amet fugiat veniam occaecat fugiat aliqua ad ad non
-                            deserunt sunt.
-                        </Hero.Content>
-                    </Hero.Container>
-                </div>
+                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui
+                        irure qui lorem cupidatat commodo. Elit sunt amet fugiat
+                        veniam occaecat fugiat aliqua ad ad non deserunt sunt.
+                    </Hero.Content>
+                </Hero.Container>
             }
         >
             <div>
@@ -239,7 +233,11 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
             <div className="bg-white mx-auto max-w-7xl pt-16 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
                 <Blog.List
                     header={
-                        <Blog.Subscribe onSubscribe={handleEmailSubscribe} />
+                        <Blog.Subscribe
+                            title="Blog"
+                            tagline="Get notified about new Krans releases and content"
+                            onSubscribe={handleEmailSubscribe}
+                        />
                     }
                 >
                     {props.posts.map((post) => (
@@ -247,6 +245,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                             linkClassName="text-blue-500 hover:text-blue-600"
                             key={post.title}
                             post={post}
+                            href={getBlogLink(post)}
                         />
                     ))}
                 </Blog.List>

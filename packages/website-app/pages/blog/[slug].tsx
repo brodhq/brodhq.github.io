@@ -4,7 +4,8 @@ import {
     BlogPost,
     Release,
 } from '@geislabs/website-content'
-import { Content, Sidebar } from '@geislabs/website-layout'
+import { Sidebar } from '@geislabs/website-layout'
+import { Content } from 'layouts'
 import React from 'react'
 import { BlogPostMetadata } from '@views'
 
@@ -21,8 +22,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
 }) => {
     return (
         <Content.Layout
-            title={`Krans | Blog | ${post.title}`}
-            description=""
+            breadcrumbs={['Blog', post.title]}
             right={<Sidebar releases={releases} />}
         >
             <div className="space-y-3">

@@ -1,14 +1,12 @@
 import {
     getAllReleases,
-    getGuides,
-    getGuide,
     Guide,
     Release,
     Section,
     getExamples,
     getExample,
 } from '@geislabs/website-content'
-import { Content } from '@geislabs/website-layout'
+import { Content } from 'layouts'
 import { titleize } from '@utils'
 import { GuideMenu } from '@views'
 import React from 'react'
@@ -23,8 +21,7 @@ const ExamplePage: React.FC<ExampleProps> = (props) => {
     return (
         <Content.Layout
             className="space-y-3"
-            title={`Krans | Examples | ${props.guide.title}`}
-            description=""
+            breadcrumbs={['Examples', props.guide.title]}
             right={
                 <GuideMenu
                     namespace="examples"

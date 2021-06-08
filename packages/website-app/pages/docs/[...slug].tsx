@@ -6,7 +6,7 @@ import {
     Release,
     Section,
 } from '@geislabs/website-content'
-import { Content } from '@geislabs/website-layout'
+import { Content } from 'layouts'
 import { titleize } from '@utils'
 import { GuideMenu } from '@views'
 import React from 'react'
@@ -21,8 +21,7 @@ const DocsPage: React.FC<DocsPageProps> = (props) => {
     return (
         <Content.Layout
             className="space-y-3"
-            title={`Krans | Docs | ${props.api.title}`}
-            description=""
+            breadcrumbs={['Docs', props.api.title]}
             right={
                 <GuideMenu
                     namespace="docs"

@@ -11,12 +11,21 @@ export interface ContentLayoutProps {
     navItemClassName?: string
     title: string
     description: string
+    header?: React.ReactNode
     right: React.ReactNode
 }
 
 export const ContentLayout: React.FC<ContentLayoutProps> = ({
     className = '',
     brandClassName = '',
+    header = (
+        <Header
+            className="h-45 py-5 mx-auto max-w-7xl"
+            brandClassName="pt-20 pb-10 text-primary-400"
+            itemClassName="text-gray-500 hover:text-gray-600"
+            activeItemClassName="text-primary-600 hover:text-primary-600"
+        />
+    ),
     ...props
 }) => {
     return (
@@ -25,14 +34,7 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
                 <title>{props.title}</title>
                 <meta name="description" content={props.description} />
             </Head>
-            <div className="w-full mx-auto flex-shrink-0">
-                <Header
-                    className="h-45 py-5 mx-auto max-w-7xl"
-                    brandClassName="pt-20 pb-10 text-primary-400"
-                    itemClassName="text-gray-500 hover:text-gray-600"
-                    activeItemClassName="text-primary-600 hover:text-primary-600"
-                />
-            </div>
+            <div className="w-full mx-auto flex-shrink-0">{header}</div>
             <div
                 className={classNames(
                     'pt-6 pb-12',

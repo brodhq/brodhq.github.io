@@ -1,4 +1,4 @@
-import { Link, NavLink } from '@geislabs/website-ui'
+import { Link } from '@geislabs/website-ui'
 import {
     getExamples,
     getConfig,
@@ -6,9 +6,9 @@ import {
     getAllReleases,
     Section,
 } from '@geislabs/website-content'
-import { Content } from '@geislabs/website-layout'
 import React from 'react'
 import { GuideMenu } from '../components/views/guides'
+import { Content } from 'layouts'
 
 export interface ExamplePageProps {
     title: string
@@ -22,8 +22,7 @@ const ExamplePage: React.FC<ExamplePageProps> = ({ examples, ...props }) => {
     const firstHref = `/examples/${first.slug}`
     return (
         <Content.Layout
-            title="Krans | Examples"
-            description={props.description}
+            breadcrumbs={['Examples']}
             right={
                 <GuideMenu
                     namespace="examples"

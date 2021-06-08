@@ -6,7 +6,7 @@ import {
     Release,
     Section,
 } from '@geislabs/website-content'
-import { Content } from '@geislabs/website-layout'
+import { Content } from 'layouts'
 import { titleize } from '@utils'
 import { GuideMenu } from '@views'
 import React from 'react'
@@ -21,8 +21,7 @@ const GuidePage: React.FC<GuideProps> = (props) => {
     return (
         <Content.Layout
             className="space-y-3"
-            title={`Krans | Guides | ${props.guide.title}`}
-            description=""
+            breadcrumbs={['Guides', props.guide.title]}
             right={
                 <GuideMenu
                     sections={props.sections}

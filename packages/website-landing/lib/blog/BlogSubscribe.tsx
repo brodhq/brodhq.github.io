@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
 export interface BlogSubscribeProps {
+    title: React.ReactNode
+    tagline: React.ReactNode
     onSubscribe: (email: string) => Promise<void> | void
 }
 
@@ -16,13 +18,10 @@ export const BlogSubscribe: React.FC<BlogSubscribeProps> = ({
     return (
         <div>
             <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-                Press
+                {props.title}
             </h2>
             <div className="mt-3 sm:mt-4 lg:grid lg:grid-cols-2 lg:gap-5 lg:items-center">
-                <p className="text-xl text-gray-500">
-                    Get weekly articles in your inbox on how to grow your
-                    business.
-                </p>
+                <p className="text-xl text-gray-500">{props.tagline}</p>
                 <form className="mt-6 flex flex-col sm:flex-row lg:mt-0 lg:justify-end">
                     <div>
                         <label htmlFor="email-address" className="sr-only">

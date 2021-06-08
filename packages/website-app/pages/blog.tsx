@@ -5,7 +5,8 @@ import {
     BlogPost,
     Release,
 } from '@geislabs/website-content'
-import { Content, Sidebar } from '@geislabs/website-layout'
+import { Sidebar } from '@geislabs/website-layout'
+import { Content } from 'layouts'
 import { sortBy } from '@utils'
 import { BlogPostListItem } from '@views'
 import classNames from 'classnames'
@@ -22,7 +23,7 @@ const Blog: React.FC<BlogProps> = (props) => {
     const sorted = sortBy(props.posts, 'date', 'desc')
     return (
         <Content.Layout
-            title="Krans | Blog"
+            breadcrumbs={['Blog']}
             description={props.description}
             right={<Sidebar releases={props.releases} />}
         >

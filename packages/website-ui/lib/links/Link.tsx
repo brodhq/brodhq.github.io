@@ -13,7 +13,7 @@ export const Link: React.FC<LinkProps> = ({
 }) => {
     return (
         <span
-            className={classNames('inline-block text-primary-800', {
+            className={classNames('inline-block ', {
                 [className]: className,
             })}
         >

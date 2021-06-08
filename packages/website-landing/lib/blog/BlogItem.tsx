@@ -1,4 +1,5 @@
 import type { BlogPost } from '@geislabs/website-content'
+import { Link } from '@geislabs/website-ui'
 import classNames from 'classnames'
 import React from 'react'
 
@@ -12,6 +13,7 @@ export interface BlogListItemProps {
     className?: string
     linkClassName?: string
     post: BlogPost
+    href: string
 }
 
 export const BlogListItem: React.FC<BlogListItemProps> = ({
@@ -33,15 +35,15 @@ export const BlogListItem: React.FC<BlogListItemProps> = ({
                 <p className="mt-3 text-base text-gray-500">{post.summary}</p>
             </a>
             <div className="mt-3">
-                <a
-                    href={'#'}
+                <Link
+                    href={props.href}
                     className={classNames(
                         'text-base font-semibold',
                         linkClassName
                     )}
                 >
                     Read full story
-                </a>
+                </Link>
             </div>
         </div>
     )

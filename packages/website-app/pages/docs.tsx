@@ -6,7 +6,7 @@ import {
     Section,
     getAPIs,
 } from '@geislabs/website-content'
-import { Content } from '@geislabs/website-layout'
+import { Content } from 'layouts'
 import React from 'react'
 import { GuideMenu } from '../components/views/guides'
 
@@ -20,8 +20,7 @@ export interface DocPageProps {
 const DocPage: React.FC<DocPageProps> = ({ docs, ...props }) => {
     return (
         <Content.Layout
-            title="Krans | API"
-            description={props.description}
+            breadcrumbs={['API']}
             right={
                 <GuideMenu
                     namespace="docs"
