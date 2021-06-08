@@ -1,7 +1,7 @@
 {
     "private": true,
     "name": "@geislabs/website-content",
-    "version": "0.0.135",
+    "version": "0.0.136",
     "description": "> TODO: description",
     "author": "mads hargreave <mads.hargreave@gmail.com>",
     "homepage": "",
@@ -35,7 +35,7 @@
         "titleize": "^2.1.0"
     },
     "devDependencies": {
-        "@geislabs/website-markdown": "^0.0.135",
+        "@geislabs/website-markdown": "^0.0.136",
         "@krans/docgen": "^0.0.6",
         "@octokit/rest": "^18.5.6"
     }
