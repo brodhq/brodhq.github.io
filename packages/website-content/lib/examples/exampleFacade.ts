@@ -1,10 +1,7 @@
 import matter from 'gray-matter'
-import marked from 'marked'
+import { generate } from '@geislabs/website-markdown'
 import path from 'path'
-import hljs from 'highlight.js'
-import { CustomRenderer } from '../renderer'
 import { Guide, GuideReference, Section } from '../types'
-import { ExampleReference } from './exampleTypes'
 
 export async function getExamples(): Promise<Array<Section>> {
     const sections: Section[] = []
@@ -43,21 +40,13 @@ export async function getExample(slugs: string[]): Promise<Guide> {
     const fileContent = await import(
         `../../content/examples/${reference?.filename}`
     )
-    const meta = matter(fileContent.default)
-    const renderer = new CustomRenderer()
-    const content = marked(meta.content, {
-        renderer,
-        highlight: function (code, lang) {
-            const language = hljs.getLanguage(lang) ? lang : 'plaintext'
-            return hljs.highlight(code, { language }).value
-        },
-        headerIds: true,
-    })
+    const content = generate(fileContent.default)
 
     // @ts-expect-error
     return {
         ...reference,
-        subsections: renderer.subsections,
+        // subsections: renderer.subsections,
+        subsections: [],
         content: content,
     }
 }

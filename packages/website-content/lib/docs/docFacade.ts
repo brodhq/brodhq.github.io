@@ -1,10 +1,7 @@
+import { generate } from '@geislabs/website-markdown'
 import matter from 'gray-matter'
-import marked from 'marked'
 import path from 'path'
-import hljs from 'highlight.js'
-import { Guide } from '../types'
-import { GuideReference, Section } from '../types'
-import { DocRenderer } from './docRenderer'
+import { GuideReference, Section, Guide } from '../types'
 
 export async function getAPIs(): Promise<Array<Section>> {
     const sections: Section[] = []
@@ -50,23 +47,13 @@ export async function getAPI(slugs: string[]): Promise<Guide> {
     const fileContent = await import(
         `../../content/docs/${reference?.section}/${reference?.filename}`
     )
-    const meta = matter(fileContent.default)
-    const renderer = new DocRenderer({
-        blacklist: ['interfaces', 'functions', 'methods'],
-    })
-    const content = marked(meta.content, {
-        renderer,
-        highlight: function (code, lang) {
-            const language = hljs.getLanguage(lang) ? lang : 'plaintext'
-            return hljs.highlight(code, { language }).value
-        },
-        headerIds: true,
-    })
+    const content = generate(fileContent.default)
 
     // @ts-expect-error
     return {
         ...reference,
-        subsections: renderer.subsections,
+        // subsections: renderer.subsections,
+        subsections: [],
         content: content,
     }
 }

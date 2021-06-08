@@ -1,6 +1,9 @@
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import { Code } from '@geislabs/website-ui'
 import { Renderer, Slugger } from 'marked'
 import { outdent } from 'outdent'
-import { GuideSection } from '../types'
+import { GuideSection } from '../markdownTypes'
 import hljs from 'highlight.js'
 
 export interface DocRendererSubSection {
@@ -91,17 +94,13 @@ export class DocRenderer extends Renderer {
     }
 
     code(text: string) {
-        const highlighed = hljs
-            .highlight(text.trim(), {
-                language: 'typescript',
-            })
-            .value.trim()
-        return outdent`
-            <pre class="text-sm font-small p-4 bg-gray-700 text-gray-400 rounded-lg shadow-md">
-                <code>${highlighed}</code>
-            </pre>
-        `
+        const element = React.createElement(Code, {
+            darkmode: true,
+            children: text,
+        })
+        return renderToString(element)
     }
+
     // blockquote(text) {
     //     return `<blockquote class="px-1 bg-primary-50 text-primary-900">${text}</blockquote>`
     // }

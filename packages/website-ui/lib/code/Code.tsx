@@ -7,15 +7,20 @@ import { darkTheme } from './themes'
 export interface CodeProps {
     className?: string
     darkmode?: boolean
+    children: string
 }
 
 export const Code: React.FC<CodeProps> = ({
     children,
-    className,
+    className = 'text-sm font-small p-4 rounded-lg shadow-md',
     darkmode = false,
 }) => {
     return (
-        <code className={classNames('block', className)}>
+        <div
+            className={classNames('block', className, {
+                'bg-gray-700 text-gray-400': darkmode,
+            })}
+        >
             <SyntaxHighlighter
                 customStyle={{
                     textAlign: 'left',
@@ -30,6 +35,6 @@ export const Code: React.FC<CodeProps> = ({
             >
                 {children}
             </SyntaxHighlighter>
-        </code>
+        </div>
     )
 }
