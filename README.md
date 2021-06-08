@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  Website for [krans.io](https://krans.io)
+  Website for <a href='https://krans.io'>krans.io</a>
 </p>
 
 <p align="center">
