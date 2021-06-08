@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { NextWebVitalsMetric } from 'next/dist/next-server/lib/utils'
 import * as ga from '../providers/tracking'
 import 'tailwindcss/tailwind.css'
 import 'highlight.js/styles/atom-one-dark.css'
@@ -33,4 +34,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     return <Component {...pageProps} />
 }
 
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+    console.log(metric)
+}
 export default App
