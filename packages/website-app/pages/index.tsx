@@ -22,6 +22,7 @@ import React from 'react'
 import * as track from '../providers/tracking'
 import { getBlogLink } from 'navigation'
 import { Landing } from 'layouts'
+import config from '../config.json'
 
 export interface HomeProps {
     title: string
@@ -116,7 +117,12 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                     }
                 >
                     <Hero.Content
-                        header={<Hero.Install onCopy={handleCopy} />}
+                        header={
+                            <Hero.Install
+                                onCopy={handleCopy}
+                                value={config.npm.installScript}
+                            />
+                        }
                         title={
                             <>
                                 <span className="md:block">

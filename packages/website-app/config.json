@@ -4,5 +4,8 @@
     },
     "github": {
         "repository": "kransio/krans"
+    },
+    "npm": {
+        "installScript": "npm install krans --save"
     }
 }
