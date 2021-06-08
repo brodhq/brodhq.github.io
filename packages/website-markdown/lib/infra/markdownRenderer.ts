@@ -1,7 +1,7 @@
-import { Code, Table } from '@geislabs/website-ui'
 import parse, { domToReact } from 'html-react-parser'
+import { Code, Table, Codespan } from '@geislabs/website-ui'
 import React from 'react'
-import { renderToString } from 'react-dom/server'
+import { renderToStaticMarkup } from 'react-dom/server'
 import { Renderer, Slugger } from 'marked'
 import { GuideSection } from '../markdownTypes'
 import { HeaderLevel } from '../markdownConfig'
@@ -82,7 +82,7 @@ export class CustomRenderer extends Renderer {
                 },
             }),
         })
-        return renderToString(element)
+        return renderToStaticMarkup(element)
     }
 
     code(text: string) {
@@ -90,7 +90,14 @@ export class CustomRenderer extends Renderer {
             darkmode: true,
             children: text,
         })
-        return renderToString(element)
+        return renderToStaticMarkup(element)
+    }
+
+    codespan(text: string) {
+        const element = React.createElement(Codespan, {
+            children: text,
+        })
+        return renderToStaticMarkup(element)
     }
 
     // @ts-expect-error

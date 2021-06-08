@@ -21,6 +21,6 @@ describe('table', () => {
                     .readFileSync(path.resolve(fixtures, 'table.md'))
                     .toString('utf-8')
             ).content
-        ).toContain(`<code>selector</code>`)
+        ).toContain(`A valid jsonpath selector string`)
     })
 })
