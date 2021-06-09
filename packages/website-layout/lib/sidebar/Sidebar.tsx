@@ -1,12 +1,12 @@
 import { Menu, MenuLink } from '@geislabs/website-ui'
-import { Release } from '@geislabs/website-content'
+// import { Release } from '@geislabs/website-content'
 import { sortBy } from '../utils/array'
 import Link from 'next/link'
 import React from 'react'
 
 export interface SidebarProps {
     className?: string
-    releases?: Release[]
+    releases?: any[]
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({

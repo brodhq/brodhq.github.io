@@ -12,6 +12,7 @@ export interface ContentLayoutProps {
     title: string
     description: string
     header?: React.ReactNode
+    footer?: React.ReactNode
     right: React.ReactNode
 }
 
@@ -45,6 +46,7 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
                 <div className="col-span-1">{props.right}</div>
             </div>
             <div className="w-full">
+                {props.footer}
                 <Footer />
             </div>
         </main>
