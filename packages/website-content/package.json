@@ -21,7 +21,7 @@
         "access": "public"
     },
     "scripts": {
-        "clean": "rimraf dist && npm run sync:clean",
+        "clean": "rimraf dist",
         "build": "npm run clean && tsc",
         "watch": "npm run clean && tsc -w",
         "sync": "npm run sync:docs & npm run sync:examples && npm run sync:guides",
