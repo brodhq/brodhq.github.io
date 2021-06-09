@@ -24,6 +24,14 @@ jobs:
           npm run build
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          NEXT_PUBLIC_GOOGLE_ANALYTICS: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS }}
 
       - name: Run unit tests
         run: npm run test:unit
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: packages/website-app/out # The folder the action should deploy.
+          target-folder: '/' # If you'd like to push the contents of the deployment folder into a specific directory on the deployment branch you can specify it here.
