@@ -1,5 +1,3 @@
-import { NavLink, NavLinkProps } from '@geislabs/website-ui'
-import { Github } from '@icons-pack/react-simple-icons'
 import classNames from 'classnames'
 import React from 'react'
 
@@ -10,13 +8,7 @@ export interface HeaderProps {
     activeItemClassName?: string
 }
 
-export const Header: React.FC<HeaderProps> = ({
-    className = '',
-    brandClassName = 'text-gray-100',
-    itemClassName = '',
-    activeItemClassName = '',
-    children,
-}) => {
+export const Header: React.FC<HeaderProps> = ({ className = '', children }) => {
     return (
         <nav
             className={classNames(

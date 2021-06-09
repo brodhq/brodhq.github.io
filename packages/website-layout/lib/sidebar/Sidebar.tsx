@@ -1,5 +1,4 @@
 import { Menu, MenuLink } from '@geislabs/website-ui'
-// import { Release } from '@geislabs/website-content'
 import { sortBy } from '../utils/array'
 import Link from 'next/link'
 import React from 'react'

@@ -1,4 +1,4 @@
-import { NavLink, NavLinkProps } from '@geislabs/website-ui'
+import { NavLinkProps } from '@geislabs/website-ui'
 import classNames from 'classnames'
 import React from 'react'
 import { HeaderItem } from './HeaderItem'

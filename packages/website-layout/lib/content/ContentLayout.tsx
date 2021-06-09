@@ -1,4 +1,3 @@
-import { NavLink, NavLinkProps } from '@geislabs/website-ui'
 import Head from 'next/head'
 import classNames from 'classnames'
 import React from 'react'

@@ -3,9 +3,9 @@ const path = require('path')
 module.exports = {
     target: 'serverless',
     distDir: 'build',
-    future: {
-        webpack5: true,
-    },
+    // future: {
+    //     webpack5: true,
+    // },
     webpack: function (config) {
         config.module.rules.push({ test: /\.md$/, use: 'raw-loader' })
         config.module.rules.push({ test: /\.yml$/, use: 'raw-loader' })
