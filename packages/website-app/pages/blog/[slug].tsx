@@ -3,6 +3,7 @@ import { BlogPost, Detail } from '@geislabs/website-blog'
 import React from 'react'
 import { ContentSidebar, ContentHeader } from 'layouts/common'
 import { useSubscribe } from 'hooks'
+import { Twitter } from '../../config/index'
 
 export interface BlogPostPageProps {
     content: string
@@ -22,7 +23,10 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
             header={<ContentHeader />}
             right={
                 <ContentSidebar>
-                    <Detail.ShareMenu post={post} />
+                    <Detail.ShareMenu
+                        post={post}
+                        twitterHandle={Twitter.getTwitterHandle()}
+                    />
                 </ContentSidebar>
             }
             subscribe={<Detail.Subscribe onSubmit={subscribe.onSubmit} />}

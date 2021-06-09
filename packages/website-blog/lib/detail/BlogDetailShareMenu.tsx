@@ -24,6 +24,7 @@ export const BlogDetailShareMenu: React.FC<BlogDetailShareMenuProps> = ({
     // @ts-expect-error
     const url = process.browser ? window.location : ''
     const twitterRelated = props.twitterHandle ? [props.twitterHandle] : []
+    console.log(twitterRelated)
     return (
         <Menu title="Share">
             <div className="space-x-3">
