@@ -31,7 +31,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         posts.push({
             ...meta.data,
             // Scope assets under namespace
-            image: ['/', path.join('blog', meta.data.image)].join(''),
+            // image: ['/', path.join(meta.data.image)].join(''),
             slug: post.replace('.md', ''),
             date: dateString,
         })

@@ -1,11 +1,13 @@
 import { Content } from '@geislabs/website-layout'
+import classNames from 'classnames'
 import React, { ReactNode } from 'react'
-import Image from 'next/image'
 import { BlogPost } from '../blogTypes'
 import { formatDate } from '../list/BlogListPage'
 
 export interface BlogListLayoutProps {
     className?: string
+    emphasizeTextClassName?: string
+    emphasizeButtonClassName?: string
     right: ReactNode
     breadcrumbs?: string[]
     description?: string
@@ -18,9 +20,12 @@ export const BlogDetailLayout: React.FC<BlogListLayoutProps> = ({
     breadcrumbs = [],
     description = '',
     post,
+    emphasizeTextClassName = 'text-red-400',
+    emphasizeButtonClassName = 'text-white bg-red-400 hover:bg-red-500 focus:ring-red-400',
     ...props
 }) => {
     const title = ['Krans', ...breadcrumbs].join(' | ')
+    const image = require(`../../public/${post.image}?resize`)
     return (
         <Content.Layout
             header={
@@ -30,7 +35,16 @@ export const BlogDetailLayout: React.FC<BlogListLayoutProps> = ({
                         <div className="mx-auto">
                             <div className="space-y-10 flex flex-col justify-center items-center">
                                 <div className="flex shadow-lg border-4 border-white rounded-lg">
-                                    <Image
+                                    <img
+                                        style={{ objectFit: 'cover' }}
+                                        className="rounded-lg"
+                                        srcSet={image.srcSet}
+                                        src={image.src}
+                                        alt={post.title}
+                                        width={350}
+                                        height={250}
+                                    />
+                                    {/* <Image
                                         className="rounded-lg"
                                         src={post.image}
                                         alt={post.title}
@@ -39,11 +53,14 @@ export const BlogDetailLayout: React.FC<BlogListLayoutProps> = ({
                                         quality={75}
                                         width={350}
                                         height={250}
-                                    />
+                                    /> */}
                                 </div>
                                 <div className="space-y-4 flex flex-col justify-center items-center">
                                     <a
-                                        className="text-sm tracking-tight text-red-400 uppercase font-semibold"
+                                        className={classNames(
+                                            'text-sm tracking-tight  uppercase font-semibold',
+                                            emphasizeTextClassName
+                                        )}
                                         href=""
                                     >
                                         {post.category}
@@ -100,7 +117,10 @@ export const BlogDetailLayout: React.FC<BlogListLayoutProps> = ({
                                 <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                                     <button
                                         type="submit"
-                                        className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-red-400"
+                                        className={classNames(
+                                            'w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800',
+                                            emphasizeButtonClassName
+                                        )}
                                     >
                                         Notify me
                                     </button>
