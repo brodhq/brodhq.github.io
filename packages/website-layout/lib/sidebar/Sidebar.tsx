@@ -5,16 +5,19 @@ import React from 'react'
 
 export interface SidebarProps {
     className?: string
+    itemClassName?: string
     releases?: any[]
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
     className = '',
+    itemClassName = 'text-primary-700',
+    children,
     releases = [],
 }) => {
     const [release] = sortBy(releases, 'date', 'desc')
-    const title = `News: ${release.title}`
-    const href = `/blog/${release.slug}`
+    const title = `News: ${release?.title}`
+    const href = `/blog/${release?.slug}`
     return (
         <div className="space-y-5">
             {release && (
@@ -23,15 +26,28 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </span>
             )}
             <Menu title="Official channels">
-                <MenuLink href="/">Source code & Issues tracker</MenuLink>
-                <MenuLink href="/">#geis-lang on freenode IRC</MenuLink>
-                <MenuLink href="/">@geislang on Twitter</MenuLink>
+                <MenuLink className={itemClassName} href="/">
+                    Source code & Issues tracker
+                </MenuLink>
+                <MenuLink className={itemClassName} href="/">
+                    #geis-lang on freenode IRC
+                </MenuLink>
+                <MenuLink className={itemClassName} href="/">
+                    @geislang on Twitter
+                </MenuLink>
             </Menu>
             <Menu title="Join the community">
-                <MenuLink href="/">Hex.pm package manager</MenuLink>
-                <MenuLink href="/">Geis Forum</MenuLink>
-                <MenuLink href="/">Geis on Slack</MenuLink>
+                <MenuLink className={itemClassName} href="/">
+                    Hex.pm package manager
+                </MenuLink>
+                <MenuLink className={itemClassName} href="/">
+                    Geis Forum
+                </MenuLink>
+                <MenuLink className={itemClassName} href="/">
+                    Geis on Slack
+                </MenuLink>
             </Menu>
+            {children && <div>{children}</div>}
         </div>
     )
 }
