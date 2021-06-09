@@ -28,12 +28,12 @@ export const BlogListItem: React.FC<BlogListItemProps> = ({
                     {INTL.format(new Date(post.date))}
                 </time>
             </p>
-            <a href="#" className="mt-2 block">
-                <p className="text-xl font-semibold text-gray-900">
+            <a href={props.href} className="mt-2 block">
+                <h4 className="text-xl font-semibold text-gray-900">
                     {post.title}
-                </p>
-                <p className="mt-3 text-base text-gray-500">{post.summary}</p>
+                </h4>
             </a>
+            <p className="mt-3 text-base text-gray-500">{post.summary}</p>
             <div className="mt-3">
                 <Link
                     href={props.href}

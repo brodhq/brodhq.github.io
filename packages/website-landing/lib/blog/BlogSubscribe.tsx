@@ -11,10 +11,13 @@ export const BlogSubscribe: React.FC<BlogSubscribeProps> = ({
     ...props
 }) => {
     const [email, setEmail] = useState('')
-    const handleSubmit = () => {
+
+    const handleSubmit: React.FormEventHandler = (event) => {
+        event.preventDefault()
         props.onSubscribe(email)
         setEmail('')
     }
+
     return (
         <div>
             <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
@@ -22,7 +25,10 @@ export const BlogSubscribe: React.FC<BlogSubscribeProps> = ({
             </h2>
             <div className="mt-3 sm:mt-4 lg:grid lg:grid-cols-2 lg:gap-5 lg:items-center">
                 <p className="text-xl text-gray-500">{props.tagline}</p>
-                <form className="mt-6 flex flex-col sm:flex-row lg:mt-0 lg:justify-end">
+                <form
+                    className="mt-6 flex flex-col sm:flex-row lg:mt-0 lg:justify-end"
+                    onSubmit={handleSubmit}
+                >
                     <div>
                         <label htmlFor="email-address" className="sr-only">
                             Email address
@@ -41,8 +47,7 @@ export const BlogSubscribe: React.FC<BlogSubscribeProps> = ({
                     </div>
                     <div className="mt-2 flex-shrink-0 w-full flex rounded-md shadow-sm sm:mt-0 sm:ml-3 sm:w-auto sm:inline-flex">
                         <button
-                            onClick={handleSubmit}
-                            type="button"
+                            type="submit"
                             className="w-full bg-primary-600 px-4 py-2 border border-transparent rounded-md flex items-center justify-center text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:w-auto sm:inline-flex"
                         >
                             Notify me

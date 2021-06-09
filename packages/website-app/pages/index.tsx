@@ -21,6 +21,7 @@ import * as track from '../providers/tracking'
 import { getBlogLink } from 'navigation'
 import { Landing } from 'layouts'
 import config from '../config.json'
+import { useSubscribe } from 'hooks'
 
 export interface HomeProps {
     title: string

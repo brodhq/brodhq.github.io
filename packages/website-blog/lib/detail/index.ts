@@ -1,8 +1,12 @@
 export {
-    BlogDetailPage as DetailPage,
-    BlogDetailPageProps as DetailPageProps,
+    BlogDetailPage as Page,
+    BlogDetailPageProps as PageProps,
 } from './BlogDetailPage'
 export {
-    BlogDetailLayout as DetailLayoutPage,
-    BlogListLayoutProps as DetailLayoutPageProps,
+    BlogDetailLayout as Layout,
+    BlogListLayoutProps as LayoutProps,
 } from './BlogDetailLayout'
+export {
+    BlogDetailSubscribe as Subscribe,
+    BlogDetailSubscribeProps as SubscribeProps,
+} from './BlogDetailSubscribe'

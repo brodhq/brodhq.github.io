@@ -20,6 +20,7 @@ export const pageview = (url) => {
 
 // log specific events happening.
 export const event = ({ action, params }) => {
+    console.info(`EVENT -> ${action}`, params)
     // @ts-expect-error
     window.gtag('event', action, params)
 }
