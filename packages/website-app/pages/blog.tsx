@@ -2,47 +2,42 @@ import {
     getAllPosts,
     getAllReleases,
     getConfig,
-    Release,
 } from '@geislabs/website-content'
-import { Sidebar } from '@geislabs/website-layout'
-import { Blog } from '@geislabs/website-ui'
-import { Content } from 'layouts'
+import { ListLayoutPage, ListPage, ListPageProps } from '@geislabs/website-blog'
 import { sortBy } from '@utils'
-import { BlogPostListItem } from '@views'
-import classNames from 'classnames'
 import React from 'react'
 import { getBlogLink } from 'navigation'
+import { Header } from 'layouts/common'
+import { Sidebar } from '@geislabs/website-layout'
 
-export interface BlogProps {
+export interface BlogProps
+    extends Pick<ListPageProps, 'posts' | 'releases' | 'description'> {
     title: string
-    description: string
-    posts: Blog.BlogPost[]
-    releases: Release[]
 }
 
 const BlogPage: React.FC<BlogProps> = (props) => {
     return (
-        <Content.Layout
-            breadcrumbs={['Blog']}
-            description={props.description}
+        <ListLayoutPage
+            header={
+                <Header
+                    className=""
+                    brandClassName="text-primary-400"
+                    itemClassName="text-gray-500 hover:text-gray-600"
+                />
+            }
             right={<Sidebar releases={props.releases} />}
         >
-            <Blog.List>
-                {props.posts.map((post) => (
-                    <Blog.Item
-                        href={getBlogLink(post)}
-                        className="pb-8"
-                        buttonClassName="text-primary-500"
-                        post={post}
-                    />
-                ))}
-            </Blog.List>
-            <ul className="space-y-8"></ul>
-        </Content.Layout>
+            <ListPage
+                releases={props.releases}
+                description={props.description}
+                posts={props.posts}
+                getBlogLink={getBlogLink}
+            />
+        </ListLayoutPage>
     )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(): Promise<{ props: BlogProps }> {
     const config = await getConfig()
     const allPosts = await getAllPosts()
     const releases = await getAllReleases()

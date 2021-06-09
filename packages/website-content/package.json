@@ -36,6 +36,7 @@
     },
     "devDependencies": {
         "@geislabs/website-markdown": "^0.0.153",
+        "@geislabs/website-blog": "^0.0.153",
         "@krans/docgen": "^0.0.6",
         "@octokit/rest": "^18.5.6"
     }

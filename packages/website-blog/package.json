@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "@geislabs/website-layout",
+    "name": "@geislabs/website-blog",
     "version": "0.0.153",
     "description": "> TODO: description",
     "author": "mads hargreave <mads.hargreave@gmail.com>",
@@ -13,7 +13,8 @@
         "dist": "dist"
     },
     "files": [
-        "dist"
+        "dist",
+        "content"
     ],
     "publishConfig": {
         "registry": "http://registry.npmjs.org/",
@@ -25,6 +26,7 @@
         "watch": "npm run clean && tsc -w"
     },
     "devDependencies": {
+        "@geislabs/website-layout": "^0.0.153",
         "@geislabs/website-ui": "^0.0.153"
     },
     "peerDependencies": {

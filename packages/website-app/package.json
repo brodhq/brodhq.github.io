@@ -19,6 +19,7 @@
         "@geislabs/website-landing": "^0.0.153",
         "@geislabs/website-layout": "^0.0.153",
         "@geislabs/website-ui": "^0.0.153",
+        "@geislabs/website-blog": "^0.0.153",
         "@headlessui/react": "^1.2.0",
         "@heroicons/react": "^1.0.1",
         "@tailwindcss/typography": "^0.4.1",

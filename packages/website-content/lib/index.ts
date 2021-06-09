@@ -1,7 +1,7 @@
+import { generate } from '@geislabs/website-markdown'
 import matter from 'gray-matter'
 import { BlogPost, Release, Usecase } from './types'
 import { sortBy, sluggify } from './utils'
-import { generate } from '@geislabs/website-markdown'
 
 export * from './guides'
 export * from './docs'
@@ -14,41 +14,24 @@ export async function getMostRecentPosts(limit = 10): Promise<BlogPost[]> {
 
 export async function getAllPosts(): Promise<BlogPost[]> {
     // @ts-expect-error
-    const context = require.context('../content/blog', false, /\.md$/)
+    const context = require.context(
+        '../node_modules/@geislabs/website-blog/content',
+        false,
+        /\.md$/
+    )
     const posts = []
     for (const key of context.keys()) {
         const post = key.slice(2)
         const dateString = post.slice(0, 10)
-        const content = await import(`../content/blog/${post}`)
+        const content = await import(
+            `../node_modules/@geislabs/website-blog/content/${post}`
+        )
         const meta = matter(content.default)
         posts.push({
             ...meta.data,
             slug: post.replace('.md', ''),
             date: dateString,
         })
-    }
-    // @ts-expect-error
-    return posts
-}
-
-export async function getAllCases(): Promise<Usecase[]> {
-    // @ts-expect-error
-    const context = require.context('../content/blog', false, /\.md$/)
-    const posts = []
-    for (const key of context.keys()) {
-        const post = key.slice(2)
-        const content = await import(`../content/blog/${post}`)
-        const meta = matter(content.default)
-        if (
-            meta.data.category &&
-            sluggify(meta.data.category) === 'geis-in-production'
-        ) {
-            posts.push({
-                ...meta.data,
-                slug: post.replace('.md', ''),
-                tags: meta.data.tags?.split(' '),
-            })
-        }
     }
     // @ts-expect-error
     return posts
@@ -64,7 +47,9 @@ export async function getAllReleases(): Promise<Release[]> {
 export async function getPostBySlug(slug: string) {
     const posts = await getAllPosts()
     const reference = posts.find((guide) => guide.slug === slug)
-    const fileContent = await import(`../content/blog/${slug}.md`)
+    const fileContent = await import(
+        `../node_modules/@geislabs/website-blog/content/${slug}.md`
+    )
     const result = generate(fileContent.default)
     return {
         post: reference,
