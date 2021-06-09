@@ -1,8 +1,9 @@
 <p align="center">
   <a href="https://krans.io">
-    <img alt="krans" src="https://raw.githubusercontent.com/kransio/assets/master/icons/png/icon-brand.png" width="128">
+    <img alt="krans" src="https://raw.githubusercontent.com/kransio/assets/master/icons/png/icon-header-repository.png" width="128">
   </a>
 </p>
+
 
 <p align="center">
   Website for <a href='https://krans.io'>krans.io</a>
