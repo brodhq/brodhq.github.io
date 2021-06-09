@@ -1,5 +1,6 @@
 import { Content } from '@geislabs/website-layout'
 import React, { ReactNode } from 'react'
+import Image from 'next/image'
 import { BlogPost } from '../blogTypes'
 import { formatDate } from '../list/BlogListPage'
 
@@ -28,11 +29,18 @@ export const BlogDetailLayout: React.FC<BlogListLayoutProps> = ({
                     <div className="py-20 w-full min-h-20 bg-blue-50 text-gray-800 flex justify-center">
                         <div className="mx-auto">
                             <div className="space-y-10 flex flex-col justify-center items-center">
-                                <img
-                                    className="mb shadow-lg border-2 border-white rounded-lg mx-auto"
-                                    src="https://via.placeholder.com/350x200"
-                                    alt=""
-                                />
+                                <div className="flex shadow-lg border-4 border-white rounded-lg">
+                                    <Image
+                                        className="rounded-lg"
+                                        src={post.image}
+                                        alt={post.title}
+                                        layout="fixed"
+                                        objectFit="cover"
+                                        quality={75}
+                                        width={350}
+                                        height={250}
+                                    />
+                                </div>
                                 <div className="space-y-4 flex flex-col justify-center items-center">
                                     <a
                                         className="text-sm tracking-tight text-red-400 uppercase font-semibold"

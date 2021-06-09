@@ -1,5 +1,6 @@
 import { generate } from '@geislabs/website-markdown'
 import matter from 'gray-matter'
+import path from 'path'
 import { BlogPost, Release, Usecase } from './types'
 import { sortBy, sluggify } from './utils'
 
@@ -29,6 +30,8 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         const meta = matter(content.default)
         posts.push({
             ...meta.data,
+            // Scope assets under namespace
+            image: ['/', path.join('blog', meta.data.image)].join(''),
             slug: post.replace('.md', ''),
             date: dateString,
         })

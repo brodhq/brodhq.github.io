@@ -5,4 +5,5 @@ export interface BlogPost {
     summary: string
     category: string
     date: string
+    image: string
 }

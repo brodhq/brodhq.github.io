@@ -9,7 +9,11 @@
         "watch": "npm run dev",
         "build": "next build && next export && npm run nojekyll",
         "nojekyll": "cp .nojekyll out/.nojekyll",
-        "start": "next start"
+        "start": "next start",
+        "prepare": "npm run prepare:symlink",
+        "prepare:symlink": "npm run prepare:symlink:blog",
+        "prepare:symlink:blog": "symlink-dir node_modules/@geislabs/website-blog/public public/blog",
+        "postinstall": "npm run prepare"
     },
     "keywords": [],
     "author": "",

@@ -14,6 +14,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
     post,
     releases,
     content,
+    ...props
 }) => {
     return (
         <DetailLayoutPage
