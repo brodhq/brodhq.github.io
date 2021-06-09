@@ -1,7 +1,7 @@
 import { generate } from '@geislabs/website-markdown'
+import { BlogPost } from '@geislabs/website-blog'
 import matter from 'gray-matter'
 import path from 'path'
-import { BlogPost, Release, Usecase } from './types'
 import { sortBy, sluggify } from './utils'
 
 export * from './guides'
