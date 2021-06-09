@@ -1,6 +1,6 @@
 import { Content } from '@geislabs/website-layout'
 import React, { ReactNode } from 'react'
-import { Header } from '../common'
+import { ContentHeader } from '../common'
 
 export interface ContentLayoutViewProps {
     className?: string
@@ -18,12 +18,7 @@ export const ContentLayoutView: React.FC<ContentLayoutViewProps> = ({
     const title = ['Krans', ...breadcrumbs].join(' | ')
     return (
         <Content.Layout
-            header={
-                <Header
-                    brandClassName="text-primary-400"
-                    itemClassName="text-gray-500 hover:text-gray-600"
-                />
-            }
+            header={<ContentHeader />}
             title={title}
             description={description}
             right={props.right}

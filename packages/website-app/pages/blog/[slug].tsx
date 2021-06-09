@@ -2,7 +2,7 @@ import { getPostBySlug, getAllPosts, Release } from '@geislabs/website-content'
 import { Sidebar } from '@geislabs/website-layout'
 import { BlogPost, DetailLayoutPage, DetailPage } from '@geislabs/website-blog'
 import React from 'react'
-import { Header } from 'layouts/common'
+import { ContentHeader, Header } from 'layouts/common'
 
 export interface BlogPostPageProps {
     content: string
@@ -19,13 +19,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
     return (
         <DetailLayoutPage
             post={post}
-            header={
-                <Header
-                    className=""
-                    brandClassName="text-primary-400"
-                    itemClassName="text-gray-500 hover:text-gray-600"
-                />
-            }
+            header={<ContentHeader />}
             right={<Sidebar releases={releases} />}
         >
             <DetailPage

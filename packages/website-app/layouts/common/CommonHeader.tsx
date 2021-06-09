@@ -24,7 +24,7 @@ export const CommonLayoutHeader: React.FC<CommonLayoutHeaderProps> = ({
             <Header.Brand className={brandClassName} href="/" />
             <Header.List
                 className="space-x-10 flex items-center w-full"
-                itemClassName={itemClassName}
+                itemClassName={classNames(itemClassName, '')}
                 activeItemClassName="text-primary-600 hover:text-primary-600"
             >
                 <Header.Item match="/docs" href="/docs">
@@ -44,7 +44,7 @@ export const CommonLayoutHeader: React.FC<CommonLayoutHeaderProps> = ({
                 </Header.Item>
             </Header.List>
             <Header.List
-                itemClassName={itemClassName}
+                itemClassName={classNames(itemClassName, '')}
                 className="flex flex-1 justify-end"
             >
                 <a href={repoHref} target="_blank">

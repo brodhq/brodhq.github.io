@@ -7,9 +7,7 @@ import {
     Content,
     LogoCloud,
 } from '@geislabs/website-landing'
-import { Header } from '@geislabs/website-layout'
 import {
-    getAllCases,
     getConfig,
     getAllReleases,
     Release,
@@ -262,12 +260,10 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
 
 export async function getStaticProps() {
     const config = await getConfig()
-    const cases = await getAllCases()
     const releases = await getAllReleases()
     const recentPosts = await getMostRecentPosts(4)
     return {
         props: {
-            cases: cases.slice(0, 3),
             releases: releases,
             title: config.title,
             description: config.description,
