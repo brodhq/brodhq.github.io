@@ -16,7 +16,6 @@ export const BlogListPage: React.FC<BlogListPageProps> = ({ ...props }) => {
                 <Blog.Item
                     href={props.getBlogLink(post)}
                     className="pb-8"
-                    buttonClassName="text-primary-500"
                     post={post}
                 />
             ))}

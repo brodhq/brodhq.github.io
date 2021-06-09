@@ -1,4 +1,4 @@
-import { Link } from '@geislabs/website-ui'
+import { Button, Link } from '@geislabs/website-ui'
 import {
     getExamples,
     getConfig,
@@ -44,13 +44,9 @@ const ExamplePage: React.FC<ExamplePageProps> = ({ examples, ...props }) => {
                     <Link href="/">Geis Companies website</Link>, which is
                     maintained by the community.
                 </p>
-                <Link href={firstHref}>
-                    <div className="flex">
-                        <div className="cursor-pointer px-4 py-2 rounded-md btn-primary-minimal">
-                            First example
-                        </div>
-                    </div>
-                </Link>
+                <Button.Primary href={firstHref} minimal={true}>
+                    First example
+                </Button.Primary>
             </div>
         </Content.Layout>
     )
