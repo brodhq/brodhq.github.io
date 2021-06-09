@@ -1,7 +1,6 @@
 import { generate } from '@geislabs/website-markdown'
 import { BlogPost } from '@geislabs/website-blog'
 import matter from 'gray-matter'
-import path from 'path'
 import { sortBy, sluggify } from './utils'
 
 export * from './guides'
@@ -16,7 +15,7 @@ export async function getMostRecentPosts(limit = 10): Promise<BlogPost[]> {
 export async function getAllPosts(): Promise<BlogPost[]> {
     // @ts-expect-error
     const context = require.context(
-        '../node_modules/@geislabs/website-blog/content',
+        '@geislabs/website-blog/content',
         false,
         /\.md$/
     )
@@ -24,16 +23,17 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     for (const key of context.keys()) {
         const post = key.slice(2)
         const dateString = post.slice(0, 10)
-        const content = await import(
-            `../node_modules/@geislabs/website-blog/content/${post}`
-        )
+        const postname = post.slice(11)
+        const content = await import(`@geislabs/website-blog/content/${post}`)
+        // console.log(content.default)
         const meta = matter(content.default)
         posts.push({
             ...meta.data,
             // Scope assets under namespace
             // image: ['/', path.join(meta.data.image)].join(''),
-            slug: post.replace('.md', ''),
+            slug: postname.replace('.md', ''),
             date: dateString,
+            content: meta.content,
         })
     }
     // @ts-expect-error
@@ -50,10 +50,10 @@ export async function getAllReleases(): Promise<BlogPost[]> {
 export async function getPostBySlug(slug: string) {
     const posts = await getAllPosts()
     const reference = posts.find((guide) => guide.slug === slug)
-    const fileContent = await import(
-        `../node_modules/@geislabs/website-blog/content/${slug}.md`
-    )
-    const result = generate(fileContent.default)
+    if (!reference) {
+        throw new Error(`post with slug '${slug}' not found`)
+    }
+    const result = generate(reference.content)
     return {
         post: reference,
         content: result.content,
@@ -81,3 +81,8 @@ export async function getConfig() {
 }
 
 export * from './types'
+
+function requireUncached(module: any) {
+    delete require.cache[require.resolve(module)]
+    return require(module)
+}
