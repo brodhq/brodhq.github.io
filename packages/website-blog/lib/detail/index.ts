@@ -11,6 +11,6 @@ export {
     BlogDetailSubscribeProps as SubscribeProps,
 } from './BlogDetailSubscribe'
 export {
-    BlogDetailSidebar as Sidebar,
-    BlogDetailSidebarProps as SidebarProps,
-} from './BlogDetailSidebar'
+    BlogDetailShareMenu as ShareMenu,
+    BlogDetailShareMenuProps as ShareMenuProps,
+} from './BlogDetailShareMenu'

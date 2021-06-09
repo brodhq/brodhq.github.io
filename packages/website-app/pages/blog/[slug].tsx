@@ -1,7 +1,7 @@
 import { getPostBySlug, getAllPosts, Release } from '@geislabs/website-content'
 import { BlogPost, Detail } from '@geislabs/website-blog'
 import React from 'react'
-import { ContentHeader } from 'layouts/common'
+import { ContentSidebar, ContentHeader } from 'layouts/common'
 import { useSubscribe } from 'hooks'
 
 export interface BlogPostPageProps {
@@ -20,7 +20,11 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
         <Detail.Layout
             post={post}
             header={<ContentHeader />}
-            right={<Detail.Sidebar />}
+            right={
+                <ContentSidebar>
+                    <Detail.ShareMenu post={post} />
+                </ContentSidebar>
+            }
             subscribe={<Detail.Subscribe onSubmit={subscribe.onSubmit} />}
         >
             <Detail.Page

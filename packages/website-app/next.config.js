@@ -8,9 +8,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
     target: 'serverless',
     distDir: 'build',
-    // future: {
-    //     webpack5: true,
-    // },
+    future: {
+        webpack5: true,
+    },
     webpack: function (config) {
         config.module.rules.push({ test: /\.md$/, use: 'raw-loader' })
         config.module.rules.push({ test: /\.yml$/, use: 'raw-loader' })

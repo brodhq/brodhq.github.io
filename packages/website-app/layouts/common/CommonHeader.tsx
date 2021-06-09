@@ -1,8 +1,8 @@
 import { Header } from '@geislabs/website-layout'
 import { Github } from '@icons-pack/react-simple-icons'
 import classNames from 'classnames'
+import { GitHub } from '../../config/index'
 import React from 'react'
-import config from '../../config.json'
 
 export interface CommonLayoutHeaderProps {
     className?: string
@@ -16,7 +16,6 @@ export const CommonLayoutHeader: React.FC<CommonLayoutHeaderProps> = ({
     itemClassName,
     ...props
 }) => {
-    const repoHref = `https://github.com/${config.github.repository}`
     return (
         <Header.Header
             className={classNames('h-45 py-5 mx-auto max-w-7xl', className)}
@@ -47,7 +46,7 @@ export const CommonLayoutHeader: React.FC<CommonLayoutHeaderProps> = ({
                 itemClassName={classNames(itemClassName, '')}
                 className="flex flex-1 justify-end"
             >
-                <a href={repoHref} target="_blank">
+                <a href={GitHub.getGithubRepoUrl()} target="_blank">
                     <Github className={classNames(itemClassName, 'h-8 w-8')} />
                 </a>
             </Header.List>

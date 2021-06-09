@@ -7,5 +7,9 @@
     },
     "npm": {
         "installScript": "npm install krans --save"
+    },
+    "twitter": {
+        "handle": "krans",
+        "profileUrl": "https://twitter.com/krans"
     }
 }
