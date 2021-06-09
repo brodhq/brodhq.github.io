@@ -4,11 +4,10 @@ import {
     getConfig,
 } from '@geislabs/website-content'
 import { ListLayoutPage, ListPage, ListPageProps } from '@geislabs/website-blog'
-import { Sidebar } from '@geislabs/website-layout'
 import { sortBy } from '@utils'
 import React from 'react'
 import { getBlogLink } from 'navigation'
-import { ContentHeader } from 'layouts/common'
+import { ContentHeader, ContentSidebar } from 'layouts/common'
 
 export interface BlogProps
     extends Pick<ListPageProps, 'posts' | 'releases' | 'description'> {
@@ -19,7 +18,7 @@ const BlogPage: React.FC<BlogProps> = (props) => {
     return (
         <ListLayoutPage
             header={<ContentHeader />}
-            right={<Sidebar releases={props.releases} />}
+            right={<ContentSidebar releases={props.releases} />}
         >
             <ListPage
                 releases={props.releases}
