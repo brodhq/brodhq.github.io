@@ -37,7 +37,7 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
             <div className="w-full mx-auto flex-shrink-0">{header}</div>
             <div
                 className={classNames(
-                    'pt-6 pb-12',
+                    'pt-6 pb-16',
                     'mx-auto grid grid-cols-3 gap-20 max-w-5xl w-full flex-grow'
                 )}
             >

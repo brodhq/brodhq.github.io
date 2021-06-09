@@ -18,7 +18,9 @@ export const CommonLayoutHeader: React.FC<CommonLayoutHeaderProps> = ({
 }) => {
     const repoHref = `https://github.com/${config.github.repository}`
     return (
-        <Header.Header className="h-45 py-5 mx-auto max-w-7xl">
+        <Header.Header
+            className={classNames('h-45 py-5 mx-auto max-w-7xl', className)}
+        >
             <Header.Brand className={brandClassName} href="/" />
             <Header.List
                 className="space-x-10 flex items-center w-full"
