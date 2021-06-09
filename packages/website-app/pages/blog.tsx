@@ -2,45 +2,42 @@ import {
     getAllPosts,
     getAllReleases,
     getConfig,
-    BlogPost,
     Release,
 } from '@geislabs/website-content'
 import { Sidebar } from '@geislabs/website-layout'
+import { Blog } from '@geislabs/website-ui'
 import { Content } from 'layouts'
 import { sortBy } from '@utils'
 import { BlogPostListItem } from '@views'
 import classNames from 'classnames'
 import React from 'react'
+import { getBlogLink } from 'navigation'
 
 export interface BlogProps {
     title: string
     description: string
-    posts: BlogPost[]
+    posts: Blog.BlogPost[]
     releases: Release[]
 }
 
-const Blog: React.FC<BlogProps> = (props) => {
-    const sorted = sortBy(props.posts, 'date', 'desc')
+const BlogPage: React.FC<BlogProps> = (props) => {
     return (
         <Content.Layout
             breadcrumbs={['Blog']}
             description={props.description}
             right={<Sidebar releases={props.releases} />}
         >
-            <ul className="space-y-8">
-                {sorted.map(function (post, idx) {
-                    return (
-                        <li
-                            key={idx}
-                            className={classNames('pb-8', {
-                                'border-b-2': idx !== sorted.length - 1,
-                            })}
-                        >
-                            <BlogPostListItem post={post} />
-                        </li>
-                    )
-                })}
-            </ul>
+            <Blog.List>
+                {props.posts.map((post) => (
+                    <Blog.Item
+                        href={getBlogLink(post)}
+                        className="pb-8"
+                        buttonClassName="text-primary-500"
+                        post={post}
+                    />
+                ))}
+            </Blog.List>
+            <ul className="space-y-8"></ul>
         </Content.Layout>
     )
 }
@@ -51,7 +48,7 @@ export async function getStaticProps() {
     const releases = await getAllReleases()
     return {
         props: {
-            posts: allPosts,
+            posts: sortBy(allPosts, 'date', 'desc'),
             title: config.title,
             description: config.description,
             releases,
@@ -59,4 +56,4 @@ export async function getStaticProps() {
     }
 }
 
-export default Blog
+export default BlogPage
