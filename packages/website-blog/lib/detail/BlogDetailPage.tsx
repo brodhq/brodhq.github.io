@@ -1,5 +1,5 @@
-import type { BlogPost } from '@geislabs/website-content'
 import React from 'react'
+import { BlogPost } from '../blogTypes'
 
 export interface BlogDetailPageProps {
     description: string

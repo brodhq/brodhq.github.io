@@ -1,11 +1,11 @@
-import type { BlogPost, Release } from '@geislabs/website-content'
 import { Blog } from '@geislabs/website-ui'
 import React from 'react'
+import { BlogPost } from '../blogTypes'
 
 export interface BlogListPageProps {
     description: string
     posts: BlogPost[]
-    releases: Release[]
+    releases: BlogPost[]
     getBlogLink: (post: BlogPost) => string
 }
 

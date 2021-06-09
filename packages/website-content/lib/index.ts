@@ -40,7 +40,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
     return posts
 }
 
-export async function getAllReleases(): Promise<Release[]> {
+export async function getAllReleases(): Promise<BlogPost[]> {
     const posts = await getAllPosts()
     return posts.filter(
         (post) => post.category && sluggify(post.category) === 'releases'
