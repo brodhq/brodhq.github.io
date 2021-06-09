@@ -25,7 +25,7 @@
         "build": "npm run clean && tsc",
         "watch": "npm run clean && tsc -w",
         "sync": "npm run sync:docs & npm run sync:examples && npm run sync:guides",
-        "sync:clean": "rimraf content/examples && rimraf content/guides",
+        "sync:clean": "rimraf content/examples && rimraf content/guides && rimraf content/docs",
         "sync:docs": "node ./scripts/sync-docs.js",
         "sync:examples": "node ./scripts/sync-examples.js",
         "sync:guides": "node ./scripts/sync-guides.js"
