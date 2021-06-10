@@ -39,6 +39,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
                 title={title}
                 description={description}
                 image={post.image}
+                author={post.author}
             />
             <Detail.Page
                 description={post.summary}

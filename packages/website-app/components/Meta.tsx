@@ -21,6 +21,11 @@ export const Meta: React.FC<MetaProps> = ({ ...props }) => {
             <meta property="og:title" content={props.title} />
             <meta property="og:description" content={props.description} />
             <meta
+                property="og:image"
+                content="/icon-brand-gradient-fill.png"
+                key="image"
+            />
+            <meta
                 name="viewport"
                 content="initial-scale=1.0, width=device-width"
             />
@@ -39,9 +44,11 @@ export interface ArticleMetaProps extends MetaProps {
 export const ArticleMeta: React.FC<ArticleMetaProps> = ({ ...props }) => {
     return (
         <Meta {...props}>
-            <meta property="og:image" content={props.image} />
+            <meta property="og:image" content={props.image} key="image" />
             <meta property="og:type" content="article" />
-            <meta property="article:author" content={props.author} />
+            {props.author && (
+                <meta property="article:author" content={props.author} />
+            )}
         </Meta>
     )
 }
