@@ -2,6 +2,7 @@ import matter from 'gray-matter'
 import { generate } from '@geislabs/website-markdown'
 import path from 'path'
 import { Guide, GuideReference, Section } from '../types'
+import { titleize } from '../utils'
 
 export async function getExamples(): Promise<Array<Section>> {
     const sections: Section[] = []
@@ -24,7 +25,7 @@ export async function getExamples(): Promise<Array<Section>> {
                 number,
                 section: sectionName,
                 filename: post,
-                title,
+                title: titleize(title),
                 slug: `${sectionName}/${post.replace(/\.md$/, '')}`,
             })
         }
@@ -37,14 +38,16 @@ export async function getExample(slugs: string[]): Promise<Guide> {
     const slug = path.join(...slugs)
     const sections = await getExamples()
     const all = sections.flatMap((section) => section.guides)
-    const reference = all.find((guide) => guide.slug === slug)
+    const index = all.findIndex((guide) => guide.slug === slug)
+    const reference = all[index]
     const fileContent = await import(
         `../../content/examples/${reference?.filename}`
     )
     const result = generate(fileContent.default)
-    // @ts-expect-error
     return {
         ...reference,
         ...result,
+        previous: all[index - 1] ?? null,
+        next: all[index + 1] ?? null,
     }
 }

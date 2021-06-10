@@ -43,14 +43,16 @@ export async function getAPI(slugs: string[]): Promise<Guide> {
     const slug = path.join(...slugs)
     const sections = await getAPIs()
     const all = sections.flatMap((section) => section.guides)
-    const reference = all.find((guide) => guide.slug === slug)
+    const index = all.findIndex((guide) => guide.slug === slug)
+    const reference = all[index]
     const fileContent = await import(
         `../../content/docs/${reference?.section}/${reference?.filename}`
     )
     const result = generate(fileContent.default, { subsectionLevels: [2, 3] })
-    // @ts-expect-error
     return {
         ...reference,
         ...result,
+        previous: all[index - 1] ?? null,
+        next: all[index + 1] ?? null,
     }
 }

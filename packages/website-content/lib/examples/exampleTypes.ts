@@ -7,4 +7,6 @@ export interface ExampleReference {
 export interface Example extends ExampleReference {
     description: string
     content: string
+    previous: ExampleReference | null
+    next: ExampleReference | null
 }

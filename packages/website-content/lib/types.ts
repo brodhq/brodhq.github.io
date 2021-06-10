@@ -3,6 +3,8 @@
 export interface Guide extends GuideReference {
     subsections: GuideSection[]
     content: string
+    previous: GuideReference | null
+    next: GuideReference | null
 }
 
 export interface GuideSection {

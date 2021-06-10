@@ -12,6 +12,8 @@ import { GuideMenu } from '@views'
 import React from 'react'
 import { useDetail } from 'hooks/page'
 import { Meta } from 'components/Meta'
+import { Button } from '@geislabs/website-ui'
+import { getHref } from 'hooks/routes'
 
 export interface ExampleProps {
     guide: Guide
@@ -39,6 +41,25 @@ const ExamplePage: React.FC<ExampleProps> = (props) => {
                 className="mt-10 space-y-5"
                 dangerouslySetInnerHTML={{ __html: props.guide.content }}
             />
+            <hr />
+            <div className="space-x-4">
+                {props.guide.previous && (
+                    <Button.Primary
+                        minimal={true}
+                        href={getHref('example', props.guide.previous)}
+                    >
+                        Previous: {props.guide.previous.title}
+                    </Button.Primary>
+                )}
+                {props.guide.next && (
+                    <Button.Primary
+                        minimal={true}
+                        href={getHref('example', props.guide.next)}
+                    >
+                        Next: {props.guide.next.title}
+                    </Button.Primary>
+                )}
+            </div>
         </Content.Layout>
     )
 }
