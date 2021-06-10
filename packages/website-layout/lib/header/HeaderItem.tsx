@@ -15,7 +15,7 @@ export const HeaderItem: React.FC<HeaderItemProps> = ({
         <NavLink
             href={href}
             {...props}
-            className={classNames('font-medium', className)}
+            className={classNames('text-base font-medium', className)}
             activeClassName={activeClassName}
         >
             {children}

@@ -1,5 +1,4 @@
 import { Landing } from '@geislabs/website-layout'
-import { useProject } from 'hooks/config'
 import React, { ReactNode } from 'react'
 import { Header } from '../common'
 
@@ -19,6 +18,7 @@ export const LandingLayoutView: React.FC<LandingLayoutViewProps> = ({
                 <div className="h-screen">
                     <Header
                         brandClassName="text-gray-400"
+                        brandPopoverClassName="text-primary-400"
                         itemClassName="text-gray-300 hover:text-gray-400"
                     />
                     {hero}

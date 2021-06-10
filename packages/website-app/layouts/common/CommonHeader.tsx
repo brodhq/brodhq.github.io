@@ -8,52 +8,61 @@ export interface CommonLayoutHeaderProps {
     className?: string
     itemClassName?: string
     brandClassName?: string
+    brandPopoverClassName?: string
 }
 
 export const CommonLayoutHeader: React.FC<CommonLayoutHeaderProps> = ({
     className = '',
     brandClassName,
     itemClassName,
+    brandPopoverClassName = 'text-primary-400',
     ...props
 }) => {
     return (
         <Header.Header
-            className={classNames('h-45 py-5 mx-auto max-w-7xl', className)}
-        >
-            <Header.Brand className={brandClassName} href="/" />
-            <Header.List
-                className="space-x-10 flex items-center w-full"
-                itemClassName={classNames(itemClassName, '')}
-                activeItemClassName="text-primary-600 hover:text-primary-600"
-            >
-                <Header.Item match="/docs" href="/docs">
-                    API
-                </Header.Item>
-                <Header.Item
-                    match="/guides"
-                    href="/guides/getting-started/introduction"
-                >
-                    Guides
-                </Header.Item>
-                <Header.Item match="/examples" href="/examples">
-                    Examples
-                </Header.Item>
-                <Header.Item match="/blog" href="/blog">
-                    Blog
-                </Header.Item>
-            </Header.List>
-            <Header.List
-                itemClassName={classNames(itemClassName, '')}
-                className="flex flex-1 justify-end"
-            >
+            className={classNames('mx-auto max-w-7xl', className)}
+            itemClassName={itemClassName}
+            brandClassName={brandClassName}
+            itemPopoverClassName="text-gray-700 hover:text-gray-800"
+            brandPopoverClassName={brandPopoverClassName}
+            brand={<Header.Brand href="/" />}
+            right={[
                 <a
                     href={GitHub.getGithubRepoUrl()}
                     rel="noopener"
                     target="_blank"
                 >
-                    <Github className={classNames(itemClassName, 'h-8 w-8')} />
-                </a>
-            </Header.List>
+                    <Github className={classNames('h-8 w-8')} />
+                </a>,
+            ]}
+        >
+            <Header.Item
+                activeClassName="text-primary-600 hover:text-primary-600"
+                match="/docs"
+                href="/docs"
+            >
+                API
+            </Header.Item>
+            <Header.Item
+                match="/guides"
+                href="/guides/getting-started/introduction"
+            >
+                Guides
+            </Header.Item>
+            <Header.Item
+                activeClassName="text-primary-600 hover:text-primary-600"
+                match="/examples"
+                href="/examples"
+            >
+                Examples
+            </Header.Item>
+            <Header.Item
+                activeClassName="text-primary-600 hover:text-primary-600"
+                match="/blog"
+                href="/blog"
+            >
+                Blog
+            </Header.Item>
         </Header.Header>
     )
 }

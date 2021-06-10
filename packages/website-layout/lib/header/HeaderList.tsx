@@ -15,7 +15,7 @@ export const HeaderList: React.FC<HeaderListProps> = ({
     children,
 }) => {
     return (
-        <div className={classNames('flex space-x-10', className)}>
+        <div className={classNames('flex flex-wrap space-x-10', className)}>
             {React.Children.map(children, (child) =>
                 // @ts-expect-error
                 React.cloneElement(child, {
