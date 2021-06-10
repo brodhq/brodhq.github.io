@@ -7,6 +7,7 @@ import React from 'react'
 export interface CommonLayoutHeaderProps {
     className?: string
     itemClassName?: string
+    toggleClassName?: string
     brandClassName?: string
     brandPopoverClassName?: string
 }
@@ -21,6 +22,7 @@ export const CommonLayoutHeader: React.FC<CommonLayoutHeaderProps> = ({
     return (
         <Header.Header
             className={classNames('mx-auto max-w-7xl', className)}
+            toggleClassName={props.toggleClassName}
             itemClassName={itemClassName}
             brandClassName={brandClassName}
             itemPopoverClassName="text-gray-700 hover:text-gray-800"

@@ -1,7 +1,6 @@
 import { Content } from '@geislabs/website-layout'
-import { Meta } from 'components/Meta'
 import React, { ReactNode } from 'react'
-import { ContentHeader } from '../common'
+import { CommonContentHeader } from './ContentHeader'
 
 export interface ContentLayoutViewProps {
     className?: string
@@ -13,7 +12,7 @@ export const ContentLayoutView: React.FC<ContentLayoutViewProps> = ({
     ...props
 }) => {
     return (
-        <Content.Layout header={<ContentHeader />} right={props.right}>
+        <Content.Layout header={<CommonContentHeader />} right={props.right}>
             {props.children}
         </Content.Layout>
     )

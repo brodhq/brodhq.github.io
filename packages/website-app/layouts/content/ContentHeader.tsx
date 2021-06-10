@@ -1,5 +1,5 @@
+import { CommonLayoutHeader } from '../common/CommonHeader'
 import React from 'react'
-import { CommonLayoutHeader } from './CommonHeader'
 
 export interface CommonContentHeaderProps {
     className?: string

@@ -8,6 +8,7 @@ export interface HeaderProps {
     className?: string
     brandClassName?: string
     brandPopoverClassName?: string
+    toggleClassName?: string
     itemClassName?: string
     itemPopoverClassName?: string
     activeItemClassName?: string
@@ -17,6 +18,7 @@ export interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({
     className = '',
+    toggleClassName = 'text-gray-300',
     children,
     ...props
 }) => {
@@ -43,7 +45,12 @@ export const Header: React.FC<HeaderProps> = ({
                     <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
                         {applyChildClasses(props.brand, props.brandClassName)}
                         <div className="-mr-2 -my-2 md:hidden">
-                            <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+                            <Popover.Button
+                                className={classNames(
+                                    'rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500',
+                                    toggleClassName
+                                )}
+                            >
                                 <span className="sr-only">Open menu</span>
                                 <MenuIcon
                                     className="h-6 w-6"

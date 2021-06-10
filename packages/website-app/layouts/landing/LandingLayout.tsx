@@ -17,6 +17,7 @@ export const LandingLayoutView: React.FC<LandingLayoutViewProps> = ({
             header={
                 <div className="h-screen">
                     <Header
+                        toggleClassName="bg-gray-700"
                         brandClassName="text-gray-400"
                         brandPopoverClassName="text-primary-400"
                         itemClassName="text-gray-300 hover:text-gray-400"
