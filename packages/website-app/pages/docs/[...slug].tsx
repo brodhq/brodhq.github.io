@@ -10,6 +10,8 @@ import { Content } from 'layouts'
 import { titleize } from '@utils'
 import { GuideMenu } from '@views'
 import React from 'react'
+import { useDetail } from 'hooks/page'
+import { Meta } from 'components/Meta'
 
 export interface DocsPageProps {
     api: Guide
@@ -18,10 +20,12 @@ export interface DocsPageProps {
 }
 
 const DocsPage: React.FC<DocsPageProps> = (props) => {
+    const pageinfo = useDetail('docs', props.api)
     return (
         <Content.Layout
             className="space-y-3"
             breadcrumbs={['Docs', props.api.title]}
+            description={props.api.title}
             right={
                 <GuideMenu
                     namespace="docs"
@@ -30,6 +34,7 @@ const DocsPage: React.FC<DocsPageProps> = (props) => {
                 />
             }
         >
+            <Meta {...pageinfo} />
             <h2 className="text-gray-400">{titleize(props.api.section)}</h2>
             <h1 className="prose text-4xl">{props.api.title}</h1>
             <ul className="space-y-2 mt-10">

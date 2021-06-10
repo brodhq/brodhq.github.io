@@ -9,6 +9,10 @@ import {
 import { Content } from 'layouts'
 import React from 'react'
 import { GuideMenu } from '../components/views/guides'
+import { Meta } from 'components/Meta'
+import { Project } from '../constants/index'
+import { useProject } from 'hooks/config'
+import { useIndex } from 'hooks/page'
 
 export interface DocPageProps {
     title: string
@@ -18,9 +22,9 @@ export interface DocPageProps {
 }
 
 const DocPage: React.FC<DocPageProps> = ({ docs, ...props }) => {
+    const pageinfo = useIndex('docs')
     return (
         <Content.Layout
-            breadcrumbs={['API']}
             right={
                 <GuideMenu
                     namespace="docs"
@@ -29,6 +33,7 @@ const DocPage: React.FC<DocPageProps> = ({ docs, ...props }) => {
                 />
             }
         >
+            <Meta {...pageinfo} />
             <div className="space-y-5">
                 <h2 className="prose prose-2xl">API</h2>
                 <p className="prose">

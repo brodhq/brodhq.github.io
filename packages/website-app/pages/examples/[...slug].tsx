@@ -10,6 +10,8 @@ import { Content } from 'layouts'
 import { titleize } from '@utils'
 import { GuideMenu } from '@views'
 import React from 'react'
+import { useDetail } from 'hooks/page'
+import { Meta } from 'components/Meta'
 
 export interface ExampleProps {
     guide: Guide
@@ -18,10 +20,10 @@ export interface ExampleProps {
 }
 
 const ExamplePage: React.FC<ExampleProps> = (props) => {
+    const pageinfo = useDetail('examples', props.guide)
     return (
         <Content.Layout
             className="space-y-3"
-            breadcrumbs={['Examples', props.guide.title]}
             right={
                 <GuideMenu
                     namespace="examples"
@@ -30,6 +32,7 @@ const ExamplePage: React.FC<ExampleProps> = (props) => {
                 />
             }
         >
+            <Meta {...pageinfo} />
             <h2 className="text-gray-400">{titleize(props.guide.section)}</h2>
             <h1 className="prose text-4xl">{props.guide.title}</h1>
             <div

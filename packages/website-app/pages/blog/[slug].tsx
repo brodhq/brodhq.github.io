@@ -3,7 +3,10 @@ import { BlogPost, Detail } from '@geislabs/website-blog'
 import React from 'react'
 import { ContentSidebar, ContentHeader } from 'layouts/common'
 import { useSubscribe } from 'hooks'
-import { Twitter } from '../../config/index'
+import { Twitter } from '../../constants/index'
+import { Meta } from 'components/Meta'
+import { useProject } from 'hooks/config'
+import { useDetail, useIndex } from 'hooks/page'
 
 export interface BlogPostPageProps {
     content: string
@@ -16,6 +19,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
     releases,
     content,
 }) => {
+    const { title, description } = useDetail('blog', post)
     const subscribe = useSubscribe()
     return (
         <Detail.Layout
@@ -31,6 +35,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
             }
             subscribe={<Detail.Subscribe onSubmit={subscribe.onSubmit} />}
         >
+            <Meta title={title} description={description} />
             <Detail.Page
                 description={post.summary}
                 post={post}

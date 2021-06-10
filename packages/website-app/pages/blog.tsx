@@ -8,6 +8,7 @@ import { sortBy } from '@utils'
 import React from 'react'
 import { getBlogLink } from 'navigation'
 import { ContentHeader, ContentSidebar } from 'layouts/common'
+import { useProject } from 'hooks/config'
 
 export interface BlogProps
     extends Pick<ListPageProps, 'posts' | 'releases' | 'description'> {
@@ -15,10 +16,13 @@ export interface BlogProps
 }
 
 const BlogPage: React.FC<BlogProps> = (props) => {
+    const { name } = useProject()
     return (
         <ListLayoutPage
             header={<ContentHeader />}
             right={<ContentSidebar releases={props.releases} />}
+            breadcrumbs={['Blog']}
+            description={`blog about web scraping and data integration in NodeJS`}
         >
             <ListPage
                 releases={props.releases}

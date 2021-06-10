@@ -1,6 +1,6 @@
 import { Menu, MenuLink } from '@geislabs/website-ui'
 import { sortBy } from '@utils'
-import { Discord, GitHub, Project, Twitter } from '../../config/index'
+import { Discord, GitHub, Project, Twitter } from '../../constants/index'
 import Link from 'next/link'
 import React from 'react'
 

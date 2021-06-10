@@ -21,7 +21,8 @@ import * as track from '../providers/tracking'
 import { getBlogLink } from 'navigation'
 import { Landing } from 'layouts'
 import config from '../config.json'
-import { useSubscribe } from 'hooks'
+import { useIndex } from 'hooks/page'
+import { Meta } from 'components/Meta'
 
 export interface HomeProps {
     title: string
@@ -32,12 +33,16 @@ export interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
+    const pageinfo = useIndex('home')
+
     const handleCopy = () => {
         track.installCopied()
     }
+
     const handleEmailSubscribe = () => {
         track.emailSubscribed()
     }
+
     return (
         <Landing.Layout
             {...props}
@@ -140,6 +145,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                 </Hero.Container>
             }
         >
+            <Meta {...pageinfo} />
             <div>
                 <div className="bg-gray-50">
                     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">

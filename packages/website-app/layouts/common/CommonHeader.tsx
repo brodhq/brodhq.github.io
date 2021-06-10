@@ -1,7 +1,7 @@
 import { Header } from '@geislabs/website-layout'
 import { Github } from '@icons-pack/react-simple-icons'
 import classNames from 'classnames'
-import { GitHub } from '../../config/index'
+import { GitHub } from '../../constants/index'
 import React from 'react'
 
 export interface CommonLayoutHeaderProps {
@@ -46,7 +46,11 @@ export const CommonLayoutHeader: React.FC<CommonLayoutHeaderProps> = ({
                 itemClassName={classNames(itemClassName, '')}
                 className="flex flex-1 justify-end"
             >
-                <a href={GitHub.getGithubRepoUrl()} target="_blank">
+                <a
+                    href={GitHub.getGithubRepoUrl()}
+                    rel="noopener"
+                    target="_blank"
+                >
                     <Github className={classNames(itemClassName, 'h-8 w-8')} />
                 </a>
             </Header.List>

@@ -1,4 +1,5 @@
 import { Content } from '@geislabs/website-layout'
+import { Meta } from 'components/Meta'
 import React, { ReactNode } from 'react'
 import { ContentHeader } from '../common'
 
@@ -23,6 +24,7 @@ export const ContentLayoutView: React.FC<ContentLayoutViewProps> = ({
             description={description}
             right={props.right}
         >
+            <Meta title={title} description={description} />
             {props.children}
         </Content.Layout>
     )

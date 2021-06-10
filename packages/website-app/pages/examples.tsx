@@ -9,6 +9,8 @@ import {
 import React from 'react'
 import { GuideMenu } from '../components/views/guides'
 import { Content } from 'layouts'
+import { useIndex } from 'hooks/page'
+import { Meta } from 'components/Meta'
 
 export interface ExamplePageProps {
     title: string
@@ -18,11 +20,11 @@ export interface ExamplePageProps {
 }
 
 const ExamplePage: React.FC<ExamplePageProps> = ({ examples, ...props }) => {
+    const pageinfo = useIndex('examples')
     const [first] = examples[0].guides ?? []
     const firstHref = `/examples/${first.slug}`
     return (
         <Content.Layout
-            breadcrumbs={['Examples']}
             right={
                 <GuideMenu
                     namespace="examples"
@@ -31,6 +33,7 @@ const ExamplePage: React.FC<ExamplePageProps> = ({ examples, ...props }) => {
                 />
             }
         >
+            <Meta {...pageinfo} />
             <div className="space-y-5">
                 <h2 className="prose prose-2xl">Examples</h2>
                 <p className="prose">
