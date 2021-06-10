@@ -4,19 +4,14 @@ import React, { ReactNode } from 'react'
 export interface BlogListLayoutProps {
     className?: string
     right: ReactNode
-    breadcrumbs?: string[]
-    description?: string
     header?: React.ReactNode
     hero?: React.ReactNode
 }
 
 export const BlogListLayout: React.FC<BlogListLayoutProps> = ({
     className = '',
-    breadcrumbs = [],
-    description = '',
     ...props
 }) => {
-    const title = ['Krans', ...breadcrumbs].join(' | ')
     return (
         <Content.Layout
             header={
@@ -29,8 +24,6 @@ export const BlogListLayout: React.FC<BlogListLayoutProps> = ({
                     )}
                 </div>
             }
-            title={title}
-            description={description}
             right={props.right}
         >
             {props.children}

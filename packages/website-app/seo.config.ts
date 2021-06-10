@@ -56,7 +56,11 @@ export const pages = {
             title: breadcrumbs('Blog'),
             description:
                 'Blog about web-scraping and data-integration in NodeJS',
-            social: defaultSocial,
+            social: {
+                ...defaultSocial,
+                description:
+                    'Blog about web-scraping and data-integration in NodeJS',
+            },
         },
         (post: BlogPost) => ({
             title: breadcrumbs('Blog', post.title),

@@ -8,7 +8,8 @@ import { sortBy } from '@utils'
 import React from 'react'
 import { getBlogLink } from 'navigation'
 import { ContentHeader, ContentSidebar } from 'layouts/common'
-import { useProject } from 'hooks/config'
+import { useIndex } from 'hooks/page'
+import { Meta } from 'components/Meta'
 
 export interface BlogProps
     extends Pick<ListPageProps, 'posts' | 'releases' | 'description'> {
@@ -16,14 +17,13 @@ export interface BlogProps
 }
 
 const BlogPage: React.FC<BlogProps> = (props) => {
-    const { name } = useProject()
+    const pageinfo = useIndex('docs')
     return (
         <ListLayoutPage
             header={<ContentHeader />}
             right={<ContentSidebar releases={props.releases} />}
-            breadcrumbs={['Blog']}
-            description={`blog about web scraping and data integration in NodeJS`}
         >
+            <Meta {...pageinfo} />
             <ListPage
                 releases={props.releases}
                 description={props.description}
