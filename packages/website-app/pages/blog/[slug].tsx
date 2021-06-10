@@ -19,7 +19,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
     releases,
     content,
 }) => {
-    const { title, description } = useDetail('blog', post)
+    const pageinfo = useDetail('blog', post)
     const subscribe = useSubscribe()
     return (
         <Detail.Layout
@@ -36,8 +36,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
             subscribe={<Detail.Subscribe onSubmit={subscribe.onSubmit} />}
         >
             <ArticleMeta
-                title={title}
-                description={description}
+                {...pageinfo}
                 image={require(`../../public/blog/${post.image}`)}
                 author={post.author}
             />

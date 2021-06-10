@@ -9,8 +9,6 @@ export interface BlogListLayoutProps {
     emphasizeTextClassName?: string
     emphasizeButtonClassName?: string
     right: ReactNode
-    breadcrumbs?: string[]
-    description?: string
     post: BlogPost
     header?: React.ReactNode
     subscribe?: React.ReactNode
@@ -18,14 +16,11 @@ export interface BlogListLayoutProps {
 
 export const BlogDetailLayout: React.FC<BlogListLayoutProps> = ({
     className = '',
-    breadcrumbs = [],
-    description = '',
     post,
     emphasizeTextClassName = 'text-red-400',
     emphasizeButtonClassName = 'text-white bg-red-400 hover:bg-red-500 focus:ring-red-400',
     ...props
 }) => {
-    const title = ['Krans', ...breadcrumbs].join(' | ')
     const image = require(`../../public/${post.image}?resize`)
     return (
         <Content.Layout
@@ -79,8 +74,6 @@ export const BlogDetailLayout: React.FC<BlogListLayoutProps> = ({
                     </div>
                 </div>
             }
-            title={title}
-            description={description}
             right={props.right}
             footer={
                 <div className="bg-gray-800">
