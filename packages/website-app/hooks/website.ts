@@ -6,9 +6,6 @@ import config from '../config.json'
  */
 export function useWebsite() {
     return {
-        baseUrl:
-            process.env.NEXT_PUBLIC_BASE_URL ??
-            // @ts-expect-error
-            config.website.baseUrl,
+        baseUrl: process.env.NEXT_PUBLIC_BASE_URL ?? config.website.baseUrl,
     }
 }
