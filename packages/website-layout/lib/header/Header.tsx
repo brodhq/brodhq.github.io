@@ -42,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({
             {({ open }) => (
                 <>
                     {/** Desktop */}
-                    <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
+                    <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-24">
                         {applyChildClasses(props.brand, props.brandClassName)}
                         <div className="-mr-2 -my-2 md:hidden">
                             <Popover.Button

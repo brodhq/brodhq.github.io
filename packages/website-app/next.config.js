@@ -17,6 +17,12 @@ const nextConfig = {
         // Avoid issue with hook usage in external packages and multiple copies of React
         config.resolve.alias.react = path.resolve('./node_modules/react')
 
+        // Allow importing SVGs
+        config.module.rules.push({
+            test: /\.svg$/,
+            use: ['@svgr/webpack'],
+        })
+
         return config
     },
 }
