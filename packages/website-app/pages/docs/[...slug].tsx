@@ -24,8 +24,6 @@ const DocsPage: React.FC<DocsPageProps> = (props) => {
     return (
         <Content.Layout
             className="space-y-3"
-            breadcrumbs={['Docs', props.api.title]}
-            description={props.api.title}
             right={
                 <GuideMenu
                     namespace="docs"
