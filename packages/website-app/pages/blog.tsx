@@ -17,7 +17,7 @@ export interface BlogProps
 }
 
 const BlogPage: React.FC<BlogProps> = (props) => {
-    const pageinfo = useIndex('docs')
+    const pageinfo = useIndex('blog')
     return (
         <ListLayoutPage
             header={<ContentHeader />}
