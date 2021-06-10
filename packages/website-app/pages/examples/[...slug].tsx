@@ -38,28 +38,15 @@ const ExamplePage: React.FC<ExampleProps> = (props) => {
             <h2 className="text-gray-400">{titleize(props.guide.section)}</h2>
             <h1 className="prose text-4xl">{props.guide.title}</h1>
             <div
-                className="mt-10 space-y-5"
+                className="my-4 md:my-8 space-y-5"
                 dangerouslySetInnerHTML={{ __html: props.guide.content }}
             />
-            <hr />
-            <div className="space-x-4">
-                {props.guide.previous && (
-                    <Button.Primary
-                        minimal={true}
-                        href={getHref('example', props.guide.previous)}
-                    >
-                        Previous: {props.guide.previous.title}
-                    </Button.Primary>
-                )}
-                {props.guide.next && (
-                    <Button.Primary
-                        minimal={true}
-                        href={getHref('example', props.guide.next)}
-                    >
-                        Next: {props.guide.next.title}
-                    </Button.Primary>
-                )}
-            </div>
+            <Content.Pagination
+                className="mt-4 md:mt-8"
+                previous={props.guide.previous}
+                next={props.guide.next}
+                getHref={(guide) => getHref('example', guide)}
+            />
         </Content.Layout>
     )
 }

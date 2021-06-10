@@ -50,27 +50,16 @@ const GuidePage: React.FC<GuideProps> = (props) => {
                 ))}
             </ul>
             <div
-                className="mt-10 space-y-5"
+                className="my-4 md:my-8 space-y-5"
                 dangerouslySetInnerHTML={{ __html: props.guide.content }}
             />
-            <div className="space-x-4">
-                {props.guide.previous && (
-                    <Button.Primary
-                        minimal={true}
-                        href={getHref('guide', props.guide.previous)}
-                    >
-                        Previous: {props.guide.previous.title}
-                    </Button.Primary>
-                )}
-                {props.guide.next && (
-                    <Button.Primary
-                        minimal={true}
-                        href={getHref('guide', props.guide.next)}
-                    >
-                        Next: {props.guide.next.title}
-                    </Button.Primary>
-                )}
-            </div>
+            <hr />
+            <Content.Pagination
+                className="mt-4 md:mt-8"
+                previous={props.guide.previous}
+                next={props.guide.next}
+                getHref={(guide) => getHref('guide', guide)}
+            />
         </Content.Layout>
     )
 }
