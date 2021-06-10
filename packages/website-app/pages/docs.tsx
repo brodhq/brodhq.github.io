@@ -10,8 +10,6 @@ import { Content } from 'layouts'
 import React from 'react'
 import { GuideMenu } from '../components/views/guides'
 import { Meta } from 'components/Meta'
-import { Project } from '../constants/index'
-import { useProject } from 'hooks/config'
 import { useIndex } from 'hooks/page'
 
 export interface DocPageProps {
