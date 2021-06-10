@@ -1,11 +1,10 @@
 import { getPostBySlug, getAllPosts, Release } from '@geislabs/website-content'
 import { BlogPost, Detail } from '@geislabs/website-blog'
 import React from 'react'
-import { ContentSidebar, ContentHeader } from 'layouts/common'
+import { Content } from 'layouts'
 import { useSubscribe } from 'hooks'
 import { Twitter } from '../../constants/index'
 import { ArticleMeta, Meta } from 'components/Meta'
-import { useProject } from 'hooks/config'
 import { useDetail, useIndex } from 'hooks/page'
 
 export interface BlogPostPageProps {
@@ -24,14 +23,14 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
     return (
         <Detail.Layout
             post={post}
-            header={<ContentHeader />}
+            header={<Content.Header />}
             right={
-                <ContentSidebar>
+                <Content.Sidebar>
                     <Detail.ShareMenu
                         post={post}
                         twitterHandle={Twitter.getTwitterHandle()}
                     />
-                </ContentSidebar>
+                </Content.Sidebar>
             }
             subscribe={<Detail.Subscribe onSubmit={subscribe.onSubmit} />}
         >

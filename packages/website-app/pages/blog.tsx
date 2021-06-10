@@ -7,7 +7,7 @@ import { ListLayoutPage, ListPage, ListPageProps } from '@geislabs/website-blog'
 import { sortBy } from '@utils'
 import React from 'react'
 import { getBlogLink } from 'navigation'
-import { ContentHeader, ContentSidebar } from 'layouts/common'
+import { Content } from 'layouts'
 import { useIndex } from 'hooks/page'
 import { Meta } from 'components/Meta'
 
@@ -20,8 +20,8 @@ const BlogPage: React.FC<BlogProps> = (props) => {
     const pageinfo = useIndex('blog')
     return (
         <ListLayoutPage
-            header={<ContentHeader />}
-            right={<ContentSidebar releases={props.releases} />}
+            header={<Content.Header />}
+            right={<Content.Sidebar releases={props.releases} />}
         >
             <Meta {...pageinfo} />
             <ListPage
