@@ -30,17 +30,15 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
             <div className="w-full mx-auto flex-shrink-0">{header}</div>
             <div
                 className={classNames(
-                    'px-4 max-w-7xl sm:px-6 md:px-8 md:py-16',
-                    'mx-auto w-full grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8'
+                    'px-4 max-w-5xl sm:px-6 md:px-8 py-4 md:py-16',
+                    'flex-1 mx-auto w-full grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-24'
                 )}
             >
-                <div className="col-span-2 order-2 md:order-1">
+                <div className="col-span-2 order-2 md:order-1 pb-12 md:pb-16">
                     {props.children}
                 </div>
                 <aside className="col-span-1 order-1 md:order-2 relative">
-                    <div className="pt-4 md:pt-8 sticky top-0">
-                        {props.right}
-                    </div>
+                    <div className="sticky top-4 md:top-8">{props.right}</div>
                 </aside>
             </div>
             <div className="w-full">

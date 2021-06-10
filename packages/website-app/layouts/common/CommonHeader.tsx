@@ -64,6 +64,7 @@ export const CommonLayoutHeader: React.FC<CommonLayoutHeaderProps> = ({
                 API
             </Header.Item>
             <Header.Item
+                activeClassName="text-primary-600 hover:text-primary-600"
                 match="/guides"
                 href="/guides/getting-started/introduction"
             >

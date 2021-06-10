@@ -27,7 +27,7 @@ export const BlogDetailLayout: React.FC<BlogListLayoutProps> = ({
             header={
                 <div className="">
                     {props.header}
-                    <div className="py-20 w-full min-h-20 bg-blue-50 text-gray-800 flex justify-center">
+                    <div className="px-8 text-center md:px-16 py-20 w-full min-h-20 bg-blue-50 text-gray-800 flex justify-center">
                         <div className="mx-auto">
                             <div className="space-y-10 flex flex-col justify-center items-center">
                                 <div className="flex shadow-lg border-4 border-white rounded-lg">
