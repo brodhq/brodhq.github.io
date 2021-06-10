@@ -38,7 +38,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
             <ArticleMeta
                 title={title}
                 description={description}
-                image={post.image}
+                image={require(`../../public/blog/${post.image}`)}
                 author={post.author}
             />
             <Detail.Page

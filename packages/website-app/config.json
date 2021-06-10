@@ -8,6 +8,9 @@
     "npm": {
         "installScript": "npm install krans --save"
     },
+    "website": {
+        "baseUrl": "https://krans.io"
+    },
     "twitter": {
         "handle": "krans",
         "profileUrl": "https://twitter.com/krans"
