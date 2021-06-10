@@ -23,7 +23,8 @@
     "scripts": {
         "clean": "rimraf dist",
         "build": "npm run clean && tsc",
-        "watch": "npm run clean && tsc -w"
+        "watch": "npm run clean && tsc -w",
+        "opengraph": "node ./scripts/opengraph.js"
     },
     "devDependencies": {
         "@geislabs/website-layout": "^0.0.183",
