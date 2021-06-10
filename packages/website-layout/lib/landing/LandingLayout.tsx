@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import classNames from 'classnames'
 import React from 'react'
 import { Header } from '../header'
@@ -8,8 +7,6 @@ export interface LandingLayoutProps {
     className?: string
     brandClassName?: string
     itemClassName?: string
-    title: string
-    description: string
     header?: React.ReactNode
 }
 
@@ -28,10 +25,6 @@ export const LandingLayout: React.FC<LandingLayoutProps> = ({
 }) => {
     return (
         <main>
-            <Head>
-                <title>{props.title}</title>
-                <meta name="description" content={props.description} />
-            </Head>
             <div className="bg-gray-800">
                 <div className="mx-auto">{header}</div>
             </div>

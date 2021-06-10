@@ -6,25 +6,14 @@ import { ContentHeader } from '../common'
 export interface ContentLayoutViewProps {
     className?: string
     right: ReactNode
-    breadcrumbs?: string[]
-    description?: string
 }
 
 export const ContentLayoutView: React.FC<ContentLayoutViewProps> = ({
     className = '',
-    breadcrumbs = [],
-    description = '',
     ...props
 }) => {
-    const title = ['Krans', ...breadcrumbs].join(' | ')
     return (
-        <Content.Layout
-            header={<ContentHeader />}
-            title={title}
-            description={description}
-            right={props.right}
-        >
-            <Meta title={title} description={description} />
+        <Content.Layout header={<ContentHeader />} right={props.right}>
             {props.children}
         </Content.Layout>
     )

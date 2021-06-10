@@ -6,13 +6,10 @@ import { Header } from '../common'
 export interface LandingLayoutViewProps {
     className?: string
     hero: ReactNode
-    title: string
-    description: string
 }
 
 export const LandingLayoutView: React.FC<LandingLayoutViewProps> = ({
     className = '',
-    description,
     hero,
     ...props
 }) => {
@@ -27,8 +24,6 @@ export const LandingLayoutView: React.FC<LandingLayoutViewProps> = ({
                     {hero}
                 </div>
             }
-            title={props.title}
-            description={description}
         >
             {props.children}
         </Landing.Layout>

@@ -3,9 +3,15 @@ import NextHead from 'next/head'
 import React from 'react'
 import fill from '../public/icon-brand-gradient-fill.png'
 
+export interface Social {
+    title: string
+    description: string
+}
+
 export interface MetaProps {
     title: string
     description: string
+    social?: Social
     image?: string
 }
 
@@ -21,8 +27,14 @@ export const Meta: React.FC<MetaProps> = ({ ...props }) => {
             <meta property="og:url" content={baseUrl} />
             <meta property="og:site_name" content={baseUrl} />
             <meta property="og:image" content={resolveUrl(fill)} key="image" />
-            <meta property="og:title" content={props.title} />
-            <meta property="og:description" content={props.description} />
+            <meta
+                property="og:title"
+                content={props.social?.title || props.title}
+            />
+            <meta
+                property="og:description"
+                content={props.social?.description || props.description}
+            />
             <meta
                 name="viewport"
                 content="initial-scale=1.0, width=device-width"

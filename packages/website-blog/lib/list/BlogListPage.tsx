@@ -14,6 +14,7 @@ export const BlogListPage: React.FC<BlogListPageProps> = ({ ...props }) => {
         <Blog.List>
             {props.posts.map((post) => (
                 <Blog.Item
+                    key={post.slug}
                     href={props.getBlogLink(post)}
                     className="pb-8"
                     post={post}

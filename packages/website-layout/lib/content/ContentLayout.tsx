@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import classNames from 'classnames'
 import React from 'react'
 import { Header } from '../header'
@@ -8,8 +7,6 @@ export interface ContentLayoutProps {
     className?: string
     brandClassName?: string
     navItemClassName?: string
-    title: string
-    description: string
     header?: React.ReactNode
     footer?: React.ReactNode
     right: React.ReactNode
@@ -30,10 +27,6 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
 }) => {
     return (
         <main className="flex flex-col min-h-screen items-start">
-            <Head>
-                <title>{props.title}</title>
-                <meta name="description" content={props.description} />
-            </Head>
             <div className="w-full mx-auto flex-shrink-0">{header}</div>
             <div
                 className={classNames(
