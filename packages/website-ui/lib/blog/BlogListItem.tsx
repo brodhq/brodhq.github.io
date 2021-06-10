@@ -30,14 +30,16 @@ export const BlogListItem: React.FC<BlogListItemProps> = ({
                 </h2>
                 <BlogMetadata post={post} />
             </div>
-            <p className="text-gray-600">{post.summary}</p>
-            <ButtonPrimary
-                className={classNames(props.buttonClassName, 'mt-2')}
-                minimal={true}
-                href={href}
-            >
-                Read more
-            </ButtonPrimary>
+            <div className="space-y-4">
+                <p className="text-gray-600">{post.summary}</p>
+                <ButtonPrimary
+                    className={classNames(props.buttonClassName)}
+                    minimal={true}
+                    href={href}
+                >
+                    Read more
+                </ButtonPrimary>
+            </div>
         </div>
     )
 }

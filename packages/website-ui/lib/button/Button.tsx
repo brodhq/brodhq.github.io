@@ -26,15 +26,14 @@ export const Button: React.FC<ButtonProps> = ({ className, ...props }) => {
         )
     }
     return (
-        <div className={classNames('inline-flex rounded-md', className)}>
-            <div
-                className={classNames(
-                    'cursor-pointer flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md',
-                    className
-                )}
-            >
-                {props.children}
-            </div>
+        <div
+            className={classNames(
+                'inline-flex rounded-md',
+                'cursor-pointer flex items-center justify-center px-5 py-2 border border-transparent text-base font-medium rounded-md',
+                className
+            )}
+        >
+            {props.children}
         </div>
     )
 }
