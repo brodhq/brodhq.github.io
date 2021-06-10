@@ -30,3 +30,18 @@ export const Meta: React.FC<MetaProps> = ({ ...props }) => {
         </NextHead>
     )
 }
+
+export interface ArticleMetaProps extends MetaProps {
+    image: string
+    author?: string
+}
+
+export const ArticleMeta: React.FC<ArticleMetaProps> = ({ ...props }) => {
+    return (
+        <Meta {...props}>
+            <meta property="og:image" content={props.image} />
+            <meta property="og:type" content="article" />
+            <meta property="article:author" content={props.author} />
+        </Meta>
+    )
+}

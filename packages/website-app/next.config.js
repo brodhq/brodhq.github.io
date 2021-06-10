@@ -6,6 +6,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 const nextConfig = {
+    purge: [
+        './pages/**/*.{js,ts,jsx,tsx}',
+        './components/**/*.{js,ts,jsx,tsx}',
+        './layouts/**/*.{js,ts,jsx,tsx}',
+        './node_modules/\\@geislabs**/dist/*.js',
+    ],
     target: 'serverless',
     distDir: 'build',
     future: {

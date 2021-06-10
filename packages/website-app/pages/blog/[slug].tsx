@@ -4,7 +4,7 @@ import React from 'react'
 import { ContentSidebar, ContentHeader } from 'layouts/common'
 import { useSubscribe } from 'hooks'
 import { Twitter } from '../../constants/index'
-import { Meta } from 'components/Meta'
+import { ArticleMeta, Meta } from 'components/Meta'
 import { useProject } from 'hooks/config'
 import { useDetail, useIndex } from 'hooks/page'
 
@@ -35,7 +35,11 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
             }
             subscribe={<Detail.Subscribe onSubmit={subscribe.onSubmit} />}
         >
-            <Meta title={title} description={description} />
+            <ArticleMeta
+                title={title}
+                description={description}
+                image={post.image}
+            />
             <Detail.Page
                 description={post.summary}
                 post={post}
