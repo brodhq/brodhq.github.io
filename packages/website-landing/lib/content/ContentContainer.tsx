@@ -10,9 +10,9 @@ export const ContentContainer: React.FC<ContentContainerProps> = ({
 }) => {
     return (
         <div>
-            <div className="relative bg-white sm:py-24">
-                <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
-                    <div className="relative sm:py-16 lg:py-0">
+            <div className="relative bg-white lg:py-24">
+                <div className="lg:mx-auto lg:max-w-7xl lg:px-8 grid gap-16 lg:grid-cols-2 lg:gap-24 lg:items-start">
+                    <div className="relative sm:py-16 lg:py-0 order-2 lg:order-1">
                         <div
                             aria-hidden="true"
                             className="hidden sm:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-screen"
@@ -55,7 +55,7 @@ export const ContentContainer: React.FC<ContentContainerProps> = ({
                             {asset}
                         </div>
                     </div>
-                    <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+                    <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 order-1 lg:order-2">
                         {children}
                     </div>
                 </div>

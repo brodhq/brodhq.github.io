@@ -15,7 +15,7 @@ export const ContentMain: React.FC<ContentMainProps> = ({
 }) => {
     return (
         <div className="pt-12 sm:pt-16 lg:pt-20">
-            <div className="text-base max-w-prose mx-auto lg:max-w-none">
+            <div className="text-base max-w-prose lg:max-w-none">
                 {props.subtitle && (
                     <h2
                         className={classNames(
