@@ -1,7 +1,7 @@
 {
     "private": true,
     "name": "@geislabs/website-blog",
-    "version": "0.0.210",
+    "version": "0.0.211",
     "description": "> TODO: description",
     "author": "mads hargreave <mads.hargreave@gmail.com>",
     "homepage": "",
@@ -27,8 +27,8 @@
         "opengraph": "node ./scripts/opengraph.js"
     },
     "devDependencies": {
-        "@geislabs/website-layout": "^0.0.210",
-        "@geislabs/website-ui": "^0.0.210"
+        "@geislabs/website-layout": "^0.0.211",
+        "@geislabs/website-ui": "^0.0.211"
     },
     "peerDependencies": {
         "next": "^10.2.3",
