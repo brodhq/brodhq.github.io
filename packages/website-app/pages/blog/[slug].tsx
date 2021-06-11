@@ -1,7 +1,7 @@
 import { getPostBySlug, getAllPosts, Release } from '@geislabs/website-content'
 import { BlogPost, Detail } from '@geislabs/website-blog'
 import React from 'react'
-import { Content } from 'layouts'
+import { Common, Content } from 'layouts'
 import { useSubscribe } from 'hooks'
 import { Twitter } from '../../constants/index'
 import { ArticleMeta, Meta } from 'components/Meta'
@@ -24,6 +24,7 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
         <Detail.Layout
             post={post}
             header={<Content.Header />}
+            footer={<Common.Footer />}
             right={
                 <Content.Sidebar>
                     <Detail.ShareMenu
