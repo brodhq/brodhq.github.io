@@ -11,7 +11,7 @@ export const ContentContainer: React.FC<ContentContainerProps> = ({
     return (
         <div>
             <div className="relative bg-white lg:py-24">
-                <div className="lg:mx-auto lg:max-w-7xl lg:px-8 grid gap-16 lg:grid-cols-2 lg:gap-24 lg:items-start">
+                <div className="lg:mx-auto lg:max-w-7xl lg:px-8 grid grid-cols-1 gap-8 md:gap-16 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
                     <div className="relative sm:py-16 lg:py-0 order-2 lg:order-1">
                         <div
                             aria-hidden="true"

@@ -10,7 +10,7 @@ export interface ContentAssetProps {
 
 export const ContentAsset: React.FC<ContentAssetProps> = (props) => {
     return (
-        <div className="relative rounded-2xl shadow-xl overflow-hidden">
+        <div className="relative rounded-2xl shadow-xl overflow-hidden visible">
             <div className="inset-0 min-h-72 w-full">
                 <Code className="h-full bg-white filter grayscale">
                     {outdent`
