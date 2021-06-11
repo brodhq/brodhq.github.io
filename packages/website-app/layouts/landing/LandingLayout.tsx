@@ -15,7 +15,7 @@ export const LandingLayoutView: React.FC<LandingLayoutViewProps> = ({
     return (
         <Landing.Layout
             header={
-                <div className="min-h-screen">
+                <div className="sm:min-h-screen">
                     <Common.Header
                         toggleClassName="bg-gray-700"
                         brandClassName="text-gray-400"

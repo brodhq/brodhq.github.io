@@ -56,7 +56,7 @@ export const HeroContainer: React.FC<HeroContainerProps> = ({
                             <div className="px-4 sm:px-6 sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
                                 {children}
                             </div>
-                            <div className="sm:px-6 mt-16 sm:mt-24 lg:mt-0 lg:col-span-6">
+                            <div className="sm:px-6 mt-16 sm:mt-24 lg:mt-0 lg:col-span-6 hidden sm:block">
                                 {props.asset}
                             </div>
                         </div>
