@@ -8,6 +8,7 @@ export interface LandingLayoutProps {
     brandClassName?: string
     itemClassName?: string
     header?: React.ReactNode
+    footer?: React.ReactNode
 }
 
 export const LandingLayout: React.FC<LandingLayoutProps> = ({
@@ -21,6 +22,7 @@ export const LandingLayout: React.FC<LandingLayoutProps> = ({
             itemClassName={classNames(itemClassName)}
         />
     ),
+    footer = <Footer />,
     ...props
 }) => {
     return (
@@ -29,9 +31,7 @@ export const LandingLayout: React.FC<LandingLayoutProps> = ({
                 <div className="mx-auto">{header}</div>
             </div>
             <div>{props.children}</div>
-            <div>
-                <Footer />
-            </div>
+            <div>{footer}</div>
         </main>
     )
 }

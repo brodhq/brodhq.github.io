@@ -1,15 +1,16 @@
-import { CommonLayoutHeader } from '../common/CommonHeader'
-import React from 'react'
+import React, { ReactNode } from 'react'
+import * as Common from '../common'
 
-export interface CommonContentHeaderProps {
+export interface ContentLayoutHeaderProps {
     className?: string
 }
 
-export const CommonContentHeader: React.FC<CommonContentHeaderProps> = ({
+export const ContentLayoutHeader: React.FC<ContentLayoutHeaderProps> = ({
     className = '',
+    ...props
 }) => {
     return (
-        <CommonLayoutHeader
+        <Common.Header
             className={className}
             brandClassName="text-primary-500"
             itemClassName="text-gray-700 hover:text-gray-800"

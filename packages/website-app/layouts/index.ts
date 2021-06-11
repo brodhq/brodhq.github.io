@@ -1,3 +1,3 @@
 export * as Content from './content'
 export * as Landing from './landing'
-export * from './common'
+export * as Common from './common'

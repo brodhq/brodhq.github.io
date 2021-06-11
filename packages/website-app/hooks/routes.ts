@@ -6,7 +6,7 @@ import { routes } from '../route.config'
  * @returns
  */
 export function getIndexRoute<TName extends keyof typeof routes>(route: TName) {
-    return routes[route][0]
+    return routes[route][0].path
 }
 
 /**

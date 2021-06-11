@@ -5,6 +5,7 @@ export interface BlogListLayoutProps {
     className?: string
     right: ReactNode
     header?: React.ReactNode
+    footer?: React.ReactNode
     hero?: React.ReactNode
 }
 
@@ -25,6 +26,7 @@ export const BlogListLayout: React.FC<BlogListLayoutProps> = ({
                 </div>
             }
             right={props.right}
+            footer={props.footer}
         >
             {props.children}
         </Content.Layout>

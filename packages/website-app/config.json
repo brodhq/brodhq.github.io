@@ -3,13 +3,15 @@
         "name": "Krans"
     },
     "github": {
-        "repository": "kransio/krans"
+        "repository": "kransio/krans",
+        "repositoryUrl": "https://github.com/kransio/krans"
     },
     "npm": {
         "installScript": "npm install krans --save"
     },
     "website": {
-        "baseUrl": "https://krans.io"
+        "baseUrl": "https://krans.io",
+        "contactEmail": "mads.hargreave@gmail.com"
     },
     "twitter": {
         "handle": "krans",

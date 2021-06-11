@@ -1,5 +1,6 @@
 export * from './footer'
 export * from './sidebar'
 export * as Header from './header'
+export * as Footer from './footer'
 export * as Landing from './landing'
 export * as Content from './content'

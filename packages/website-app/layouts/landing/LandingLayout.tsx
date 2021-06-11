@@ -1,6 +1,6 @@
 import { Landing } from '@geislabs/website-layout'
 import React, { ReactNode } from 'react'
-import { Header } from '../common'
+import * as Common from '../common'
 
 export interface LandingLayoutViewProps {
     className?: string
@@ -16,7 +16,7 @@ export const LandingLayoutView: React.FC<LandingLayoutViewProps> = ({
         <Landing.Layout
             header={
                 <div className="h-screen">
-                    <Header
+                    <Common.Header
                         toggleClassName="bg-gray-700"
                         brandClassName="text-gray-400"
                         brandPopoverClassName="text-primary-400"
@@ -25,6 +25,7 @@ export const LandingLayoutView: React.FC<LandingLayoutViewProps> = ({
                     {hero}
                 </div>
             }
+            footer={<Common.Footer />}
         >
             {props.children}
         </Landing.Layout>

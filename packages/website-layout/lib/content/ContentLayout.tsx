@@ -23,6 +23,7 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
             activeItemClassName="text-primary-600 hover:text-primary-600"
         />
     ),
+    footer = <Footer />,
     ...props
 }) => {
     return (
@@ -41,10 +42,7 @@ export const ContentLayout: React.FC<ContentLayoutProps> = ({
                     <div className="sticky top-4 md:top-8">{props.right}</div>
                 </aside>
             </div>
-            <div className="w-full">
-                {props.footer}
-                <Footer />
-            </div>
+            <div className="w-full">{footer}</div>
         </main>
     )
 }
