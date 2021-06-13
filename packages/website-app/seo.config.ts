@@ -1,10 +1,12 @@
 import type { BlogPost } from '@geislabs/website-blog'
 import type { Guide } from '@geislabs/website-content'
+import config from './config.json'
+
+const libraryName = config.library.name
 
 const defaultSocial = {
     title: 'Declarative web-scraping and data integration for NodeJS',
-    description:
-        'Krans provides a declarative NodeJS API for scraping and integrating with unstructured data sources such as APIs and websites',
+    description: `${libraryName} provides a declarative NodeJS API for scraping and integrating with unstructured data sources such as APIs and websites`,
 }
 
 export const pages = {
@@ -18,7 +20,7 @@ export const pages = {
     docs: [
         {
             title: breadcrumbs('API'),
-            description: 'Documentation for Krans',
+            description: `Documentation for ${libraryName}`,
             social: defaultSocial,
         },
         (guide: Guide) => ({
@@ -30,7 +32,7 @@ export const pages = {
     guides: [
         {
             title: breadcrumbs('Guides'),
-            description: 'Guides for Krans',
+            description: `Guides for ${libraryName}`,
             social: defaultSocial,
         },
         (guide: Guide) => ({
@@ -42,7 +44,7 @@ export const pages = {
     examples: [
         {
             title: breadcrumbs('Examples'),
-            description: 'Practical code examples for Krans',
+            description: `Practical code examples for ${libraryName}`,
             social: defaultSocial,
         },
         (guide: Guide) => ({
@@ -74,5 +76,5 @@ export const pages = {
 }
 
 function breadcrumbs(...fragments: string[]) {
-    return ['Krans', ...fragments].join(' | ')
+    return [libraryName, ...fragments].join(' | ')
 }
