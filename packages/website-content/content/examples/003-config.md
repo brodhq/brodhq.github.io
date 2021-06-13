@@ -3,8 +3,8 @@ title: 003-config
 ---
 Send a HTTP request
 ```ts
-// file ./pansar.config.js
-import { http } from '@pansar/http'
+// file ./krans.config.js
+import { http } from '@krans/http'
 
 export default {
     input: 'src/main',
@@ -13,8 +13,8 @@ export default {
 }
 
 // file ./main.js
-import { fetch } from '@pansar/fetch'
-import { Json } from '@pansar/json'
+import { fetch } from '@krans/fetch'
+import { Json } from '@krans/json'
 
 export const main = fetch(Json, 'https://google.com', ({ data }) => ({
     title: data['title'].toString(),

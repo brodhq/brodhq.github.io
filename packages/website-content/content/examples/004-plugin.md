@@ -3,8 +3,8 @@ title: 004-plugin
 ---
 Send a HTTP request
 ```ts
-import { Krans, Plugin } from 'pansar'
-import { http } from '@pansar/http'
+import { Krans, Plugin } from 'krans'
+import { http } from '@krans/http'
 
 export const plugin: Plugin = {
     [Krans.plugin]: {
