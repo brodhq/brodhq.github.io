@@ -1,13 +1,13 @@
 {
     "library": {
-        "name": "Krans"
+        "name": "Pyroman"
     },
     "github": {
         "repository": "kransio/krans",
         "repositoryUrl": "https://github.com/kransio/krans"
     },
     "npm": {
-        "installScript": "npm install krans --save"
+        "installScript": "npm install pyroman --save"
     },
     "website": {
         "baseUrl": "https://krans.io",
