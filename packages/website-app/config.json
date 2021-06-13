@@ -3,18 +3,18 @@
         "name": "Pansar"
     },
     "github": {
-        "repository": "pansarhq/krans",
-        "repositoryUrl": "https://github.com/pansarhq/krans"
+        "repository": "pansarhq/pansar",
+        "repositoryUrl": "https://github.com/pansarhq/pansar"
     },
     "npm": {
         "installScript": "npm install pansar --save"
     },
     "website": {
-        "baseUrl": "https://krans.io",
+        "baseUrl": "https://pansar.io",
         "contactEmail": "mads.hargreave@gmail.com"
     },
     "twitter": {
-        "handle": "krans",
-        "profileUrl": "https://twitter.com/krans"
+        "handle": "pansar",
+        "profileUrl": "https://twitter.com/pansar"
     }
 }
