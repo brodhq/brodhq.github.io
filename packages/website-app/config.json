@@ -1,13 +1,13 @@
 {
     "library": {
-        "name": "Pyroman"
+        "name": "Pansar"
     },
     "github": {
         "repository": "kransio/krans",
         "repositoryUrl": "https://github.com/kransio/krans"
     },
     "npm": {
-        "installScript": "npm install pyroman --save"
+        "installScript": "npm install pansar --save"
     },
     "website": {
         "baseUrl": "https://krans.io",
