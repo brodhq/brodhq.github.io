@@ -12,7 +12,7 @@ const downloader = new Downloader({
     github: { auth: process.env.GITHUB_PERSONAL_TOKEN },
 })
 
-downloader.fetchFiles('kransio', 'krans', 'guides').then(async (response) => {
+downloader.fetchFiles('pansarhq', 'krans', 'guides').then(async (response) => {
     const files = response.map(({ path, contents }) => ({
         path,
         content: contents.toString('utf-8'),

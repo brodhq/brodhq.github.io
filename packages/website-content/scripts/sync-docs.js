@@ -14,14 +14,14 @@ const targets = [
         title: 'Json',
         slug: 'json',
         path: 'data-types/01-json.md',
-        url: `https://raw.githubusercontent.com/kransio/json/master/docs/README.md`,
+        url: `https://raw.githubusercontent.com/pansarhq/json/master/docs/README.md`,
     },
     {
         section: 'data-types',
         title: 'Html',
         slug: 'html',
         path: 'data-types/02-html.md',
-        url: `https://raw.githubusercontent.com/kransio/html/master/docs/README.md`,
+        url: `https://raw.githubusercontent.com/pansarhq/html/master/docs/README.md`,
     },
 ]
 Promise.all(

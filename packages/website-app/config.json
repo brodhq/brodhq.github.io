@@ -3,8 +3,8 @@
         "name": "Pansar"
     },
     "github": {
-        "repository": "kransio/krans",
-        "repositoryUrl": "https://github.com/kransio/krans"
+        "repository": "pansarhq/krans",
+        "repositoryUrl": "https://github.com/pansarhq/krans"
     },
     "npm": {
         "installScript": "npm install pansar --save"
