@@ -1,20 +1,20 @@
 {
     "library": {
-        "name": "Pansar"
+        "name": "Percolator"
     },
     "github": {
-        "repository": "pansarhq/pansar",
-        "repositoryUrl": "https://github.com/pansarhq/pansar"
+        "repository": "percolatorhq/percolator",
+        "repositoryUrl": "https://github.com/percolatorhq/percolator"
     },
     "npm": {
-        "installScript": "npm install pansar --save"
+        "installScript": "npm install @percolator/core --save"
     },
     "website": {
-        "baseUrl": "https://pansar.io",
+        "baseUrl": "https://percolatorhq.com",
         "contactEmail": "mads.hargreave@gmail.com"
     },
     "twitter": {
-        "handle": "pansar",
-        "profileUrl": "https://twitter.com/pansar"
+        "handle": "percolator",
+        "profileUrl": "https://twitter.com/percolator"
     }
 }
