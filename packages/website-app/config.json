@@ -1,20 +1,20 @@
 {
     "library": {
-        "name": "Percolator"
+        "name": "Brod"
     },
     "github": {
-        "repository": "percolatorhq/percolator",
-        "repositoryUrl": "https://github.com/percolatorhq/percolator"
+        "repository": "brodhq/brod",
+        "repositoryUrl": "https://github.com/brodhq/brod"
     },
     "npm": {
-        "installScript": "npm install @percolator/core --save"
+        "installScript": "npm install brod --save"
     },
     "website": {
-        "baseUrl": "https://percolatorhq.com",
+        "baseUrl": "https://brodhq.com",
         "contactEmail": "mads.hargreave@gmail.com"
     },
     "twitter": {
-        "handle": "percolator",
-        "profileUrl": "https://twitter.com/percolator"
+        "handle": "brod",
+        "profileUrl": "https://twitter.com/brod"
     }
 }
