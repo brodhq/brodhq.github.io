@@ -23,7 +23,7 @@ The preferred option for installing Geis. Choose your operating system and tool.
 
 
 ```typescript
-import { fetch } from 'pansar'
+import { fetch } from 'brod'
 
 // Fetch google and parse as JSON
 const data = fetch('json://google.com', ({ data }) => ({

@@ -55,7 +55,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                                 <Browser title="api">
                                     <Code className="prose" darkmode={true}>
                                         {outdent`
-                            import { fetch } from 'pansar'
+                            import { fetch } from 'brod'
 
                             // Fetch google and parse as JSON
                             const data = fetch('json://google.com', ({ data }) => ({
@@ -74,7 +74,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                                 <Browser title="watch">
                                     <Code className="prose" darkmode={true}>
                                         {outdent`
-                            import { fetch, watch, key, interval } from 'pansar'
+                            import { fetch, watch, key, interval } from 'brod'
 
                             // Watch changes to API call
                             const changes = watch(
@@ -96,7 +96,7 @@ const Home: React.FC<HomeProps> = ({ cases, releases, ...props }) => {
                                 <Browser title="browse">
                                     <Code className="prose" darkmode={true}>
                                         {outdent`
-                            import { browse, wait, click } from 'pansar'
+                            import { browse, wait, click } from 'brod'
                             
                             // Visit website with browser
                             const data = browse(
