@@ -11,18 +11,16 @@ const downloader = new Downloader({
     github: { auth: process.env.GITHUB_PERSONAL_TOKEN },
 })
 
-downloader
-    .fetchFiles('pansarhq', 'krans', 'examples')
-    .then(async (response) => {
-        const files = response.map(({ path, contents }) => ({
-            path,
-            content: contents.toString('utf-8'),
-        }))
-        for (const file of files) {
-            console.log(`Generating example ${file.path}`)
-        }
-        await docgen(files, {
-            outDir: EXAMPLES_DIR,
-        })
-        console.log('Examples generated!')
-    }, console.error)
+downloader.fetchFiles('brodhq', 'krans', 'examples').then(async (response) => {
+    const files = response.map(({ path, contents }) => ({
+        path,
+        content: contents.toString('utf-8'),
+    }))
+    for (const file of files) {
+        console.log(`Generating example ${file.path}`)
+    }
+    await docgen(files, {
+        outDir: EXAMPLES_DIR,
+    })
+    console.log('Examples generated!')
+}, console.error)
