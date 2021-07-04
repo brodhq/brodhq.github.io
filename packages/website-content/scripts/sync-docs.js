@@ -10,6 +10,13 @@ const DOCS_DIR = path.resolve(OUTPUT_DIR, 'docs')
 
 const targets = [
     {
+        section: 'protocols',
+        title: 'Fetch',
+        slug: 'fetch',
+        path: 'protocols/01-fetch.md',
+        url: `https://raw.githubusercontent.com/brodhq/fetch/master/docs/README.md`,
+    },
+    {
         section: 'data-types',
         title: 'Json',
         slug: 'json',
