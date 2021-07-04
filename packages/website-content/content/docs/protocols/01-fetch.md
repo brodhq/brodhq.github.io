@@ -46,6 +46,18 @@ response.status
 // => 200
 ```
 
+▸ **FetchFn**(`type`, `init`): `AwaitableFetchRequest`
+
+Fetch data at url using request as object properties
+
+**Example**
+
+```typescript
+const response = fetch(Json, { url: 'https://example.com/posts/1', method: 'get' })
+response.status
+// => 200
+```
+
 ▸ **FetchFn**(`type`, `init`, `callback`): `AwaitableFetchRequest`
 
 Fetch data at url as JSON and parse response in callback
